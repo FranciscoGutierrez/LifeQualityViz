@@ -7,6 +7,9 @@ Meteor.subscribe("tweets");
 Template.tweets.onCreated(function helloOnCreated() {
   // counter starts at 0
   this.counter = new ReactiveVar(0);
+  setTimeout( function() {
+    $(".tweets-container").scrollTop(0);
+  },500);
 });
 
 Template.tweets.helpers({
@@ -15,11 +18,25 @@ Template.tweets.helpers({
     return Tweets.find({}, {
       transform: function(item){
         item.polarity = (item.polarity > 0) ? item.polarity = "positive" : item.polarity = "negative";
-        item.date = moment(item.date).fromNow();
+        item.tweetdate = moment(item.tweetdate).fromNow();
         return item;
       }
     });
-  },
+  }
+});
+
+Template.lifeIndex.helpers({
+  currentIndex(){
+    return Tweets.findOne({}, {
+      transform: function(item){
+        item.safety_index    = item.safety_index.toFixed(2);
+        item.pollution_index = item.pollution_index.toFixed(2);
+        item.traffic_index   = item.traffic_index.toFixed(2);
+        item.quality_of_life_index = item.quality_of_life_index.toFixed(2);
+        return item;
+      }
+    },{sort: {DateTime: 1}});
+  }
 });
 
 Template.tweets.events({

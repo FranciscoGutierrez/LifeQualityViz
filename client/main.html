@@ -5,24 +5,49 @@
 
 <body>
   {{> tweets}}
+  {{> lifeIndex}}
+  {{> sentimentmap}}
 </body>
 
+<template name="sentimentmap">
+  <div class="sentimentmap-template">
+    <img src="http://maps.googleapis.com/maps/api/staticmap?center=New+York+,NY&zoom=12&format=png&sensor=false&size=640x480&maptype=roadmap&style=feature:road.highway|element:geometry|weight:0.1|visibility:off&style=element:labels.text|visibility:off&style=element:labels.icon|visibility:off&style=feature:water|lightness:100|visibility:on&style=feature:road|element:labels|visibility:off&style=feature:administrative|visibility:off&style=feature:landscape|saturation:-100|lightness:6&style=feature:poi|visibility:off&style=feature:transit|visibility:off&style=feature:road|lightness:100"/>
+  </div>
+</template>
+
 <template name="tweets">
-  <h1>Twitter Sentiment Live Feed</h1>
-  <h2>New York City, U.S</h2>
-  <div class="tweets-container">
-    {{#each tweets}}
-    <div class="simple-tweet {{polarity}} animated fadeInDown">
-      <div class="tweet-text">
-        <span>{{tweet}}</span>
-        <div class="tweet-meta">
-          <div class="tweet-track">{{track}},</div>
-          <div class="tweet-date">{{date}}</div>
-          <!-- <div class="tweet-coordinates">{{coordinates}}</div> -->
+  <div class="tweets-template">
+    <h1>Twitter Sentiment Live Feed</h1>
+    <h2>New York City, U.S</h2>
+    <div class="tweets-container">
+      {{#each tweets}}
+      <div class="simple-tweet {{polarity}} animated fadeInDown">
+        <div class="tweet-text">
+          <span>{{tweet}}</span>
+          <div class="tweet-meta">
+            <div class="tweet-track">{{track}},</div>
+            <div class="tweet-date">{{tweetdate}}</div>
+            <!-- <div class="tweet-coordinates">{{coordinates}}</div> -->
+          </div>
         </div>
+        <div class="tweet-sentiment">{{polarity}}</div>
       </div>
-      <div class="tweet-sentiment">{{polarity}}</div>
+      {{/each}}
     </div>
-    {{/each}}
+  </div>
+</template>
+
+<template name="lifeIndex">
+  <div class="lifeIndex-template">
+  <h1>Quality of Life Index, Today</h1>
+  <h2>New York City, U.S</h2>
+  <div class="qli-container">
+    {{#with currentIndex}}
+    <div>Quality of Life Index: {{quality_of_life_index}}</div>
+    <div>Traffic Index: {{traffic_index}}</div>
+    <div>Pollution Index: {{pollution_index}}</div>
+    <div>Safety Index: {{safety_index}}</div>
+    {{/with}}
+  </div>
   </div>
 </template>
