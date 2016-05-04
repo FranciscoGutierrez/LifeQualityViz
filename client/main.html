@@ -1,0 +1,28 @@
+<head>
+  <title>Twitter</title>
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:900,400,300,100' type='text/css'>
+</head>
+
+<body>
+  {{> tweets}}
+</body>
+
+<template name="tweets">
+  <h1>Twitter Sentiment Live Feed</h1>
+  <h2>New York City, U.S</h2>
+  <div class="tweets-container">
+    {{#each tweets}}
+    <div class="simple-tweet {{polarity}} animated fadeInDown">
+      <div class="tweet-text">
+        <span>{{tweet}}</span>
+        <div class="tweet-meta">
+          <div class="tweet-track">{{track}},</div>
+          <div class="tweet-date">{{date}}</div>
+          <!-- <div class="tweet-coordinates">{{coordinates}}</div> -->
+        </div>
+      </div>
+      <div class="tweet-sentiment">{{polarity}}</div>
+    </div>
+    {{/each}}
+  </div>
+</template>
