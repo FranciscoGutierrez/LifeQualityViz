@@ -1,6 +1,7 @@
 <head>
   <title>Twitter</title>
   <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:900,400,300,100' type='text/css'>
+  <script src="bower_components/Chart.js/dist/Chart.min.js"></script>
 </head>
 
 <body>
@@ -39,15 +40,16 @@
 
 <template name="lifeIndex">
   <div class="lifeIndex-template">
-  <h1>Quality of Life Index, Today</h1>
-  <h2>New York City, U.S</h2>
-  <div class="qli-container">
-    {{#with currentIndex}}
-    <div>Quality of Life Index: {{quality_of_life_index}}</div>
-    <div>Traffic Index: {{traffic_index}}</div>
-    <div>Pollution Index: {{pollution_index}}</div>
-    <div>Safety Index: {{safety_index}}</div>
-    {{/with}}
-  </div>
+    <h1>Quality of Life Index, Today</h1>
+    <h2>New York City, U.S</h2>
+    <div class="qli-container">
+    <canvas id="myChart" width="200" height="200"></canvas>
+      {{#with currentIndex}}
+      <div>Quality of Life Index: {{quality_of_life_index}}</div>
+      <div>Traffic Index: {{traffic_index}}</div>
+      <div>Pollution Index: {{pollution_index}}/100</div>
+      <div>Safety Index: {{safety_index}}</div>
+      {{/with}}
+    </div>
   </div>
 </template>
