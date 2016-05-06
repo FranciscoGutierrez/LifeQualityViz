@@ -1,25 +1,33 @@
 <head>
   <title>Twitter</title>
   <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:900,400,300,100' type='text/css'>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   <script src="bower_components/Chart.js/dist/Chart.min.js"></script>
 </head>
 
-<body>
-  {{> tweets}}
-  {{> lifeIndex}}
-  {{> sentimentmap}}
+<body style="display: flex; flex-direction: column;">
+  <div class="content-top">
+    <h1>New York City, U.S</h1>
+  </div>
+  <div class="content-bottom">
+    {{> tweets}}
+    {{> lifeIndex}}
+    {{> sentimentmap}}
+  </div>
 </body>
 
 <template name="sentimentmap">
   <div class="sentimentmap-template">
-    <img src="http://maps.googleapis.com/maps/api/staticmap?center=New+York+,NY&zoom=12&format=png&sensor=false&size=640x480&maptype=roadmap&style=feature:road.highway|element:geometry|weight:0.1|visibility:off&style=element:labels.text|visibility:off&style=element:labels.icon|visibility:off&style=feature:water|lightness:100|visibility:on&style=feature:road|element:labels|visibility:off&style=feature:administrative|visibility:off&style=feature:landscape|saturation:-100|lightness:6&style=feature:poi|visibility:off&style=feature:transit|visibility:off&style=feature:road|lightness:100"/>
+    <h2>Map View</h2>
+    <div id='map'></div>
+    <!-- <img src="http://maps.googleapis.com/maps/api/staticmap?center=New+York+,NY&zoom=12&format=png&sensor=false&size=640x480&maptype=roadmap&style=feature:road.highway|element:geometry|weight:0.1|visibility:off&style=element:labels.text|visibility:off&style=element:labels.icon|visibility:off&style=feature:water|lightness:100|visibility:on&style=feature:road|element:labels|visibility:off&style=feature:administrative|visibility:off&style=feature:landscape|saturation:-100|lightness:6&style=feature:poi|visibility:off&style=feature:transit|visibility:off&style=feature:road|lightness:100"/> -->
   </div>
 </template>
 
 <template name="tweets">
   <div class="tweets-template">
-    <h1>Twitter Sentiment Live Feed</h1>
-    <h2>New York City, U.S</h2>
+    <h2>Twitter Live Sentiment Feed</h2>
     <div class="tweets-container">
       {{#each tweets}}
       <div class="simple-tweet {{polarity}} animated fadeInDown">
@@ -40,16 +48,23 @@
 
 <template name="lifeIndex">
   <div class="lifeIndex-template">
-    <h1>Quality of Life Index, Today</h1>
-    <h2>New York City, U.S</h2>
+    <h2>Current Quality of Life Index</h2>
     <div class="qli-container">
-    <canvas id="myChart" width="200" height="200"></canvas>
+      <div>
+        <canvas id="myChart" width="200" height="200"></canvas>
+      </div>
       {{#with currentIndex}}
-      <div>Quality of Life Index: {{quality_of_life_index}}</div>
-      <div>Traffic Index: {{traffic_index}}</div>
-      <div>Pollution Index: {{pollution_index}}/100</div>
-      <div>Safety Index: {{safety_index}}</div>
+      <div class="qli-stats">
+        <div class="qli-qindex"><span>{{quality_of_life_index}}</span>Quality of Life Index</div>
+        <!-- <div>Traffic Index: {{traffic_index}}</div>
+        <div>Pollution Index: {{pollution_index}}/100</div>
+        <div>Safety Index: {{safety_index}}</div> -->
+      </div>
       {{/with}}
+      <br><br>
+      <div>
+        <canvas id="myChart2" width="200" height="200"></canvas>
+      </div>
     </div>
   </div>
 </template>
