@@ -2,10 +2,28 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
-Tweets  = new Meteor.Collection('tweets');
-Meteor.subscribe("tweets");
+Tweets = new Meteor.Collection('tweets');
+Cities = new Meteor.Collection('cities');
+
+Template.body.helpers({
+  // Cities.findOne({city: "newyork"});
+  // Cities.findOne({city: "boston"});
+  // Cities.findOne({city: "seattle"});
+  // Cities.findOne({city: "houston"});
+  // Cities.findOne({city: "atlanta"}); 
+  cities: [
+    { cityname: 'New York' },
+    { cityname: 'Atlanta' },
+    { cityname: 'Boston' },
+    { cityname: 'Houston' },
+    { cityname: 'Seattle' }
+  ],
+});
 
 Template.tweets.onCreated(function() {
+  Meteor.subscribe("tweets");
+  Meteor.subscribe("cities");
+
   this.counter = new ReactiveVar(0);
   setTimeout( function() {
     $(".tweets-container").scrollTop(0);

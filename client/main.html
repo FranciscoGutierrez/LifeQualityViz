@@ -45,11 +45,12 @@
 <body style="display: flex; flex-direction: column;">
   <div class="content-top">{{>navfilter}}</div>
   <div class="content-mid">
+    {{#each cities}}
     {{>cityrow}}
-    {{>cityrow}}
-    {{>cityrow}}
-    {{>cityrow}}
-    {{>cityrow}}
+    {{/each}}
+  </div>
+  <div class="loading-screen">
+    <paper-spinner alt="Loading app..." active></paper-spinner>
   </div>
 </body>
 
@@ -114,3 +115,5 @@
     </div>
   </div>
 </template>
+
+<template name="dummy"></template>

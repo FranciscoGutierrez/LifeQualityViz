@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  cursor: default;
 }
 
 .cr-elements-container {
@@ -17,7 +18,7 @@
 
 .cr-title {
   font-size: 23px;
-  font-weight: 300;
+  font-weight: 100;
   padding: 10px;
   color: #424242;
 }
