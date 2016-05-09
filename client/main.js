@@ -23,7 +23,9 @@ Template.sentimentmap.onCreated(function() {
     var iconPositive = L.divIcon({className: 'tweet-icon-positive'});
     var iconNegative = L.divIcon({className: 'tweet-icon-negative'});
     L.marker([40.7128, -74.0059],{clickable: false, icon: iconPositive}).addTo(mymap);
-    L.marker([40.7328, -74.0059],{clickable: false, icon: iconNegative}).addTo(mymap);
+    L.marker([40.7314, -74.0159],{clickable: false, icon: iconPositive}).addTo(mymap);
+    L.marker([40.7251, -74.0379],{clickable: false, icon: iconPositive}).addTo(mymap);
+    L.marker([40.739434, -74.041878],{clickable: false, icon: iconNegative}).addTo(mymap);
   });
 });
 
@@ -31,12 +33,12 @@ Template.lifeIndex.onCreated(function() {
   $(document).ready(function() {
     Chart.defaults.global.responsive = false;
     Chart.defaults.global.legend = false;
-    var data = { labels: ["",""], datasets: [{data: [125.86, 74.14], backgroundColor: ["#d1d1d1","white"], hoverBackgroundColor: ["#d1d1d1","white"]}]};
-    var options = {responsive: true};
+    var data = { labels: ["",""], datasets: [{data: [125.86, 74.14], backgroundColor: ["#bdbdbd","white"], hoverBackgroundColor: ["#c7c7c7","white"]}]};
+    var options = {responsive: false};
     var ctx = document.getElementById("myChart");
     var donutchart = new Chart(ctx, { type: 'doughnut', data: data, options: options });
     //////
-    var data2 = { labels: ["Safety","Health Care","Climate"], datasets: [{data: [51.16, 60.59,79.69], backgroundColor: "#d1d1d1", hoverBackgroundColor: "#d1d1d1"}]};
+    var data2 = { labels: ["Safety","Health Care","Climate"], datasets: [{data: [51.16, 60.59,79.69], backgroundColor: "#bdbdbd", hoverBackgroundColor: "#c7c7c7"}]};
     var options2 = {responsive: true};
     var ctx2 = document.getElementById("myChart2");
     var options2 = {

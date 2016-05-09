@@ -1,0 +1,36 @@
+.navfilter-container {
+  display: flex;
+  justify-content: center;
+  cursor: default;
+  align-items: center;
+}
+
+.navfilter-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  color: #424242;
+}
+
+.navfilter-sub {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  width: 200px;
+}
+
+.nf-cbwrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.navfilter-sub span {
+  font-size: 10px;
+  color: #757575;
+  margin-bottom: 5px;
+}

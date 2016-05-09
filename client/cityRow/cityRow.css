@@ -1,0 +1,23 @@
+.cr-element {
+  width:  150px;
+  height: 150px;
+  background: #dfdfdf;
+}
+
+.cityrow-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.cr-elements-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cr-title {
+  font-size: 23px;
+  font-weight: 300;
+  padding: 10px;
+  color: #424242;
+}

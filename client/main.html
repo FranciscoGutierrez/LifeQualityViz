@@ -1,25 +1,72 @@
 <head>
   <title>Twitter</title>
   <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:900,400,300,100' type='text/css'>
+  <link rel="import" href="bower_components/paper-tooltip/paper-tooltip.html">
+  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="bower_components/iron-icons/editor-icons.html">
+  <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+  <link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+  <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   <script src="bower_components/Chart.js/dist/Chart.min.js"></script>
+  <style is="custom-style">
+  :root {
+    --paper-slider-active-color:#B25D7E;
+    --paper-slider-knob-color:  #B25D7E;
+    --paper-slider-pin-color:   #B25D7E;
+  }
+  paper-checkbox.polluted {
+    --paper-checkbox-unchecked-color: #44034f;
+    --paper-checkbox-checked-color:   #44034f;
+  }
+  paper-checkbox.traffic {
+    --paper-checkbox-unchecked-color: #525252;
+    --paper-checkbox-checked-color:   #525252;
+  }
+
+  paper-checkbox.safety {
+    --paper-checkbox-unchecked-color: #fcaa2d;
+    --paper-checkbox-checked-color:   #fcaa2d;
+  }
+
+  paper-checkbox.health {
+    --paper-checkbox-unchecked-color: #ff0000;
+    --paper-checkbox-checked-color:   #ff0000;
+  }
+
+  /*.polluted{background: #44034f;}
+  .traffic {background: #525252;}
+  .safety  {background: #fcaa2d;}
+  .health  {background: #ff0000;}*/
+  </style>
 </head>
 
 <body style="display: flex; flex-direction: column;">
-  <div class="content-top">
-    <h1>New York City, U.S</h1>
-  </div>
-  <div class="content-bottom">
-    {{> tweets}}
-    {{> lifeIndex}}
-    {{> sentimentmap}}
+  <div class="content-top">{{>navfilter}}</div>
+  <div class="content-mid">
+    {{>cityrow}}
+    {{>cityrow}}
+    {{>cityrow}}
+    {{>cityrow}}
+    {{>cityrow}}
   </div>
 </body>
 
+<template name="citysentiment">
+  <div class="city-container">
+    <div class="city-title">New York City</div>
+    <div class="regression-container">
+      <div class="regression-safety"></div>
+      <div class="regression-health"></div>
+      <div class="regression-climate"></div>
+    </div>
+  </div>
+</template>
+
 <template name="sentimentmap">
   <div class="sentimentmap-template">
-    <h2>Map View</h2>
+    <h2>Map of Tweets</h2>
     <div id='map'></div>
     <!-- <img src="http://maps.googleapis.com/maps/api/staticmap?center=New+York+,NY&zoom=12&format=png&sensor=false&size=640x480&maptype=roadmap&style=feature:road.highway|element:geometry|weight:0.1|visibility:off&style=element:labels.text|visibility:off&style=element:labels.icon|visibility:off&style=feature:water|lightness:100|visibility:on&style=feature:road|element:labels|visibility:off&style=feature:administrative|visibility:off&style=feature:landscape|saturation:-100|lightness:6&style=feature:poi|visibility:off&style=feature:transit|visibility:off&style=feature:road|lightness:100"/> -->
   </div>
@@ -51,17 +98,16 @@
     <h2>Current Quality of Life Index</h2>
     <div class="qli-container">
       <div>
-        <canvas id="myChart" width="200" height="200"></canvas>
+        <canvas id="myChart" width="100" height="100"></canvas>
+        {{#with currentIndex}}
+        <div class="qli-stats">
+          <div class="qli-qindex"><span>{{quality_of_life_index}}</span>Quality of Life Index</div>
+          <!-- <div>Traffic Index: {{traffic_index}}</div>
+          <div>Pollution Index: {{pollution_index}}/100</div>
+          <div>Safety Index: {{safety_index}}</div> -->
+        </div>
+        {{/with}}
       </div>
-      {{#with currentIndex}}
-      <div class="qli-stats">
-        <div class="qli-qindex"><span>{{quality_of_life_index}}</span>Quality of Life Index</div>
-        <!-- <div>Traffic Index: {{traffic_index}}</div>
-        <div>Pollution Index: {{pollution_index}}/100</div>
-        <div>Safety Index: {{safety_index}}</div> -->
-      </div>
-      {{/with}}
-      <br><br>
       <div>
         <canvas id="myChart2" width="200" height="200"></canvas>
       </div>

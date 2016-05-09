@@ -10,11 +10,12 @@
 }
 body {
   display: flex;
+  margin: 0;
+  padding: 0;
 }
 h1 {
   font-weight: 100;
-  cursor: default;
-  margin-bottom: 0;
+  padding-left: 3%;
 }
 h2 {
   font-weight: 300;
@@ -30,7 +31,7 @@ h2 {
   align-items: center;
   overflow-y: scroll;
   width:  450px;
-  max-height: 600px;
+  max-height: 650px;
   position: relative;
   -webkit-mask-image: -webkit-gradient(linear, left 80%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
@@ -110,8 +111,8 @@ h2 {
 }
 
 .tweet-icon-positive {
-  width: 3px;
-  height: 3px;
+  width: 40px;
+  height: 40px;
   background: #27ae60;
   border-radius: 50%;
   border: 2px solid #1c7d45;
@@ -125,4 +126,25 @@ h2 {
   border-radius: 50%;
   border: 2px solid #a6362b;
   transition: all 300ms ease-out;
+}
+
+.lifeIndex-template {
+  display: flex;
+  flex-direction: column;
+}
+
+.qli-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.content-top {
+  height: 50px;
+  background: #F5F5F5;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 10px;
+  border-bottom: 1px solid #E0E0E0;
 }
