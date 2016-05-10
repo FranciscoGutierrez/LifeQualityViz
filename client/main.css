@@ -11,7 +11,8 @@
 body {
   display: flex;
   margin: 0;
-  padding: 0;
+  padding:0;
+  min-width: 900px;
 }
 h1 {
   font-weight: 100;
@@ -159,3 +160,19 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
+.cityrow-health   { visibility: hidden; }
+.cityrow-safety   { visibility: hidden; }
+.cityrow-traffic  { visibility: hidden; }
+.cityrow-polution { visibility: hidden; }
+
+.grid-health  { border-left: 1px solid #ff6666; border-bottom: 1px solid #ff6666; }
+.grid-safety  { border-left: 1px solid #fdd392; border-bottom: 1px solid #fdd392; }
+.grid-traffic { border-left: 1px solid #858585; border-bottom: 1px solid #858585; }
+.grid-polution{ border-left: 1px solid #96b6c5; border-bottom: 1px solid #96b6c5; }
+.grid-lq { border-left: 1px solid #d1d1d1; border-bottom: 1px solid #d1d1d1; }
+
+.crh-health   { visibility: hidden; }
+.crh-safety   { visibility: hidden; }
+.crh-traffic  { visibility: hidden; }
+.crh-polution { visibility: hidden; }

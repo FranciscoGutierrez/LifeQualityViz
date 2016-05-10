@@ -16,8 +16,9 @@ Router.route('/', {
             $(this).remove();
           });
           Blaze.render(Template.maincontent,$("body")[0]);
-          Session.set("row1","newyork");
-          Session.set("row2","boston");
+          Session.set("rowtop","newyork");
+          Session.set("rowbottom","boston");
+          Session.set("strength",80);
       });
     });
   }

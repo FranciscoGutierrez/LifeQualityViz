@@ -1,8 +1,9 @@
 .navfilter-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   cursor: default;
   align-items: center;
+  width: 100%;
 }
 
 .navfilter-title {
@@ -33,4 +34,16 @@
   font-size: 10px;
   color: #757575;
   margin-bottom: 5px;
+}
+
+#slider {
+  background: #B45C7E;
+  width: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+paper-checkbox {
+  margin-right: 5px;
+  margin-left:  5px;
 }

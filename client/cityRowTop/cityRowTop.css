@@ -2,6 +2,7 @@
   width:  150px;
   height: 150px;
   background: #FBFBFB;
+  position: relative;
 }
 
 .cityrow-container {
@@ -37,7 +38,17 @@
   font-weight: 300;
   color: #424242;
   cursor: default;
-  font-size: 13px;
+  font-size: 15px;
+  padding-top: 10px;
+}
+
+.cr-header span{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .cityrow-header {
@@ -64,44 +75,21 @@
 }
 
 .crh-polution {
-  border-left:  1px solid #6a3d9a;
-  border-right: 1px solid #6a3d9a;
-  border-top:   1px solid #6a3d9a;
+  border-left:  1px solid #96b6c5;
+  border-right: 1px solid #96b6c5;
+  border-top:   1px solid #96b6c5;
 }
 
-.dropdown {
-  color: #fff;
-  background: white !important;
-  border-color: white !important;
-  color: #424242 !important;
-  font-family: Roboto;
-  font-weight: 100;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 3px;
-  padding: 3px;
+.crh-lq {
+  border-left:  1px solid #ececec;
+  border-right: 1px solid #ececec;
+  border-top:   1px solid #ececec;
 }
 
-.dropdown:hover {
-  color: #fff;
-  background: white !important;
-  border-color: white !important;
-  color: #424242 !important;
-  font-family: Roboto;
-  font-weight: 100;
-  font-size: 20px;
+img {
+  transition: all 300ms ease-out;
 }
 
-.dropdown:active {
-  color: #fff;
-  background: white !important;
-  border-color: white !important;
-  color: #424242 !important;
-  font-family: Roboto;
-  font-weight: 100;
-  font-size: 20px;
-}
-
-.dropdown-menu li {
-  position: relative;
+svg {
+  font-size: 9px;
 }

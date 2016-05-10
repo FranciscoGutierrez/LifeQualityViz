@@ -1,19 +1,15 @@
 <template name="navfilter">
   <div class="navfilter-container">
-    <div class="navfilter-title">Life Quality Conditions</div>
-    <div class="navfilter-sub">
-      <!-- <span>Positive</span> -->
-      <div class="nf-cbwrapper">
-        <paper-checkbox class="health">Health</paper-checkbox>
-        <paper-checkbox class="safety">Safety</paper-checkbox>
-      </div>
+    <div style="display: flex; align-items: center;">
+      <div class="navfilter-title">Conditions:</div>
+      <paper-checkbox class="health">Health</paper-checkbox>
+      <paper-checkbox class="safety">Safety</paper-checkbox>
+      <paper-checkbox class="traffic">Traffic Lightness</paper-checkbox>
+      <paper-checkbox class="polluted">Air Quality</paper-checkbox>
     </div>
-    <div class="navfilter-sub">
-      <!-- <span>Negative</span> -->
-      <div class="nf-cbwrapper">
-        <paper-checkbox class="traffic">Traffic</paper-checkbox>
-        <paper-checkbox class="polluted">Pollution</paper-checkbox>
-      </div>
+    <div style="display: flex; align-items: center;">
+      <div class="navfilter-title">Conditions Strength:</div>
+      <div id="slider"></div>
     </div>
   </div>
 </template>

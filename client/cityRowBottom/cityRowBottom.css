@@ -45,33 +45,8 @@
   justify-content: space-around;
 }
 
-.crh-health {
-  border-left:  1px solid #ff0000;
-  border-right: 1px solid #ff0000;
-  border-top:   1px solid #ff0000;
-}
-
-.crh-safety {
-  border-left:  1px solid #fcaa2d;
-  border-right: 1px solid #fcaa2d;
-  border-top:   1px solid #fcaa2d;
-}
-
-.crh-traffic {
-  border-left:  1px solid #525252;
-  border-right: 1px solid #525252;
-  border-top:   1px solid #525252;
-}
-
-.crh-polution {
-  border-left:  1px solid #6a3d9a;
-  border-right: 1px solid #6a3d9a;
-  border-top:   1px solid #6a3d9a;
-}
-
 .dropdown {
   color: #fff;
-  background: white !important;
   border-color: white !important;
   color: #424242 !important;
   font-family: Roboto;
@@ -84,7 +59,6 @@
 
 .dropdown:hover {
   color: #fff;
-  background: white !important;
   border-color: white !important;
   color: #424242 !important;
   font-family: Roboto;
@@ -94,7 +68,6 @@
 
 .dropdown:active {
   color: #fff;
-  background: white !important;
   border-color: white !important;
   color: #424242 !important;
   font-family: Roboto;
@@ -104,4 +77,8 @@
 
 .dropdown-menu li {
   position: relative;
+}
+
+.caret {
+  margin-left: 10px;
 }

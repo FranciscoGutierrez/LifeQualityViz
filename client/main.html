@@ -7,8 +7,8 @@
   <style is="custom-style">
   paper-checkbox { color: #424242; }
   paper-checkbox.polluted {
-    --paper-checkbox-unchecked-color: #6a3d9a;
-    --paper-checkbox-checked-color:   #6a3d9a;
+    --paper-checkbox-unchecked-color: #96b6c5;
+    --paper-checkbox-checked-color:   #96b6c5;
   }
   paper-checkbox.traffic {
     --paper-checkbox-unchecked-color: #525252;
@@ -37,11 +37,11 @@
   <div class="content-top">{{>navfilter}}</div>
   <div class="content-mid">
     <div class="cityrow-header">
-      <div class="cr-header crh-health"  >Health</div>
-      <div class="cr-header crh-safety"  >Safety</div>
-      <div class="cr-header crh-lq"></div>
-      <div class="cr-header crh-traffic" >Traffic</div>
-      <div class="cr-header crh-polution">Pollution</div>
+      <div class="cr-header crh-health"  ><span>Health</span></div>
+      <div class="cr-header crh-safety"  ><span>Safety</span></div>
+      <div class="cr-header crh-lq">Life Quality</div>
+      <div class="cr-header crh-traffic" ><span>Traffic Lightness</span></div>
+      <div class="cr-header crh-polution"><span>Air Quality</span></div>
     </div>
     {{>cityrowtop}}
     {{>cityrowbottom}}
