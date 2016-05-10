@@ -25,3 +25,5 @@ mquandalle:bower          # The power of bower in meteor
 rcy:nouislider
 natestrauser:animate-css
 iron:router
+karfield:jquery-dropdown
+twbs:bootstrap

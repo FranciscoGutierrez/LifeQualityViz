@@ -1,0 +1,107 @@
+.cr-element {
+  width:  150px;
+  height: 150px;
+  background: #FBFBFB;
+}
+
+.cityrow-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  cursor: default;
+}
+
+.cr-elements-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cr-title {
+  font-size: 20px;
+  font-weight: 100;
+  color: #424242;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin:  0px;
+  padding: 0px;
+}
+
+.cr-header {
+  width: 150px;
+  height: 25px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  color: #424242;
+  cursor: default;
+  font-size: 13px;
+}
+
+.cityrow-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.crh-health {
+  border-left:  1px solid #ff0000;
+  border-right: 1px solid #ff0000;
+  border-top:   1px solid #ff0000;
+}
+
+.crh-safety {
+  border-left:  1px solid #fcaa2d;
+  border-right: 1px solid #fcaa2d;
+  border-top:   1px solid #fcaa2d;
+}
+
+.crh-traffic {
+  border-left:  1px solid #525252;
+  border-right: 1px solid #525252;
+  border-top:   1px solid #525252;
+}
+
+.crh-polution {
+  border-left:  1px solid #6a3d9a;
+  border-right: 1px solid #6a3d9a;
+  border-top:   1px solid #6a3d9a;
+}
+
+.dropdown {
+  color: #fff;
+  background: white !important;
+  border-color: white !important;
+  color: #424242 !important;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.dropdown:hover {
+  color: #fff;
+  background: white !important;
+  border-color: white !important;
+  color: #424242 !important;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.dropdown:active {
+  color: #fff;
+  background: white !important;
+  border-color: white !important;
+  color: #424242 !important;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.dropdown-menu li {
+  position: relative;
+}

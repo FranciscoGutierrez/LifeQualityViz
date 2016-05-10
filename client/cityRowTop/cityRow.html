@@ -1,0 +1,36 @@
+<template name="cityrowtop">
+  <div class="cityrow-container">
+    <div class="cr-title">
+      {{#with city}}
+      <div class="dropdown">
+        <div class="dropdown" data-toggle="dropdown">
+          {{city.cityname}}<span class="caret"></span>
+          <paper-ripple></paper-ripple>
+        </div>
+        <ul class="dropdown-menu">
+          <li><a href="#">Seattle</a><paper-ripple></paper-ripple></li>
+          <li><a href="#">Boston</a><paper-ripple></paper-ripple></li>
+          <li><a href="#">New York City</a><paper-ripple></paper-ripple></li>
+          <li><a href="#">Houston</a><paper-ripple></paper-ripple></li>
+          <li><a href="#">Atlanta</a><paper-ripple></paper-ripple></li>
+        </ul>
+      </div>
+      {{/with}}
+    </div>
+    <div class="cr-elements-container">
+      <div class="cr-element cityrow-health"></div>
+      <div class="cr-element cityrow-safety"></div>
+      <div class="cr-element cityrow-lq">{{city}}</div>
+      <div class="cr-element cityrow-traffic"></div>
+      <div class="cr-element cityrow-polution"></div>
+    </div>
+    <div style="height: 40px;"></div>
+    <div class="cr-elements-container">
+      <div class="cr-element cityrow-health"></div>
+      <div class="cr-element cityrow-safety"></div>
+      <div class="cr-element cityrow-lq">{{city}}</div>
+      <div class="cr-element cityrow-traffic"></div>
+      <div class="cr-element cityrow-polution"></div>
+    </div>
+  </div>
+</template>

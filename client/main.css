@@ -136,15 +136,26 @@ h2 {
 .qli-container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: spa  ce-around;
 }
 
 .content-top {
   height: 50px;
-  background: #F5F5F5;
+  /*background: #F5F5F5;*/
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #E0E0E0;
+  /*border-bottom: 1px solid #E0E0E0;*/
+}
+
+.loading-screen {
+  position: absolute;
+  height: 100%;
+  width:  100%;
+  top: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
