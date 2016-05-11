@@ -1,4 +1,4 @@
-Template.cityrowtop.onCreated(function() {
+Template.cityrowbot.onCreated(function() {
   this.health = new ReactiveVar();
   this.safety = new ReactiveVar();
   this.qlindx = new ReactiveVar();
@@ -6,9 +6,9 @@ Template.cityrowtop.onCreated(function() {
   this.traffi = new ReactiveVar();
 });
 
-Template.cityrowtop.helpers({
+Template.cityrowbot.helpers({
   city() {
-    var r = Session.get("rowtop");
+    var r = Session.get("rowbot");
     var city = [];
     if(r=="boston") { city  = Cities.findOne({city:"boston"  }); city.cityname = "Boston"; }
     if(r=="newyork"){ city  = Cities.findOne({city:"newyork" }); city.cityname = "New York City";}
@@ -24,13 +24,13 @@ Template.cityrowtop.helpers({
     var polu = Session.get("strength-p");
     var safe = Session.get("strength-s");
     var heal = Session.get("strength-h");
-    var c = 0;
+    var c  = 0;
     var rh = 0;
     var rs = 0;
     var rq = 0;
     var rp = 0;
     var rt = 0;
-    c = Cities.findOne({city:Session.get("rowtop")});
+    c = Cities.findOne({city:Session.get("rowbot")});
     if(c) {
       rh = ((c.h_m1 * heal) + c.h_m2)*100;
       rs = ((c.s_m1 * safe) + c.s_m2)*100;
@@ -67,49 +67,13 @@ Template.cityrowtop.helpers({
   }
 });
 
-Template.cityrowtop.events({
-  'click .cb-seattle'(event, instance) { Session.set("rowtop", "seattle"); },
-  'click .cb-boston' (event, instance) { Session.set("rowtop", "boston");  },
-  'click .cb-newyork'(event, instance) { Session.set("rowtop", "newyork"); },
-  'click .cb-houston'(event, instance) { Session.set("rowtop", "houston"); },
-  'click .cb-atlanta'(event, instance) { Session.set("rowtop", "atlanta"); }
+Template.cityrowbot.events({
+  'click .cb-seattle'(event, instance) { Session.set("rowbot", "seattle"); },
+  'click .cb-boston' (event, instance) { Session.set("rowbot", "boston");  },
+  'click .cb-newyork'(event, instance) { Session.set("rowbot", "newyork"); },
+  'click .cb-houston'(event, instance) { Session.set("rowbot", "houston"); },
+  'click .cb-atlanta'(event, instance) { Session.set("rowbot", "atlanta"); }
 });
 
 
-Template.cityrowtop.rendered = function () {
-  this.$("#health-slider").noUiSlider({
-    start: [80],
-    connect: 'lower',
-    range: { 'min': 0, 'max': 100 },
-    pips: { mode: 'steps', density: 2 }
-  }).on('slide', function (ev, val) {
-    Session.set("strength-h",val);
-  });
-
-  this.$("#safety-slider").noUiSlider({
-    start: [80],
-    connect: 'lower',
-    range: { 'min': 0, 'max': 100 },
-    pips: { mode: 'steps', density: 2 }
-  }).on('slide', function (ev, val) {
-    Session.set("strength-s",val);
-  });
-
-  this.$("#polution-slider").noUiSlider({
-    start: [80],
-    connect: 'lower',
-    range: { 'min': 0, 'max': 100 },
-    pips: { mode: 'steps', density: 2 }
-  }).on('slide', function (ev, val) {
-    Session.set("strength-p",val);
-  });
-
-  this.$("#traffic-slider").noUiSlider({
-    start: [80],
-    connect: 'lower',
-    range: { 'min': 0, 'max': 100 },
-    pips: { mode: 'steps', density: 2 }
-  }).on('slide', function (ev, val) {
-    Session.set("strength-t",val);
-  });
-};
+Template.cityrowbot.rendered = function () {};

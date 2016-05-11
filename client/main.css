@@ -176,3 +176,60 @@ h2 {
 .crh-safety   { visibility: hidden; }
 .crh-traffic  { visibility: hidden; }
 .crh-polution { visibility: hidden; }
+
+.crf-health   { visibility: hidden; border-left: 1px solid #ff6666; border-right: 1px solid #ff6666; border-bottom: 1px solid #ff6666; }
+.crf-safety   { visibility: hidden; border-left: 1px solid #fdd392; border-right: 1px solid #fdd392; border-bottom: 1px solid #fdd392; }
+.crf-lq { border-left: 1px solid #ececec; border-right: 1px solid #ececec; border-bottom: 1px solid #ececec; }
+.crf-traffic  { visibility: hidden; border-left: 1px solid #858585; border-right: 1px solid #858585; border-bottom: 1px solid #858585; }
+.crf-polution { visibility: hidden; border-left: 1px solid #96b6c5; border-right: 1px solid #96b6c5; border-bottom: 1px solid #96b6c5; }
+
+.cr-header {
+  width: 150px;
+  height: 25px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  color: #424242;
+  cursor: default;
+  font-size: 15px;
+  padding-top: 10px;
+}
+
+.cr-header span{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.cr-footer {
+  width: 150px;
+  height: 5px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  color: #424242;
+  cursor: default;
+  font-size: 15px;
+  padding-top: 10px;
+}
+
+.cityrow-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cityrow-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.caret {
+  margin-left: 8px;
+}

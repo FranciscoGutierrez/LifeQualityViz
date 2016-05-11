@@ -1,6 +1,6 @@
 .navfilter-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;;
   cursor: default;
   align-items: center;
   width: 100%;
@@ -39,11 +39,44 @@
 #slider {
   background: #B45C7E;
   width: 200px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 paper-checkbox {
   margin-right: 5px;
   margin-left:  5px;
 }
+
+.ui-slider {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.pips {
+  font-size: 9px;
+  display: flex;
+  width: 105%;
+  justify-content: space-between;
+  padding-top: 3px;
+  color: #A1A1A1;
+  margin-left: 9px;
+}
+
+.pips span {
+  font-size: 9px;
+  text-align: right;
+  display: flex;
+  color: #a1a1a1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pips span b {
+    font-weight: bold;
+    font-size: 3px;
+}
+
+.pips span:nth-child(even){color: #a5a5a5}
+.pips span:nth-child(odd) {color: #8b8b8b}

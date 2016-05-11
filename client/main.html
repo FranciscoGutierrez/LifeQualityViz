@@ -3,6 +3,7 @@
   <link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
   <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
   <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+  <link rel="import" href="bower_components/paper-progress/paper-progress.html">
   <title>Twitter</title>
   <style is="custom-style">
   paper-checkbox { color: #424242; }
@@ -14,15 +15,28 @@
     --paper-checkbox-unchecked-color: #525252;
     --paper-checkbox-checked-color:   #525252;
   }
-
   paper-checkbox.safety {
     --paper-checkbox-unchecked-color: #fcaa2d;
     --paper-checkbox-checked-color:   #fcaa2d;
   }
-
   paper-checkbox.health {
     --paper-checkbox-unchecked-color: #ff0000;
     --paper-checkbox-checked-color:   #ff0000;
+  }
+  paper-progress.polution {
+    --paper-progress-active-color: #96b6c5;
+  }
+  paper-progress.traffic {
+    --paper-progress-active-color: #525252;
+  }
+  paper-progress.safety {
+    --paper-progress-active-color: #fcaa2d;
+  }
+  paper-progress.health {
+    --paper-progress-active-color: #ff0000;
+  }
+  paper-progress.quality {
+    --paper-progress-active-color: #8e8e8e;
   }
   </style>
 </head>
@@ -37,14 +51,21 @@
   <div class="content-top">{{>navfilter}}</div>
   <div class="content-mid">
     <div class="cityrow-header">
-      <div class="cr-header crh-health"  ><span>Health</span></div>
-      <div class="cr-header crh-safety"  ><span>Safety</span></div>
-      <div class="cr-header crh-lq">Life Quality</div>
-      <div class="cr-header crh-traffic" ><span>Traffic Lightness</span></div>
+      <div class="cr-header crh-health"  ><span>Health Services</span></div>
+      <div class="cr-header crh-safety"  ><span>City Safety</span></div>
+      <div class="cr-header crh-lq">Est. Life Quality</div>
+      <div class="cr-header crh-traffic" ><span>City Traffic</span></div>
       <div class="cr-header crh-polution"><span>Air Quality</span></div>
     </div>
     {{>cityrowtop}}
-    {{>cityrowbottom}}
+    {{>cityrowbot}}
+    <!-- <div class="cityrow-footer">
+      <div class="cr-footer crf-health"  ></div>
+      <div class="cr-footer crf-safety"  ></div>
+      <div class="cr-footer crf-lq"></div>
+      <div class="cr-footer crf-traffic" ></div>
+      <div class="cr-footer crf-polution"></div>
+    </div> -->
   </div>
 </template>
 
@@ -97,9 +118,6 @@
         {{#with currentIndex}}
         <div class="qli-stats">
           <div class="qli-qindex"><span>{{quality_of_life_index}}</span>Quality of Life Index</div>
-          <!-- <div>Traffic Index: {{traffic_index}}</div>
-          <div>Pollution Index: {{pollution_index}}/100</div>
-          <div>Safety Index: {{safety_index}}</div> -->
         </div>
         {{/with}}
       </div>

@@ -5,6 +5,23 @@
   position: relative;
 }
 
+.cr-element2 span {
+  font-size: 12px;
+  text-align: right;
+  color: #757575;
+}
+
+.cr-element2 {
+  width: 150px;
+  height: 80px;
+  background: #FBFBFB;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .cityrow-container {
   display: flex;
   justify-content: space-around;
@@ -18,42 +35,14 @@
 }
 
 .cr-title {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 100;
   color: #424242;
   align-items: center;
   display: flex;
   justify-content: center;
-  margin:  0px;
-  padding: 0px;
-}
-
-.cr-header {
-  width: 150px;
-  height: 25px;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 300;
-  color: #424242;
-  cursor: default;
-  font-size: 15px;
-  padding-top: 10px;
-}
-
-.cr-header span{
-  width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.cityrow-header {
-  display: flex;
-  justify-content: space-around;
+  margin: 0px;
+  padding: 10px;
 }
 
 .crh-health {
@@ -92,4 +81,12 @@ img {
 
 svg {
   font-size: 9px;
+}
+
+paper-progress {
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
 }

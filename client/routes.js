@@ -17,8 +17,12 @@ Router.route('/', {
           });
           Blaze.render(Template.maincontent,$("body")[0]);
           Session.set("rowtop","newyork");
-          Session.set("rowbottom","boston");
+          Session.set("rowbot","boston");
           Session.set("strength",80);
+          Session.set("strength-t",80);
+          Session.set("strength-p",80);
+          Session.set("strength-s",80);
+          Session.set("strength-h",80);
       });
     });
   }
