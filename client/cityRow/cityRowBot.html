@@ -1,4 +1,4 @@
-<template name="cityrowtop">
+<template name="cityrowbot">
   <div class="cityrow-container">
     <div class="cr-title">
       {{#with city}}
@@ -18,6 +18,15 @@
       {{/with}}
     </div>
     <div class="cr-elements-container">
+      <div class="cr-element cityrow-lq grid-lq">
+        {{>svggrid}}
+        <svg  width="100%" height="100%" style="overflow: hidden; position: absolute; top:0px;">
+          <line class="uline" x1="0%"  x2="100%" y1="{{pred.rq}}%" y2="{{pred.rq}}%" stroke="#B45C7E" stroke-width="1"/>
+          <line class="sline" x1="{{strength.norm}}%" x2="{{strength.norm}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
+          <circle class="main-circle" cx="{{strength.norm}}%" cy="{{pred.rq}}%" r="3" fill="#8c3d5e"/>
+        </svg>
+        <img src="http://localhost:8080/figs/{{city.city}}_q.png" width="150px" height="150px"/>
+      </div>
       <div class="cr-element cityrow-health grid-health">
         {{>svggrid}}
         <svg  width="100%" height="100%" style="overflow: hidden; position: absolute; top:0px;">
@@ -35,15 +44,6 @@
           <circle class="main-circle" cx="{{strength.safe}}%" cy="{{pred.rs}}%" r="3" fill="#8c3d5e"/>
         </svg>
         <img src="http://localhost:8080/figs/{{city.city}}_h.png" width="150px" height="150px"/>
-      </div>
-      <div class="cr-element cityrow-lq grid-lq">
-        {{>svggrid}}
-        <svg  width="100%" height="100%" style="overflow: hidden; position: absolute; top:0px;">
-          <line class="uline" x1="0%"  x2="100%" y1="{{pred.rq}}%" y2="{{pred.rq}}%" stroke="#B45C7E" stroke-width="1"/>
-          <line class="sline" x1="{{strength.norm}}%" x2="{{strength.norm}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
-          <circle class="main-circle" cx="{{strength.norm}}%" cy="{{pred.rq}}%" r="3" fill="#8c3d5e"/>
-        </svg>
-        <img src="http://localhost:8080/figs/{{city.city}}_q.png" width="150px" height="150px"/>
       </div>
       <div class="cr-element cityrow-traffic grid-traffic">
         {{>svggrid}}
@@ -64,36 +64,5 @@
         <img src="http://localhost:8080/figs/{{city.city}}_h.png" width="150px" height="150px"/>
       </div>
     </div>
-    <div style="height: 20px;"></div>
-    <div class="cr-elements-container">
-      <div class="cr-element2 cityrow-health">
-        <div id="health-slider" class="slider" style="background: #ff6666;"></div>
-        {{>pips}}
-      </div>
-      <div class="cr-element2 cityrow-safety">
-        <div id="safety-slider" class="slider" style="background: #fdc574;"></div>
-        {{>pips}}
-      </div>
-      <div class="cr-element2 cityrow-lq"></div>
-      <div class="cr-element2 cityrow-traffic">
-        <div id="traffic-slider" class="slider" style="background: #747474;"></div>
-        {{>pips}}
-      </div>
-      <div class="cr-element2 cityrow-polution">
-        <div id="polution-slider" class="slider" style="background: #c5d6de;"></div>
-        {{>pips}}
-      </div>
-    </div>
-  </div>
-</template>
-
-<template name="pips">
-  <div class="pips">
-    <span><b>|</b>0</span><span><b>|</b>10</span>
-    <span><b>|</b>20</span><span><b>|</b>30</span>
-    <span><b>|</b>40</span><span><b>|</b>50</span>
-    <span><b>|</b>60</span><span><b>|</b>70</span>
-    <span><b>|</b>80</span><span><b>|</b>90</span>
-    <span><b>|</b>100</span>
   </div>
 </template>

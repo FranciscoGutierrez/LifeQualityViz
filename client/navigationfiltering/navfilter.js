@@ -15,46 +15,46 @@ Template.navfilter.helpers({
 Template.navfilter.events({
   'click .health'  (event, instance) {
     if ($('.health').prop('checked')) {
-      $(".cityrow-health").css("visibility","visible");
-      $(".crh-health").css("visibility","visible");
-      $(".crf-health").css("visibility","visible");
+      $(".cityrow-health").fadeIn();
+      $(".crh-health").fadeIn();
+      $(".crf-health").fadeIn();
     } else {
-      $(".cityrow-health").css("visibility","hidden");
-      $(".crh-health").css("visibility","hidden");
-      $(".crf-health").css("visibility","hidden");
+      $(".cityrow-health").fadeOut();
+      $(".crh-health").fadeOut();
+      $(".crf-health").fadeOut();
     }
   },
   'click .safety'  (event, instance) {
     if ($('.safety').prop('checked')) {
-      $(".cityrow-safety").css("visibility","visible");
-      $(".crh-safety").css("visibility","visible");
-      $(".crf-safety").css("visibility","visible");
+      $(".cityrow-safety").fadeIn();
+      $(".crh-safety").fadeIn();
+      $(".crf-safety").fadeIn();
     } else {
-      $(".cityrow-safety").css("visibility","hidden");
-      $(".crh-safety").css("visibility","hidden");
-      $(".crf-safety").css("visibility","hidden");
+      $(".cityrow-safety").fadeOut();
+      $(".crh-safety").fadeOut();
+      $(".crf-safety").fadeOut();
     }
   },
   'click .traffic' (event, instance) {
     if ($('.traffic').prop('checked')) {
-      $(".cityrow-traffic").css("visibility","visible");
-      $(".crh-traffic").css("visibility","visible");
-      $(".crf-traffic").css("visibility","visible");
+      $(".cityrow-traffic").fadeIn();
+      $(".crh-traffic").fadeIn();
+      $(".crf-traffic").fadeIn();
     } else {
-      $(".cityrow-traffic").css("visibility","hidden");
-      $(".crh-traffic").css("visibility","hidden");
-      $(".crf-traffic").css("visibility","hidden");
+      $(".cityrow-traffic").fadeOut();
+      $(".crh-traffic").fadeOut();
+      $(".crf-traffic").fadeOut();
     }
   },
   'click .polluted'(event, instance) {
     if ($('.polluted').prop('checked')) {
-      $(".cityrow-polution").css("visibility","visible");
-      $(".crh-polution").css("visibility","visible");
-      $(".crf-polution").css("visibility","visible");
+      $(".cityrow-polution").fadeIn();
+      $(".crh-polution").fadeIn();
+      $(".crf-polution").fadeIn();
     } else {
-      $(".cityrow-polution").css("visibility","hidden");
-      $(".crh-polution").css("visibility","hidden");
-      $(".crf-polution").css("visibility","hidden");
+      $(".cityrow-polution").fadeOut();
+      $(".crh-polution").fadeOut();
+      $(".crf-polution").fadeOut();
     }
   }
 });

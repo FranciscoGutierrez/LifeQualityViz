@@ -161,10 +161,10 @@ h2 {
   align-items: center;
 }
 
-.cityrow-health   { visibility: hidden; }
-.cityrow-safety   { visibility: hidden; }
-.cityrow-traffic  { visibility: hidden; }
-.cityrow-polution { visibility: hidden; }
+.cityrow-health   { display: none; }
+.cityrow-safety   { display: none; }
+.cityrow-traffic  { display: none; }
+.cityrow-polution { display: none; }
 
 .grid-health  { border-left: 1px solid #ff6666; border-bottom: 1px solid #ff6666; }
 .grid-safety  { border-left: 1px solid #fdd392; border-bottom: 1px solid #fdd392; }
@@ -172,22 +172,22 @@ h2 {
 .grid-polution{ border-left: 1px solid #96b6c5; border-bottom: 1px solid #96b6c5; }
 .grid-lq { border-left: 1px solid #d1d1d1; border-bottom: 1px solid #d1d1d1; }
 
-.crh-health   { visibility: hidden; }
-.crh-safety   { visibility: hidden; }
-.crh-traffic  { visibility: hidden; }
-.crh-polution { visibility: hidden; }
+.crh-health   { display: none; }
+.crh-safety   { display: none; }
+.crh-traffic  { display: none; }
+.crh-polution { display: none; }
 
-.crf-health   { visibility: hidden; border-left: 1px solid #ff6666; border-right: 1px solid #ff6666; border-bottom: 1px solid #ff6666; }
-.crf-safety   { visibility: hidden; border-left: 1px solid #fdd392; border-right: 1px solid #fdd392; border-bottom: 1px solid #fdd392; }
+.crf-health   { display: none; border-left: 1px solid #ff6666; border-right: 1px solid #ff6666; border-bottom: 1px solid #ff6666; }
+.crf-safety   { display: none; border-left: 1px solid #fdd392; border-right: 1px solid #fdd392; border-bottom: 1px solid #fdd392; }
 .crf-lq { border-left: 1px solid #ececec; border-right: 1px solid #ececec; border-bottom: 1px solid #ececec; }
-.crf-traffic  { visibility: hidden; border-left: 1px solid #858585; border-right: 1px solid #858585; border-bottom: 1px solid #858585; }
-.crf-polution { visibility: hidden; border-left: 1px solid #96b6c5; border-right: 1px solid #96b6c5; border-bottom: 1px solid #96b6c5; }
+.crf-traffic  { display: none; border-left: 1px solid #858585; border-right: 1px solid #858585; border-bottom: 1px solid #858585; }
+.crf-polution { display: none; border-left: 1px solid #96b6c5; border-right: 1px solid #96b6c5; border-bottom: 1px solid #96b6c5; }
 
 .cr-header {
   width: 150px;
   height: 25px;
   background: white;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   font-weight: 300;
@@ -222,6 +222,7 @@ h2 {
 
 .cityrow-header {
   display: flex;
+  width: 100%;
   justify-content: space-around;
 }
 
