@@ -6,6 +6,12 @@ Template.cityrowtop.onCreated(function() {
   this.traffi = new ReactiveVar();
 });
 
+Template.weather.helpers({   strength(){ return Session.get("strength-h"); }});
+Template.traffic.helpers({   strength(){ return Session.get("strength-t"); }});
+Template.safety.helpers({    strength(){ return Session.get("strength-s"); }});
+Template.pollution.helpers({ strength(){ return Session.get("strength-p"); }});
+
+
 Template.cityrowtop.helpers({
   city() {
     var r = Session.get("rowtop");
@@ -55,61 +61,5 @@ Template.cityrowtop.helpers({
       gp: rp.toFixed(2),
       gt: rt.toFixed(2),
     };
-  },
-  strength() {
-    return {
-      norm: Session.get("strength"),
-      traf: Session.get("strength-t"),
-      polu: Session.get("strength-p"),
-      safe: Session.get("strength-s"),
-      heal: Session.get("strength-h")
-    };
   }
 });
-
-Template.cityrowtop.events({
-  'click .cb-seattle'(event, instance) { Session.set("rowtop", "seattle"); },
-  'click .cb-boston' (event, instance) { Session.set("rowtop", "boston");  },
-  'click .cb-newyork'(event, instance) { Session.set("rowtop", "newyork"); },
-  'click .cb-houston'(event, instance) { Session.set("rowtop", "houston"); },
-  'click .cb-atlanta'(event, instance) { Session.set("rowtop", "atlanta"); }
-});
-
-
-Template.cityrowtop.rendered = function () {
-  this.$("#health-slider").noUiSlider({
-    start: [80],
-    connect: 'lower',
-    range: { 'min': 0, 'max': 100 },
-    pips: { mode: 'steps', density: 2 }
-  }).on('slide', function (ev, val) {
-    Session.set("strength-h",val);
-  });
-
-  this.$("#safety-slider").noUiSlider({
-    start: [80],
-    connect: 'lower',
-    range: { 'min': 0, 'max': 100 },
-    pips: { mode: 'steps', density: 2 }
-  }).on('slide', function (ev, val) {
-    Session.set("strength-s",val);
-  });
-
-  this.$("#polution-slider").noUiSlider({
-    start: [80],
-    connect: 'lower',
-    range: { 'min': 0, 'max': 100 },
-    pips: { mode: 'steps', density: 2 }
-  }).on('slide', function (ev, val) {
-    Session.set("strength-p",val);
-  });
-
-  this.$("#traffic-slider").noUiSlider({
-    start: [80],
-    connect: 'lower',
-    range: { 'min': 0, 'max': 100 },
-    pips: { mode: 'steps', density: 2 }
-  }).on('slide', function (ev, val) {
-    Session.set("strength-t",val);
-  });
-};

@@ -18,10 +18,12 @@ Template.navfilter.events({
       $(".cityrow-health").fadeIn();
       $(".crh-health").fadeIn();
       $(".crf-health").fadeIn();
+      $(".cr-name-h").fadeIn();
     } else {
       $(".cityrow-health").fadeOut();
       $(".crh-health").fadeOut();
       $(".crf-health").fadeOut();
+      $(".cr-name-h").fadeOut();
     }
   },
   'click .safety'  (event, instance) {
@@ -29,10 +31,12 @@ Template.navfilter.events({
       $(".cityrow-safety").fadeIn();
       $(".crh-safety").fadeIn();
       $(".crf-safety").fadeIn();
+      $(".cr-name-s").fadeIn();
     } else {
       $(".cityrow-safety").fadeOut();
       $(".crh-safety").fadeOut();
       $(".crf-safety").fadeOut();
+      $(".cr-name-s").fadeOut();
     }
   },
   'click .traffic' (event, instance) {
@@ -40,10 +44,12 @@ Template.navfilter.events({
       $(".cityrow-traffic").fadeIn();
       $(".crh-traffic").fadeIn();
       $(".crf-traffic").fadeIn();
+      $(".cr-name-t").fadeIn();
     } else {
       $(".cityrow-traffic").fadeOut();
       $(".crh-traffic").fadeOut();
       $(".crf-traffic").fadeOut();
+      $(".cr-name-t").fadeOut();
     }
   },
   'click .polluted'(event, instance) {
@@ -51,21 +57,50 @@ Template.navfilter.events({
       $(".cityrow-polution").fadeIn();
       $(".crh-polution").fadeIn();
       $(".crf-polution").fadeIn();
+      $(".cr-name-p").fadeIn();
     } else {
       $(".cityrow-polution").fadeOut();
       $(".crh-polution").fadeOut();
       $(".crf-polution").fadeOut();
+      $(".cr-name-p").fadeOut();
     }
   }
 });
 
 Template.navfilter.rendered = function () {
-  this.$("#slider").noUiSlider({
+  this.$("#health-slider").noUiSlider({
     start: [80],
     connect: 'lower',
     range: { 'min': 0, 'max': 100 },
     pips: { mode: 'steps', density: 2 }
   }).on('slide', function (ev, val) {
-    Session.set("strength",val);
+    Session.set("strength-h",val);
+  });
+
+  this.$("#safety-slider").noUiSlider({
+    start: [80],
+    connect: 'lower',
+    range: { 'min': 0, 'max': 100 },
+    pips: { mode: 'steps', density: 2 }
+  }).on('slide', function (ev, val) {
+    Session.set("strength-s",val);
+  });
+
+  this.$("#polution-slider").noUiSlider({
+    start: [80],
+    connect: 'lower',
+    range: { 'min': 0, 'max': 100 },
+    pips: { mode: 'steps', density: 2 }
+  }).on('slide', function (ev, val) {
+    Session.set("strength-p",val);
+  });
+
+  this.$("#traffic-slider").noUiSlider({
+    start: [80],
+    connect: 'lower',
+    range: { 'min': 0, 'max': 100 },
+    pips: { mode: 'steps', density: 2 }
+  }).on('slide', function (ev, val) {
+    Session.set("strength-t",val);
   });
 };

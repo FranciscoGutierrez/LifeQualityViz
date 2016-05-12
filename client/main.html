@@ -7,78 +7,28 @@
   <title>Quality of Life Index</title>
   <style is="custom-style">
   paper-checkbox { color: #424242; }
-  paper-checkbox.polluted {
-    --paper-checkbox-unchecked-color: #96b6c5;
-    --paper-checkbox-checked-color:   #96b6c5;
-  }
-  paper-checkbox.traffic {
-    --paper-checkbox-unchecked-color: #525252;
-    --paper-checkbox-checked-color:   #525252;
-  }
-  paper-checkbox.safety {
-    --paper-checkbox-unchecked-color: #fcaa2d;
-    --paper-checkbox-checked-color:   #fcaa2d;
-  }
-  paper-checkbox.health {
-    --paper-checkbox-unchecked-color: #ff0000;
-    --paper-checkbox-checked-color:   #ff0000;
-  }
-  paper-progress.polution {
-    --paper-progress-active-color: #96b6c5;
-  }
-  paper-progress.traffic {
-    --paper-progress-active-color: #525252;
-  }
-  paper-progress.safety {
-    --paper-progress-active-color: #fcaa2d;
-  }
-  paper-progress.health {
-    --paper-progress-active-color: #ff0000;
-  }
-  paper-progress.quality {
-    --paper-progress-active-color: #8e8e8e;
-  }
+  paper-checkbox.polluted{ --paper-checkbox-unchecked-color: #96b6c5; --paper-checkbox-checked-color:   #96b6c5; }
+  paper-checkbox.traffic { --paper-checkbox-unchecked-color: #525252; --paper-checkbox-checked-color:   #525252; }
+  paper-checkbox.safety  { --paper-checkbox-unchecked-color: #fcaa2d; --paper-checkbox-checked-color:   #fcaa2d; }
+  paper-checkbox.health  { --paper-checkbox-unchecked-color: #55bb93; --paper-checkbox-checked-color:   #55bb93; }
+  paper-progress.polution{ --paper-progress-active-color: #96b6c5; }
+  paper-progress.traffic { --paper-progress-active-color: #525252; }
+  paper-progress.safety  { --paper-progress-active-color: #fcaa2d; }
+  paper-progress.health  { --paper-progress-active-color: #ff0000; }
+  paper-progress.quality { --paper-progress-active-color: #8e8e8e; }
   </style>
 </head>
 
-<body style="display: flex; flex-direction: column;">
+<body>
   <div class="loading-screen">
     <paper-spinner alt="Loading WebApp..." active></paper-spinner>
   </div>
+  <div class="data-legend">*Based on <b>Twitter Data</b>, and <b>Open Data</b> from last 24 hours.</div>
 </body>
 
 <template name="maincontent">
-  <div class="content-top">{{>navfilter}}</div>
-  <div class="content-mid">
-    <div class="cityrow-header">
-      <div class="cr-header crh-lq" style="display: flex;">Est. Life Quality</div>
-      <div class="cr-header crh-health"  ><span>Health Services</span></div>
-      <div class="cr-header crh-safety"  ><span>City Safety</span></div>
-      <div class="cr-header crh-traffic" ><span>City Traffic</span></div>
-      <div class="cr-header crh-polution"><span>Air Pollution</span></div>
-    </div>
-    {{>cityrowtop}}
-    {{>cityrowbot}}
-    <div style="position: absolute; bottom: 5px; right: 5px; font-size: 12px; font-weight: 300; opacity: 0.6;">*Based on <b>Tweets</b>, and <b>Open Data</b> from last 24 hours.</div>
-    <!-- <div class="cityrow-footer">
-      <div class="cr-footer crf-health"  ></div>
-      <div class="cr-footer crf-safety"  ></div>
-      <div class="cr-footer crf-lq"></div>
-      <div class="cr-footer crf-traffic" ></div>
-      <div class="cr-footer crf-polution"></div>
-    </div> -->
-  </div>
-</template>
-
-<template name="citysentiment">
-  <div class="city-container">
-    <div class="city-title">New York City</div>
-    <div class="regression-container">
-      <div class="regression-safety"></div>
-      <div class="regression-health"></div>
-      <div class="regression-climate"></div>
-    </div>
-  </div>
+  <div class="content-left">{{>navfilter}}</div>
+  <div class="content-mid">{{>lifequality}}</div>
 </template>
 
 <template name="sentimentmap">

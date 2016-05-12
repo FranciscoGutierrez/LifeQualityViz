@@ -1,9 +1,10 @@
 .cr-element {
-  width:  150px;
-  height: 150px;
-  background: #FBFBFB;
+  width: 100px;
+  height: 100px;
   position: relative;
   transition: all 300ms ease-out;
+  margin-left: 20px;
+  border-left: 1px solid #757575;
 }
 
 .cr-element2 span {
@@ -15,12 +16,20 @@
 .cr-element2 {
   width: 150px;
   height: 40px;
-  background: #FBFBFB;
   position: relative;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
+  align-self: center;
+}
+
+.cr-lifequality {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  transition: all 300ms ease-out;
+  margin-left: 30px;
 }
 
 .cityrow-container {
@@ -38,54 +47,17 @@
 }
 
 .cr-title {
-  font-size: 24px;
+  font-size: 35px;
   font-weight: 100;
   color: #424242;
   align-items: center;
   display: flex;
-  /* justify-content: center; */
-  /* margin-bottom: 0px; */
-  padding: 7px;
   cursor: pointer;
-  margin-left: 30px;
-}
-
-.crh-health {
-  border-left:  1px solid #ff0000;
-  border-right: 1px solid #ff0000;
-  border-top:   1px solid #ff0000;
-}
-
-.crh-safety {
-  border-left:  1px solid #fcaa2d;
-  border-right: 1px solid #fcaa2d;
-  border-top:   1px solid #fcaa2d;
-}
-
-.crh-traffic {
-  border-left:  1px solid #525252;
-  border-right: 1px solid #525252;
-  border-top:   1px solid #525252;
-}
-
-.crh-polution {
-  border-left:  1px solid #96b6c5;
-  border-right: 1px solid #96b6c5;
-  border-top:   1px solid #96b6c5;
-}
-
-.crh-lq {
-  border-left:  1px solid #ececec;
-  border-right: 1px solid #ececec;
-  border-top:   1px solid #ececec;
+  padding: 2px 0px;
 }
 
 img {
   transition: all 300ms ease-out;
-}
-
-svg {
-  font-size: 9px;
 }
 
 paper-progress {
@@ -98,6 +70,7 @@ paper-progress {
 
 .dropdown {
   color: #757575;
+  border-radius: 5px;
 }
 
 .question-sldr {
@@ -105,4 +78,8 @@ paper-progress {
   font-size: 14px;
   color: #757575;
   padding-bottom: 5px;
+}
+
+.cr-name {
+  width: 150px;
 }
