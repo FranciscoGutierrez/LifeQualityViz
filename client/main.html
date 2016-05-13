@@ -4,18 +4,14 @@
   <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
   <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
   <link rel="import" href="bower_components/paper-progress/paper-progress.html">
+  <script src="https://use.fontawesome.com/177def29e7.js"></script>
   <title>Quality of Life Index</title>
   <style is="custom-style">
   paper-checkbox { color: #424242; }
-  paper-checkbox.polluted{ --paper-checkbox-unchecked-color: #96b6c5; --paper-checkbox-checked-color:   #96b6c5; }
-  paper-checkbox.traffic { --paper-checkbox-unchecked-color: #525252; --paper-checkbox-checked-color:   #525252; }
-  paper-checkbox.safety  { --paper-checkbox-unchecked-color: #fcaa2d; --paper-checkbox-checked-color:   #fcaa2d; }
-  paper-checkbox.health  { --paper-checkbox-unchecked-color: #55bb93; --paper-checkbox-checked-color:   #55bb93; }
-  paper-progress.polution{ --paper-progress-active-color: #96b6c5; }
-  paper-progress.traffic { --paper-progress-active-color: #525252; }
-  paper-progress.safety  { --paper-progress-active-color: #fcaa2d; }
-  paper-progress.health  { --paper-progress-active-color: #ff0000; }
-  paper-progress.quality { --paper-progress-active-color: #8e8e8e; }
+  paper-checkbox.polluted{ --paper-checkbox-unchecked-color: #15AFBD; --paper-checkbox-checked-color:   #15AFBD; }
+  paper-checkbox.traffic { --paper-checkbox-unchecked-color: #0F3445; --paper-checkbox-checked-color:   #0F3445; }
+  paper-checkbox.safety  { --paper-checkbox-unchecked-color: #FABE0F; --paper-checkbox-checked-color:   #FABE0F; }
+  paper-checkbox.health  { --paper-checkbox-unchecked-color: #b5e000; --paper-checkbox-checked-color:   #b5e000; }
   </style>
 </head>
 
@@ -23,12 +19,15 @@
   <div class="loading-screen">
     <paper-spinner alt="Loading WebApp..." active></paper-spinner>
   </div>
-  <div class="data-legend">*Based on <b>Twitter Data</b>, and <b>Open Data</b> from last 24 hours.</div>
+  <div class="data-legend">...with data from <b>Twitter Live Streams</b><div class="fa fa-twitter"></div></div>
 </body>
 
 <template name="maincontent">
   <div class="content-left">{{>navfilter}}</div>
-  <div class="content-mid">{{>lifequality}}</div>
+  <div class="content-mid">
+    <div style="font-size: 12px; font-weight: 300; color: #a1a1a1;"></div>
+    {{>lifequality}}
+  </div>
 </template>
 
 <template name="sentimentmap">

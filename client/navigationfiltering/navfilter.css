@@ -96,11 +96,28 @@ paper-checkbox {
   min-height: 45px;
   justify-content: space-around;
   transition: all 300ms ease-out;
+  width: 100%;
+  position: relative;
 }
 
 .quality-control {
   display: flex;
-  width: 280px;
+  width: 180px;
   justify-content: flex-start;
   margin-top: 10px;
+}
+
+.importance-value {
+  color: #757575;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  font-weight: 300;
+  font-size: 16px;
+  display: none;
+}
+
+.importance-value span {
+  font-size: 10px;
+  color: #a8a8a8;
 }

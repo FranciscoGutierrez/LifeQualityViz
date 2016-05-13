@@ -4,7 +4,7 @@
   position: relative;
   transition: all 300ms ease-out;
   margin-left: 20px;
-  border-left: 1px solid #757575;
+  border-left: 1px solid #a8a8a8;
 }
 
 .cr-element2 span {
@@ -14,7 +14,7 @@
 }
 
 .cr-element2 {
-  width: 150px;
+  width: 100%;
   height: 40px;
   position: relative;
   justify-content: center;
@@ -69,7 +69,7 @@ paper-progress {
 }
 
 .dropdown {
-  color: #757575;
+  color: #424242;
   border-radius: 5px;
 }
 
