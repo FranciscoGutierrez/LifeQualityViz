@@ -5,6 +5,7 @@
   <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
   <link rel="import" href="bower_components/paper-progress/paper-progress.html">
   <script src="https://use.fontawesome.com/177def29e7.js"></script>
+
   <title>Quality of Life Index</title>
   <style is="custom-style">
   paper-checkbox { color: #424242; }
@@ -16,26 +17,18 @@
 </head>
 
 <body>
-  <div class="loading-screen">
-    <paper-spinner alt="Loading WebApp..." active></paper-spinner>
-  </div>
+  <div class="loading-screen"><paper-spinner active></paper-spinner></div>
   <div class="data-legend">...with data from <b>Twitter Live Streams</b><div class="fa fa-twitter"></div></div>
 </body>
 
-<template name="maincontent">
+<template name="regression">
   <div class="content-left">{{>navfilter}}</div>
-  <div class="content-mid">
-    <div style="font-size: 12px; font-weight: 300; color: #a1a1a1;"></div>
-    {{>lifequality}}
-  </div>
+  <div class="content-mid">{{>lifequality}}</div>
 </template>
 
-<template name="sentimentmap">
-  <div class="sentimentmap-template">
-    <h2>Map of Tweets</h2>
-    <div id='map'></div>
-    <!-- <img src="http://maps.googleapis.com/maps/api/staticmap?center=New+York+,NY&zoom=12&format=png&sensor=false&size=640x480&maptype=roadmap&style=feature:road.highway|element:geometry|weight:0.1|visibility:off&style=element:labels.text|visibility:off&style=element:labels.icon|visibility:off&style=feature:water|lightness:100|visibility:on&style=feature:road|element:labels|visibility:off&style=feature:administrative|visibility:off&style=feature:landscape|saturation:-100|lightness:6&style=feature:poi|visibility:off&style=feature:transit|visibility:off&style=feature:road|lightness:100"/> -->
-  </div>
+<template name="map">
+  <div class="content-left">{{>navfilter}}</div>
+  <div class="content-mid">{{>sentimentmap}}</div>
 </template>
 
 <template name="tweets">
