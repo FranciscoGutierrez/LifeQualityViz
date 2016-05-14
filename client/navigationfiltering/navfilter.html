@@ -1,11 +1,13 @@
 <template name="navfilter">
   <div class="navfilter-container">
+
     {{>citypicker}}
     <div class="navfilter-title">Select your preferences:</div>
+
     <div class="quality-control">
       <div class="checkbox-container">
         <paper-checkbox class="health">Weather</paper-checkbox>
-        <div class="importance-value">{{importance.h}}<span>%</span></div>
+        <div class="importance-value im-h">{{importance.h}}<span>%</span></div>
         <div class="cr-element2 cityrow-health">
           <div id="health-slider" class="slider" style="background: #C1E009;"></div>
           {{>pips}}
@@ -17,7 +19,7 @@
     <div class="quality-control">
       <div class="checkbox-container">
         <paper-checkbox class="safety">Safety</paper-checkbox>
-        <div class="importance-value">{{importance.s}}<span>%</span></div>
+        <div class="importance-value im-s">{{importance.s}}<span>%</span></div>
         <div class="cr-element2 cityrow-safety">
           <div id="safety-slider" class="slider" style="background: #FABE0F;"></div>
           {{>pips}}
@@ -29,7 +31,7 @@
     <div class="quality-control">
       <div class="checkbox-container">
         <paper-checkbox class="traffic">Traffic</paper-checkbox>
-        <div class="importance-value">{{importance.t}}<span>%</span></div>
+        <div class="importance-value im-t">{{importance.t}}<span>%</span></div>
         <div class="cr-element2 cityrow-traffic">
           <div id="traffic-slider" class="slider" style="background: #0F3445;"></div>
           {{>pips}}
@@ -41,7 +43,7 @@
     <div class="quality-control">
       <div class="checkbox-container">
         <paper-checkbox class="polluted">Air Quality</paper-checkbox>
-        <div class="importance-value">{{importance.p}}<span>%</span></div>
+        <div class="importance-value im-p">{{importance.p}}<span>%</span></div>
         <div class="cr-element2 cityrow-polution">
           <div id="polution-slider" class="slider" style="background: #15AFBD;"></div>
           {{>pips}}

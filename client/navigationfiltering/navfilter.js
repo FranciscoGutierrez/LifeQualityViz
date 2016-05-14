@@ -23,69 +23,37 @@ Template.navfilter.helpers({
 Template.navfilter.events({
   'click .health'  (event, instance) {
     if ($('.health').prop('checked')) {
-      $(".cityrow-health").fadeIn();
-      $(".crh-health").fadeIn();
-      $(".crf-health").fadeIn();
-      $(".cr-name-h").fadeIn();
-      $(".weather-info").fadeIn();
+      $(".im-h, .weather-info, .cr-name-h, .cityrow-health, .crh-health, .crf-health").fadeIn();
       Session.set("strength-h",80);
     } else {
-      $(".cityrow-health").fadeOut();
-      $(".crh-health").fadeOut();
-      $(".crf-health").fadeOut();
-      $(".cr-name-h").fadeOut();
-      $(".weather-info").fadeOut();
+      $(".im-h, .weather-info, .cr-name-h, .crf-health, .crh-health, .cityrow-health").fadeOut();
       Session.set("strength-h",0)
     }
   },
   'click .safety'  (event, instance) {
     if ($('.safety').prop('checked')) {
-      $(".cityrow-safety").fadeIn();
-      $(".crh-safety").fadeIn();
-      $(".crf-safety").fadeIn();
-      $(".cr-name-s").fadeIn();
-      $(".safety-info").fadeIn();
+      $(".im-s, .safety-info, .cr-name-s, .crf-safety, .crh-safety, .cityrow-safety").fadeIn();
       Session.set("strength-s",80)
     } else {
-      $(".cityrow-safety").fadeOut();
-      $(".crh-safety").fadeOut();
-      $(".crf-safety").fadeOut();
-      $(".cr-name-s").fadeOut();
-      $(".safety-info").fadeOut();
+      $(".im-s, .safety-info, .cr-name-s, .crf-safety, .crh-safety, .cityrow-safety").fadeOut();
       Session.set("strength-s",0);
     }
   },
   'click .traffic' (event, instance) {
     if ($('.traffic').prop('checked')) {
-      $(".cityrow-traffic").fadeIn();
-      $(".crh-traffic").fadeIn();
-      $(".crf-traffic").fadeIn();
-      $(".cr-name-t").fadeIn();
-      $(".traffic-info").fadeIn();
+      $(".im-t, .traffic-info, .cr-name-t, .crf-traffic, .crh-traffic, .cityrow-traffic").fadeIn();
       Session.set("strength-t",80);
     } else {
-      $(".cityrow-traffic").fadeOut();
-      $(".crh-traffic").fadeOut();
-      $(".crf-traffic").fadeOut();
-      $(".cr-name-t").fadeOut();
-      $(".traffic-info").fadeOut();
+      $(".im-t, .traffic-info, .cr-name-t, .crf-traffic, .crh-traffic, .cityrow-traffic").fadeOut();
       Session.set("strength-t",0);
     }
   },
   'click .polluted'(event, instance) {
     if ($('.polluted').prop('checked')) {
-      $(".cityrow-polution").fadeIn();
-      $(".crh-polution").fadeIn();
-      $(".crf-polution").fadeIn();
-      $(".cr-name-p").fadeIn();
-      $(".airq-info").fadeIn();
+      $(".im-p, .airq-info, .cr-name-p, .crf-polution, .crh-polution, .cityrow-polution").fadeIn();
       Session.set("strength-p",80);
     } else {
-      $(".cityrow-polution").fadeOut();
-      $(".crh-polution").fadeOut();
-      $(".crf-polution").fadeOut();
-      $(".cr-name-p").fadeOut();
-      $(".airq-info").fadeOut();
+      $(".im-p, .airq-info, .cr-name-p, .crf-polution, .crh-polution, .cityrow-polution").fadeOut();
       Session.set("strength-p",0);
     }
   }
