@@ -3,3 +3,62 @@
   height: 400px;
   background: #a1a1a1;
 }
+
+.tweet-text { margin-right: 5px; color: #b2b2b2; }
+.tweet-date { margin-right: 5px; color: #b2b2b2; }
+.tweet-track { margin-right: 5px; color: #b2b2b2;}
+.tweet-coordinates { margin-right: 5px; color: #b2b2b2; }
+.tweet-sentiment {display: none;}
+
+.tweet-face {
+  background: #ffdc86;
+  border-radius: 50%;
+  border: 1px solid #ffbe20;
+  transition: all 300ms ease-out;
+}
+.sm-bot {
+  display: flex;
+}
+
+.sm-dimensions {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+}
+
+.sm-d {
+  height: 30px;
+  width:  30px;
+  border-radius: 50%;
+  background: #ffdc86;
+  border: 1px solid #ffbe20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px;
+}
+
+.sm-e {
+  height: 30px;
+  width:  30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px;
+}
+
+.sm-t {
+  transform: rotate(-45deg);
+  position: absolute;
+  top: -50px;
+  font-size: 11px;
+  font-weight: 300;
+  width: 100px;
+}
+
+.sentimentmap-legend {
+  position: absolute;
+  right: -110px;
+  bottom:  75px;
+  cursor: default;
+}
