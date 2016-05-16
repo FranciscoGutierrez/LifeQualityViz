@@ -6,7 +6,11 @@
       <line class="sline" x1="{{strength}}%" x2="{{strength}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
       <circle class="main-circle" cx="{{strength}}%" cy="{{pred.rq}}%" r="3" fill="#8c3d5e"/>
     </svg>
-    <img src="http://i.imgur.com/4p59K2U.png" width="400px" height="400px"/>
+    <!-- <img src="http://i.imgur.com/4p59K2U.png" width="400px" height="400px"/> -->
+    <img src="http://localhost:8080/figs/{{weather.name}}" style="opacity: {{weather.opacity}};"/>
+    <img src="http://localhost:8080/figs/{{safety.name}}"  style="opacity: {{safety.opacity}};" />
+    <img src="http://localhost:8080/figs/{{traffic.name}}" style="opacity: {{traffic.opacity}};"/>
+    <img src="http://localhost:8080/figs/{{airqual.name}}" style="opacity: {{airqual.opacity}};"/>
   </div>
   <br>
   <div class="legend-y"><span>Negative</span>Sentiment<span>Positive</span></div>

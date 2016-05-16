@@ -10,11 +10,13 @@
 }
 body {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
   padding:0;
   min-width: 900px;
+  margin-left: 5%;
+  margin-top: 1%;
 }
 .content-left {
   height: 550px;

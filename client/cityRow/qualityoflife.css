@@ -46,3 +46,9 @@
 .safety-info  { background: #FABE0F; display: none;}
 .traffic-info { background: #0F3445; display: none;}
 .airq-info    { background: #15AFBD; display: none;}
+
+.cr-lifequality img {
+  position: absolute;
+  width:  400px;
+  height: 400px;
+}
