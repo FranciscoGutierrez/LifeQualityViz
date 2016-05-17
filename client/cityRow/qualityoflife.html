@@ -2,9 +2,10 @@
   <div class="cr-lifequality cityrow-lifequality grid-lq">
     {{>svgbig}}
     <svg  width="100%" height="100%" style="overflow: hidden; position: absolute; top:0px;">
-      <line class="uline" x1="0%"  x2="100%" y1="{{pred.rq}}%" y2="{{pred.rq}}%" stroke="#B45C7E" stroke-width="1"/>
+      <circle class="main-circle" cx="{{strength}}%" cy="{{prediction.y}}%" r="3" fill="#8c3d5e"/>
+      <line class="uline" x1="0%"  x2="100%" y1="{{prediction.y}}%" y2="{{prediction.y}}%" stroke="#B45C7E" stroke-width="1"/>
       <line class="sline" x1="{{strength}}%" x2="{{strength}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
-      <circle class="main-circle" cx="{{strength}}%" cy="{{pred.rq}}%" r="3" fill="#8c3d5e"/>
+      <path class="uline animated fadeIn" d="M0 {{prediction.lwr}} L400 {{prediction.upr}}" stroke="#B45C7E" stroke-width="0.5%"/>
     </svg>
     <!-- <img src="http://i.imgur.com/4p59K2U.png" width="400px" height="400px"/> -->
     <img src="http://localhost:8080/figs/{{weather.name}}" style="opacity: {{weather.opacity}};"/>

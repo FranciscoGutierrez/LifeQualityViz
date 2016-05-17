@@ -35,7 +35,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3px;
+  margin:  3px;
+  padding: 3px;
+}
+
+.sm-d img {
+  width: 21px;
 }
 
 .sm-e {

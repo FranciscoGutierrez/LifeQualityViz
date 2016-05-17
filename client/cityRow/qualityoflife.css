@@ -52,3 +52,7 @@
   width:  400px;
   height: 400px;
 }
+
+line, path {
+  transition: all 300ms ease-out;
+}
