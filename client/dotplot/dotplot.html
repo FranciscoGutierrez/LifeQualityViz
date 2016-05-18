@@ -1,0 +1,87 @@
+<template name="dotplot">
+  <div class="dotplot-container">
+    <div class="ubar-main"></div>
+    <div class="umeter">
+      <div class="um m-2" style="color: #757575; justify-content: space-between;"><span style="color: #424242;">0</span> 10</div>
+      <div class="um m-4">20</div>
+      <div class="um m-6" style="color: #757575;">30</div>
+      <div class="um m-8">40</div>
+      <div class="um m-10" style="color: #757575;">50</div>
+      <div class="um m-12">60</div>
+      <div class="um m-14" style="color: #757575;">70</div>
+      <div class="um m-16">80</div>
+      <div class="um m-18" style="color: #757575;">90</div>
+      <div class="um m-20">100</div>
+      <div class="umeter-ticks">
+        <div class="utick" style="justify-content: space-between;"><span>.</span>.</div>
+        <div class="utick">.</div>
+        <div class="utick">.</div>
+        <div class="utick">.</div>
+        <div class="utick">.</div>
+        <div class="utick">.</div>
+        <div class="utick">.</div>
+        <div class="utick">.</div>
+        <div class="utick">.</div>
+        <div class="utick">.</div>
+      </div>
+      <div class="udots-container">
+        <div class="udots" style="left: 0px;">
+          <div class="ua1 udot fa fa-user" ></div>
+        </div>
+        <div class="udots" style="left: 10px;">
+          <div class="ua2 udot fa fa-user"></div>
+          <div class="ua2 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left: 20px;">
+          <div class="ua3 udot fa fa-user"></div>
+          <div class="ua3 udot fa fa-user"></div>
+          <div class="ua3 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left: 30px;">
+          <div class="ua4 udot fa fa-user"></div>
+          <div class="ua4 udot fa fa-user"></div>
+          <div class="ua4 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left:  40px;">
+          <div class="ua5 udot fa fa-user"></div>
+          <div class="ua5 udot fa fa-user"></div>
+          <div class="ua5 udot fa fa-user"></div>
+          <div class="ua5 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left: 50px;">
+          <div class="ua6 udot fa fa-user"></div>
+          <div class="ua6 udot fa fa-user"></div>
+          <div class="ua6 udot fa fa-user"></div>
+          <div class="ua6 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left: 60px;">
+          <div class="ua7 udot fa fa-user"></div>
+          <div class="ua7 udot fa fa-user"></div>
+          <div class="ua7 udot fa fa-user"></div>
+          <div class="ua7 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left: 70px;">
+          <div class="ua8 udot fa fa-user"></div>
+          <div class="ua8 udot fa fa-user"></div>
+          <div class="ua8 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left: 80px;">
+          <div class="ua9 udot fa fa-user"></div>
+          <div class="ua9 udot fa fa-user"></div>
+          <div class="ua9 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left: 90px;">
+          <div class="ua10 udot fa fa-user"></div>
+          <div class="ua10 udot fa fa-user"></div>
+        </div>
+        <div class="udots" style="left: 100px;">
+          <div class="ua11 udot fa fa-user"></div>
+        </div>
+      </div>
+    </div>
+    <div class="uncertainty-sentence">
+      <p><span>4</span> out of <span>30</span> people like you</p>
+      <p>are <span>65%</span> happy in <span>{{city.cityname}}</span>.</p>
+    </div>
+  </div>
+</template>

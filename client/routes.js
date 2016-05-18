@@ -23,9 +23,9 @@ Router.route('/:_id', {
           Session.set("strength-s",0);
           Session.set("strength-h",0);
 
-          if(option == "map")  Blaze.render(Template.map,$("body")[0]);
+          if(option == "map")   Blaze.render(Template.map,$("body")[0]);
           if(option == "chart") Blaze.render(Template.regression,$("body")[0]);
-          // if(option == "dot")  Blaze.render(Template.maincontent,$("body")[0]);
+          if(option == "dots")  Blaze.render(Template.dots,$("body")[0]);
       });
     });
   }

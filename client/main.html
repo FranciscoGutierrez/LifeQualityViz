@@ -31,6 +31,24 @@
   <div class="content-mid">{{>sentimentmap}}</div>
 </template>
 
+<template name="dots">
+  <div class="content-left">{{>navfilter}}</div>
+  <div class="content-mid">
+    <div class="content-mid-dotplot">
+      <div>
+        {{>dotplot cityname="boston"}}
+        {{>dotplot cityname="newyork"}}
+        {{>dotplot cityname="houston"}}
+      </div>
+      <div>
+        {{>dotplot cityname="seattle"}}
+        {{>dotplot cityname="atlanta"}}
+        {{>dotplot cityname="boston"}}
+      </div>
+    </div>
+  </div>
+</template>
+
 <template name="tweets">
   <div class="tweets-template">
     <h2>Twitter Live Sentiment Feed</h2>

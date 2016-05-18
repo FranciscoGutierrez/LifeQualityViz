@@ -67,22 +67,22 @@ paper-checkbox {
 }
 
 .pips span {
-  font-size: 9px;
+  font-size:   11px;
   text-align: right;
-  display: flex;
-  color: #a1a1a1;
-  flex-direction: column;
+  display:     flex;
+  color:    #a1a1a1;
+  flex-direction:  column;
   justify-content: center;
-  align-items: center;
+  align-items:     center;
 }
 
 .pips span b {
   font-weight: bold;
-  font-size: 3px;
+  font-size:    3px;
 }
 
-.pips span:nth-child(even){color: #a5a5a5}
-.pips span:nth-child(odd) {color: #8b8b8b}
+.pips span:nth-child(even){color: #a5a5a5;}
+.pips span:nth-child(odd) {color: #8b8b8b;}
 
 .cr-name-h {display: none;}
 .cr-name-s {display: none;}

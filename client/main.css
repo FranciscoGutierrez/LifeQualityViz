@@ -8,22 +8,30 @@
   -ms-user-select: none;
   user-select: none;
 }
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
 body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin: 0;
-  padding:0;
-  min-width: 900px;
-  margin-left: 5%;
-  margin-top: 1%;
+  padding: 0;
+  min-width: 800px;
+  margin-left: 20px;
+  margin-top:  10px;
 }
 .content-left {
   height: 550px;
-  width: 250px;
+  width: 210px;
 }
 .content-mid {
   height: 550px;
+  width: 550px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -240,4 +248,12 @@ h2 {
 .fa-twitter {
   color: #1da1f2;
   margin-left: 3px;
+}
+
+.content-mid-dotplot {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
 }

@@ -1,11 +1,18 @@
 Template.sentimentmap.onRendered(function() {
   $(document).ready(function() {
-    var mymap = L.map('map').setView([40.7128, -74.0059], 12);
+    var mymap = L.map('map',{zoomControl: false}).setView([42.7, -99.5], 4);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       maxZoom: 18,
       id: 'franciscoghz.026h6h3d',
       accessToken: 'pk.eyJ1IjoiZnJhbmNpc2NvZ2h6IiwiYSI6ImNpbnV1Z3J4eTAwb3R2c2tscXgwMWs2eHEifQ.OrlG9so4YihIM4ccw59cHw'
     }).addTo(mymap);
+
+    if (mymap.tap) mymap.tap.disable();
+    mymap.dragging.disable();
+    mymap.touchZoom.disable();
+    mymap.doubleClickZoom.disable();
+    mymap.scrollWheelZoom.disable();
+    mymap.keyboard.disable();
 
     var smiley = L.divIcon({
       className: 'tweet-face',
