@@ -1,38 +1,20 @@
 <template name="lifequality">
   <div class="lifequality-container">
+    <h1>{{city}}</h1>
     {{>svgbig}}
-    <img src="http://localhost:8080/figs/{{weather.name}}" style="opacity: {{weather.opacity}};"/>
-    <img src="http://localhost:8080/figs/{{safety.name}}"  style="opacity: {{safety.opacity}};" />
-    <img src="http://localhost:8080/figs/{{traffic.name}}" style="opacity: {{traffic.opacity}};"/>
-    <img src="http://localhost:8080/figs/{{airqual.name}}" style="opacity: {{airqual.opacity}};"/>
+    <img src="http://localhost:8080/figs/{{weather.name}}"/>
+    <img src="http://localhost:8080/figs/{{safety.name}}" />
+    <img src="http://localhost:8080/figs/{{traffic.name}}"/>
+    <img src="http://localhost:8080/figs/{{airqual.name}}"/>
     <svg style="overflow: hidden;">
-      <line class="uline" x1="0%" x2="100%"  y1="{{prediction.y}}%" y2="{{prediction.y}}%" stroke="#B45C7E" stroke-width="1"/>
-      <line class="sline" x1="{{strength}}%" x2="{{strength}}%"  y1="0%"  y2="100%" stroke="#B45C7E" stroke-width="1"/>
-      <path class="uline animated fadeIn" d="M0 {{prediction.lwr}} L400 {{prediction.upr}}" stroke="#B45C7E" stroke-width="0.5%"/>
-      <circle class="main-circle" cx="{{strength}}%" cy="{{prediction.y}}%" r="5" fill="#8c3d5e"/>
+      <line class="uline" x1="0%" x2="100%"  y1="{{prediction.y}}%" y2="{{prediction.y}}%"  stroke="#B45C7E"  stroke-width="1"/>
+      <line class="sline" x1="{{strength}}%" x2="{{strength}}%"     y1="0%"  y2="100%"      stroke="#B45C7E"  stroke-width="1"/>
+      <path class="uline animated fadeIn" d="M0 {{prediction.lwr}} L400 {{prediction.upr}}" stroke="#B45C7E"  stroke-width="2"/>
+      <circle class="main-circle" cx="{{strength}}%" cy="{{prediction.y}}%" r="3" fill="#8c3d5e"/>
     </svg>
     <div class="legend-y">Life Satisfaction (Opinion)</div>
     <div class="legend-x">Quality of Life</div>
   </div>
 </template>
-
 <template name="cityrowtop"></template>
-<template name="citypicker">
-  <div class="cr-title">Quality of Life
-    <!-- {{#with city}}
-    <div class="dropdown">
-      <div class="dropdown" data-toggle="dropdown">
-        {{city.cityname}}<span class="caret"></span>
-        <paper-ripple></paper-ripple>
-      </div>
-      <ul class="dropdown-menu">
-        <li><a class="cb-seattle" href="#">Seattle</a><paper-ripple></paper-ripple></li>
-        <li><a class="cb-boston"  href="#">Boston</a><paper-ripple></paper-ripple></li>
-        <li><a class="cb-newyork" href="#">New York City</a><paper-ripple></paper-ripple></li>
-        <li><a class="cb-houston" href="#">Houston</a><paper-ripple></paper-ripple></li>
-        <li><a class="cb-atlanta" href="#">Atlanta</a><paper-ripple></paper-ripple></li>
-      </ul>
-    </div>
-    {{/with}} -->
-  </div>
-</template>
+<template name="citypicker"><div class="cr-title">Quality of Life</div></template>

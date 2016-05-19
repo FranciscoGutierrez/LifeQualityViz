@@ -1,9 +1,9 @@
 .legend-y {
   position: absolute;
   transform: rotate(-90deg);
-  left: -87px;
-  top: 85px;
-  font-size: 11px;
+  left: -71px;
+  top: 75px;
+  font-size: 10px;
   font-weight: 300;
   color: #a1a1a1;
   cursor: default;
@@ -13,13 +13,14 @@
 }
 
 .legend-x {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 300;
   color: #a1a1a1;
   cursor: default;
   position: absolute;
-  bottom: -36px;
-  left: 33%;
+  bottom: -23px;
+  width: 100%;
+  text-align: center;
 }
 
 .selected-info{
@@ -50,9 +51,25 @@ line, path {
 }
 
 .lifequality-container {
-  width:  200px;
-  height: 200px;
+  width:  150px;
+  height: 150px;
   position: relative;
+  margin-top: 50px;
+  cursor: default;
+}
+
+.lifequality-container h1 {
+  font-weight: 100;
+  padding-left: 3%;
+  margin:  0;
+  padding: 0;
+  position: absolute;
+  top: -20px;
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  color: #616161;
 }
 
 .lifequality-container svg {
@@ -66,6 +83,6 @@ line, path {
 
 .lifequality-container img {
   position: absolute;
-  width:  200px;
-  height: 200px;
+  width:  150px;
+  height: 150px;
 }

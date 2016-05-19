@@ -18,12 +18,25 @@
 
 <body>
   <div class="loading-screen"><paper-spinner active></paper-spinner></div>
-  <div class="data-legend">...with data from <b>Twitter Live Streams</b><div class="fa fa-twitter"></div></div>
+  <!-- <div class="data-legend">...with data from <b>Twitter Live Streams</b><div class="fa fa-twitter"></div></div> -->
 </body>
 
 <template name="regression">
   <div class="content-left">{{>navfilter}}</div>
-  <div class="content-mid">{{>lifequality}}</div>
+  <div class="content-mid">
+    <div class="content-mid-dotplot">
+      <div>
+        {{>lifequality cityname="boston"}}
+        {{>lifequality cityname="newyork"}}
+        {{>lifequality cityname="houston"}}
+      </div>
+      <div>
+        {{>lifequality cityname="seattle"}}
+        {{>lifequality cityname="atlanta"}}
+        {{>lifequality cityname="boston"}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="map">
