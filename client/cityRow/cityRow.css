@@ -52,7 +52,7 @@
   color: #424242;
   align-items: center;
   display: flex;
-  cursor: pointer;
+  cursor: default;
   padding: 2px 0px;
 }
 

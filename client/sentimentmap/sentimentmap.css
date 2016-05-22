@@ -1,6 +1,6 @@
 #map {
   width: 100%;
-  height:500px;
+  height:100%;
   background: #a1a1a1;
 }
 
@@ -20,6 +20,18 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.atlanta_css {
+  background: #ffdc86;
+  border-radius: 50%;
+  border: 1px solid #ffbe20;
+  transition: all 300ms ease-out;
+  background-image: url("/faces/mouth3.png");
+  background-size:80%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .sm-bot {
   display: flex;
   flex-direction: column;
