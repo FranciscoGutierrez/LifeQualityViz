@@ -4,6 +4,7 @@
   <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
   <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
   <link rel="import" href="bower_components/paper-progress/paper-progress.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
   <script src="https://use.fontawesome.com/177def29e7.js"></script>
 
   <title>Quality of Life Index</title>
@@ -17,8 +18,12 @@
 </head>
 
 <body>
-  <div class="loading-screen"><paper-spinner active></paper-spinner></div>
-  <!-- <div class="data-legend">...with data from <b>Twitter Live Streams</b><div class="fa fa-twitter"></div></div> -->
+  <div class="welcome-screen">
+    {{>welcome}}
+    <div class="loading-screen">
+      <paper-spinner active></paper-spinner>
+    </div>
+  </div>
 </body>
 
 <template name="regression">
@@ -26,14 +31,14 @@
   <div class="content-mid">
     <div class="content-mid-dotplot">
       <div>
-        {{>lifequality cityname="boston"}}
+        {{>lifequality cityname="angeles"}}
         {{>lifequality cityname="newyork"}}
         {{>lifequality cityname="houston"}}
       </div>
       <div>
         {{>lifequality cityname="seattle"}}
         {{>lifequality cityname="atlanta"}}
-        {{>lifequality cityname="boston"}}
+        {{>lifequality cityname="denver"}}
       </div>
     </div>
   </div>
@@ -49,14 +54,14 @@
   <div class="content-mid">
     <div class="content-mid-dotplot">
       <div>
-        {{>dotplot cityname="boston"}}
+        {{>dotplot cityname="denver"}}
         {{>dotplot cityname="newyork"}}
         {{>dotplot cityname="houston"}}
       </div>
       <div>
         {{>dotplot cityname="seattle"}}
         {{>dotplot cityname="atlanta"}}
-        {{>dotplot cityname="boston"}}
+        {{>dotplot cityname="angeles"}}
       </div>
     </div>
   </div>

@@ -42,9 +42,32 @@
   width: 200px;
 }
 
+.slider {
+  height: 10px;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 20px;
+  height: 20px;
+  top: -6px;
+}
+
+.noUi-handle {
+  border: 1px solid #D9D9D9;
+  border-radius: 50%;
+  background: #FFF;
+  cursor: default;
+  box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
+}
+
+.noUi-handle:before, .noUi-handle:after {
+    display: none;
+}
+
+
 paper-checkbox {
   font-weight: 100;
-  font-size: 22px;
+  font-size: 18px;
   margin: 12px 0px;
   align-self: flex-start;
 }
@@ -67,7 +90,7 @@ paper-checkbox {
 }
 
 .pips span {
-  font-size:   11px;
+  font-size:   10px;
   text-align: right;
   display:     flex;
   color:    #a1a1a1;

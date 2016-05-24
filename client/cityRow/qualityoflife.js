@@ -7,11 +7,12 @@ Template.lifequality.helpers({
   city() {
     var city = Template.instance().my_city.get();
     var name = this.cityname;
-    if(name == "boston" ) name = "Boston";
-    if(name == "newyork") name = "New York City";
-    if(name == "houston") name = "Houston";
-    if(name == "seattle") name = "Seattle";
-    if(name == "atlanta") name = "Atlanta";
+    if(name == "denver" )  name = "Denver";
+    if(name == "angeles" ) name = "Los Angeles";
+    if(name == "newyork")  name = "New York";
+    if(name == "houston")  name = "Houston";
+    if(name == "seattle")  name = "Seattle";
+    if(name == "atlanta")  name = "Atlanta";
     return name;
   },
   strength() {
@@ -90,56 +91,46 @@ Template.lifequality.helpers({
       dd1: (150-((x*150)/10)) - 20,  dd2: (150-(((y*100)+x)*150)/10) - 20,
      ree1: (150-((x*150)/10)) - 20, ree2: (150-(((y*100)+x)*150)/10) - 20,
       ee1: (150-((x*150)/10)) - 25,  ee2: (150-(((y*100)+x)*150)/10) - 25
-    // aa1:,  aa2:,
-    // raa1:, raa2:,
-    // bb1:,  bb2:,
-    // rbb1:, rbb2:,
-    // cc1:,  cc2:,
-    // rcc1:, rcc2:,
-    // dd1:,  dd2:,
-    // rdd1:, rdd2:,
-    // ee1:,  ee2:,
-    // ree1:, ree2:
     };
   },
   weather() {
     var h = parseInt(Session.get("strength-h"));
     var current = this.cityname;
-    var title = "";
+    var title = "dummy.png";
     $('paper-checkbox[checked]').each(function() {
       var name = $(this).attr('class').split(' ')[0];
       if(name=="health") title = current+"_w.png";
     });
-    return {name: title, random:new Date().getMilliseconds()};
+    return {name: title};
   },
   safety() {
     var s = parseInt(Session.get("strength-s"));
     var current = this.cityname;
-    var title = "";
+    var title = "dummy.png";
     $('paper-checkbox[checked]').each(function() {
       var name = $(this).attr('class').split(' ')[0];
       if(name=="safety") title = current+"_s.png";
     });
-    return {name: title, random:new Date().getMilliseconds()};
+    return {name: title};
   },
   traffic() {
     var t = parseInt(Session.get("strength-t"));
     var current = this.cityname;
-    var title = "";
+    var title = "dummy.png";
     $('paper-checkbox[checked]').each(function() {
       var name = $(this).attr('class').split(' ')[0];
       if(name=="traffic") title = current+"_t.png";
     });
-    return {name: title, random:new Date().getMilliseconds()};
+    return {name: title};
   },
   airqual() {
     var p = parseInt(Session.get("strength-p"));
     var current = this.cityname;
-    var title = "";
+    var title = "dummy.png";
     $('paper-checkbox[checked]').each(function() {
       var name = $(this).attr('class').split(' ')[0];
       if(name=="polluted") title = current+"_a.png";
     });
-    return {name: title, random:new Date().getMilliseconds()};
+    return {name: title};
   }
 });

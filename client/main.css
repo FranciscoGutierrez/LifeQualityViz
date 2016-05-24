@@ -25,6 +25,16 @@ body {
   margin-left: 20px;
   margin-top:  10px;
 }
+.welcome-screen {
+  position: absolute;
+  top:  0;
+  left: 0;
+  background: white;
+  display: flex;
+  width:  100%;
+  height: 100%;
+  z-index:   1;
+}
 .content-left {
   height: 550px;
   width: 210px;
