@@ -4,9 +4,14 @@ paper-button {
 }
 
 .welcome-description {
+  display: none;
   font-size: 15px;
 }
 
 .welcome-content {
   width: 600px;
+}
+
+.welcome-content img {
+  margin-left: 90px;
 }
