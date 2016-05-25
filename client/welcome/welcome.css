@@ -6,3 +6,7 @@ paper-button {
 .welcome-description {
   font-size: 15px;
 }
+
+.welcome-content {
+  width: 600px;
+}

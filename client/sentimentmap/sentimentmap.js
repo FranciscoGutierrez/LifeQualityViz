@@ -1,12 +1,14 @@
 Template.sentimentmap.onRendered(function() {
   $(document).ready(function() {
     var mymap = L.map('map',{zoomControl: false}).setView([42.7, -99.5], 3);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-      maxZoom: 18,
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/franciscoghz/ciomqnsgf000wasm4xcshhfdp/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      minZoom: 3,
+      maxZoom: 4,
       id: 'franciscoghz.026h6h3d',
       accessToken: 'pk.eyJ1IjoiZnJhbmNpc2NvZ2h6IiwiYSI6ImNpbnV1Z3J4eTAwb3R2c2tscXgwMWs2eHEifQ.OrlG9so4YihIM4ccw59cHw'
     }).addTo(mymap);
-    // 
+    //
     // if (mymap.tap) mymap.tap.disable();
     // mymap.dragging.disable();
     // mymap.touchZoom.disable();
@@ -34,6 +36,13 @@ Template.sentimentmap.onRendered(function() {
     angeles.addTo(mymap);
     seattle.addTo(mymap);
     newyork.addTo(mymap);
+
+    $(".atlanta_css").append("<p>Atlanta</p>");
+    $(".denver_css").append("<p>Denver</p>");
+    $(".houston_css").append("<p>Houston</p>");
+    $(".angeles_css").append("<p>Los Ángeles</p>");
+    $(".seattle_css").append("<p>Seattle</p>");
+    $(".newyork_css").append("<p>New York</p>");
   });
 });
 

@@ -98,8 +98,11 @@
   display: flex;
   font-size: 10px;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
+  max-height: 30px;
+  margin-top: 3px;
 }
 
 .sm-d {
@@ -115,12 +118,31 @@
   padding: 3px;
 }
 
+.sm-d-container {
+  min-width:  30px;
+  min-height: 30px;
+  max-width:  30px;
+  max-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.leaflet-marker-icon p {
+  margin: 0 0 10px;
+  position: absolute;
+  bottom: -27px;
+  right: -12px;
+  width: 68px;
+  text-align: center;
+  font-size: 11px;
+}
+
 .sm-d img {
   width: 21px;
 }
 
 .sm-e {
-  height: 30px;
   width:  30px;
   display: flex;
   justify-content: center;
@@ -131,9 +153,17 @@
 .sm-t {
   font-weight: 300;
   text-align: right;
+  min-height: 30px;
+  max-height: 30px;
+  width: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 13px;
 }
 
 .sentimentmap-legend {
   cursor: default;
   display: flex;
+  align-items: flex-end;
 }

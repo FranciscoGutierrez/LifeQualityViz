@@ -56,6 +56,12 @@ Template.navfilter.events({
       $(".im-p, .airq-info, .cr-name-p, .crf-polution, .crh-polution, .cityrow-polution").fadeOut();
       Session.set("strength-p",0);
     }
+  },
+  'click paper-checkbox'(event, instance) {
+    var count = 0;
+    $('paper-checkbox[checked]').each(function() { count = count + 1; });
+    if(count < 1) $(".content-mid").css("display", "none");
+    if(count > 0) $(".content-mid").css("display", "flex");
   }
 });
 

@@ -61,7 +61,7 @@
 }
 
 .noUi-handle:before, .noUi-handle:after {
-    display: none;
+  display: none;
 }
 
 
@@ -143,4 +143,30 @@ paper-checkbox {
 .importance-value span {
   font-size: 10px;
   color: #a8a8a8;
+}
+
+.uncertainty-legend {
+  width: 100px;
+}
+
+.uncertainty-legend-text {
+  font-size: 10px;
+  color: #A1A1A1;
+  margin: 5px 0px;
+}
+
+.uncerainty-legend-title {
+  font-weight: 300;
+  margin: 5px 0px;
+  color: #424242;
+}
+
+.ldot {
+  min-width: 8px;
+  max-width: 8px;
+  min-height: 8px;
+  max-height: 8px;
+  opacity: 1;
+  text-align: center;
+  margin: 1px;
 }
