@@ -1,6 +1,6 @@
 Template.sentimentmap.onRendered(function() {
   $(document).ready(function() {
-    var mymap = L.map('map',{zoomControl: false}).setView([42.7, -99.5], 3);
+    var mymap = L.map('map',{zoomControl: false}).setView([42.7, -99.5], 4);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/franciscoghz/ciomqnsgf000wasm4xcshhfdp/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       minZoom: 3,
@@ -15,6 +15,11 @@ Template.sentimentmap.onRendered(function() {
     // mymap.doubleClickZoom.disable();
     // mymap.scrollWheelZoom.disable();
     // mymap.keyboard.disable();
+
+    mymap.on('zoomend',function (e) {
+      if(mymap.getZoom() == 3) $(".vp-vertical-container").fadeOut();
+      if(mymap.getZoom() == 4) $(".vp-vertical-container").fadeIn();
+    });
 
     var atlanta_css = L.divIcon({className: 'atlanta_css',iconSize: [50, 50],popupAnchor: [0, -51]});
     var denver_css  = L.divIcon({className: 'denver_css',iconSize: [50, 50],popupAnchor: [0, -51]});
@@ -43,6 +48,61 @@ Template.sentimentmap.onRendered(function() {
     $(".angeles_css").append("<p>Los Ángeles</p>");
     $(".seattle_css").append("<p>Seattle</p>");
     $(".newyork_css").append("<p>New York</p>");
+
+    $(".atlanta_css").append(""+
+    "<div class='vp-vertical-container'>" +
+    "<span>Happiness</span>" +
+    "<div class='vp-vertical'>"+
+    "<div class='vp-upr'>65</div>"+
+    "<div class='vp-mdl'>52<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>43</div></div>"+
+    "</div>");
+
+    $(".denver_css").append(""+
+    "<div class='vp-vertical-container'>" +
+    "<span>Happiness</span>" +
+    "<div class='vp-vertical'>"+
+    "<div class='vp-upr'>65</div>"+
+    "<div class='vp-mdl'>32<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>13</div></div>"+
+    "</div>");
+
+    $(".houston_css").append(""+
+    "<div class='vp-vertical-container'>" +
+    "<span>Happiness</span>" +
+    "<div class='vp-vertical'>"+
+    "<div class='vp-upr'>55</div>"+
+    "<div class='vp-mdl'>41<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>23</div></div>"+
+    "</div>");
+
+    $(".angeles_css").append(""+
+    "<div class='vp-vertical-container'>" +
+    "<span>Happiness</span>" +
+    "<div class='vp-vertical'>"+
+    "<div class='vp-upr'>85</div>"+
+    "<div class='vp-mdl'>72<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>63</div></div>"+
+    "</div>");
+
+    $(".seattle_css").append(""+
+    "<div class='vp-vertical-container'>" +
+    "<span>Happiness</span>" +
+    "<div class='vp-vertical'>"+
+    "<div class='vp-upr'>95</div>"+
+    "<div class='vp-mdl'>78<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>73</div></div>"+
+    "</div>");
+
+    $(".newyork_css").append(""+
+    "<div class='vp-vertical-container'>" +
+    "<span>Happiness</span>" +
+    "<div class='vp-vertical'>"+
+    "<div class='vp-upr'>86</div>"+
+    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>35</div></div>"+
+    "</div>");
+
   });
 });
 
