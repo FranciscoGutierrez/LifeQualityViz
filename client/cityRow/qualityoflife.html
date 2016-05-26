@@ -19,13 +19,13 @@
       <image class="animated fadeIn" xlink:href="http://localhost:8080/figs/{{traffic.name}}" style="opacity: {{traffic.opacity}};" x="0" y="0" height="150px" width="150px" />
       <image class="animated fadeIn" xlink:href="http://localhost:8080/figs/{{airqual.name}}" style="opacity: {{airqual.opacity}};" x="0" y="0" height="150px" width="150px" />
 
-      <line class="uline" x1="0%" x2="100%"  y1="{{prediction.y}}%" y2="{{prediction.y}}%"  stroke="#B45C7E"  stroke-width="1"/>
-      <line class="sline" x1="{{strength}}%" x2="{{strength}}%"     y1="0%"  y2="100%"      stroke="#B45C7E"  stroke-width="1"/>
-      <path class="uline animated fadeIn" d="M0 {{prediction.lwr}} L150 {{prediction.upr}}" stroke="#B45C7E"  stroke-width="2"/>
-      <circle class="main-circle" cx="{{strength}}%" cy="{{prediction.y}}%" r="4" fill="#8c3d5e"/>
+      <line class="uline" x1="0%" x2="100%"  y1="{{prediction.y}}%" y2="{{prediction.y}}%"  stroke="#6e6e6e"  stroke-width="1"/>
+      <line class="sline" x1="{{strength}}%" x2="{{strength}}%"     y1="0%"  y2="100%"      stroke="#6e6e6e"  stroke-width="1"/>
+      <path class="uline animated fadeIn" d="M0 {{prediction.lwr}} L150 {{prediction.upr}}" stroke="#6e6e6e"  stroke-width="2"/>
+      <circle class="main-circle" cx="{{strength}}%" cy="{{prediction.y}}%" r="3" fill="#6e6e6e"/>
     </svg>
     {{>svgbig}}
-    <div class="legend-y">Life Satisfaction (Happiness)</div>
+    <div class="legend-y">Happiness</div>
     <div class="legend-x">Quality of Life</div>
   </div>
 </template>

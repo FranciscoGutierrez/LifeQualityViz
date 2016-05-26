@@ -38,7 +38,6 @@
 }
 
 #slider {
-  background: #B45C7E;
   width: 200px;
 }
 
@@ -146,7 +145,7 @@ paper-checkbox {
 }
 
 .uncertainty-legend {
-  width: 100px;
+  width: 120px;
 }
 
 .uncertainty-legend-text {

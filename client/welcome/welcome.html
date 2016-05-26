@@ -1,24 +1,38 @@
 <template name="welcome">
   <div class="welcome-content">
     <h1>Welcome to this evaluation!</h1>
-    <p class="welcome-description" style="display: block; margin: 30px;">
-      In this evaluation you will be asked to answer <b>some questions</b>
-      about the <b>Happiness</b> and <b>Quality of Life</b> in some cities across the U.S.
-    </p>
-    <p class="welcome-description wd-0" style="display: block;">
-      <ul>
-        <li>To answer the questions, you have to <b>adjust the sliders</b>.</li>
-        <img src="/tutorial/sliders.gif">
-      </ul>
-    </p>
-    <p class="welcome-description wd-1">
-      <li>Play with the sliders and the visualization and give <b>your best guess</b>.</li>
-    </p>
-    <paper-button class="wb-ok">Next</paper-button>
-  </div>
-</template>
 
-<!-- <li>When finished, click the submit answer button to proceed to the next question.</li>
-<li>After answering <b>3 questions</b> you will be asked to answer a <b>Google Form questionnaire.</b></li>
-<li>At the end of the <b>Google Form</b> you will recieve your <b>Amazon Turk Code</b>.</li>
-<li>Have fun!</li> -->
+    <div class="welcome-description wd-0" style="margin: 30px;">
+      <p>In this evaluation you will be asked to answer <b>some questions</b>
+        about the <b>Happiness</b> and <b>Quality of Life</b> in some cities across the U.S.</p>
+        <p>Use the sliders to adjust the <b>Quality of Life preferences</b>.</p>
+        <img src="/tutorial/sliders.gif"/>
+        <paper-button class="wb-next-0">Next</paper-button>
+      </div>
+
+      <div class="welcome-description wd-1" style="display: none;">
+        <p>Then, given the <b>Quality of Life Preferences</b> look for the <b>Happinnes</b> prediction in the visualization.</p>
+        <img src="/tutorial/sliders.gif"/>
+        <paper-button class="wb-next-1">Next</paper-button>
+      </div>
+
+      <div class="welcome-description wd-2" style="display: none;">
+        <p>Pay attention to the <b>accuracy area</b> in the visualization.</p>
+        <img src="/tutorial/sliders.gif"/>
+        <paper-button class="wb-next-2">Next</paper-button>
+      </div>
+
+      <div class="welcome-description wd-3" style="display: none;">
+        <p>
+          Give your best guess to answer the questions,
+          at the end you will be asked to fill a <b>Google Form</b>.
+          </p>
+          <p>
+            <b>Only then</b> you will recieve your <b>Amazon mTurk Code</b>.
+          </p>
+          <img src="/tutorial/sliders.gif"/>
+          <paper-button class="wb-next-3">Begin</paper-button>
+        </div>
+
+      </div>
+    </template>

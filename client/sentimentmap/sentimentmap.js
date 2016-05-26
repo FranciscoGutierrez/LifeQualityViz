@@ -1,6 +1,14 @@
 Template.sentimentmap.onRendered(function() {
   $(document).ready(function() {
-    var mymap = L.map('map',{zoomControl: false}).setView([42.7, -99.5], 4);
+    var bounds = L.latLngBounds(
+      L.latLng(25.499550, -127.276413), //Southwest
+      L.latLng(53.162102, -62.233040)  //Northeast
+    );
+
+    var mymap = L.map('map',{
+      maxBounds: bounds,
+      zoomControl: false
+    }).setView([32.8, -96.5], 4);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/franciscoghz/ciomqnsgf000wasm4xcshhfdp/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       minZoom: 3,
@@ -8,13 +16,14 @@ Template.sentimentmap.onRendered(function() {
       id: 'franciscoghz.026h6h3d',
       accessToken: 'pk.eyJ1IjoiZnJhbmNpc2NvZ2h6IiwiYSI6ImNpbnV1Z3J4eTAwb3R2c2tscXgwMWs2eHEifQ.OrlG9so4YihIM4ccw59cHw'
     }).addTo(mymap);
-    //
-    // if (mymap.tap) mymap.tap.disable();
-    // mymap.dragging.disable();
-    // mymap.touchZoom.disable();
-    // mymap.doubleClickZoom.disable();
-    // mymap.scrollWheelZoom.disable();
-    // mymap.keyboard.disable();
+
+
+    if (mymap.tap) mymap.tap.disable();
+    mymap.dragging.disable();
+    mymap.touchZoom.disable();
+    mymap.doubleClickZoom.disable();
+    mymap.scrollWheelZoom.disable();
+    mymap.keyboard.disable();
 
     mymap.on('zoomend',function (e) {
       if(mymap.getZoom() == 3) $(".vp-vertical-container").fadeOut();
