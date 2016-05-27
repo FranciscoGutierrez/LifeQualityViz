@@ -65,6 +65,7 @@ Template.lifequality.helpers({
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
     return {
+  value: Math.round((((y * c) + x)*10)),
       y: 100-(((y * c) + x)*10),
     lwr: 150-((x*150)/10),
     upr: 150-(((y*100)+x)*150)/10, // uncertainty here...

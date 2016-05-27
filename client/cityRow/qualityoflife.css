@@ -86,3 +86,10 @@ line, path {
   width:  150px;
   height: 150px;
 }
+
+.svg-text {
+  margin-top:  10px;
+  margin-left: 10px;
+  font-size:   10px;
+  transition: all 500ms ease-out;
+}

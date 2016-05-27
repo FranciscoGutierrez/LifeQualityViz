@@ -1,7 +1,7 @@
 #map {
-  width: 100%;
-  height:100%;
+  min-width: 650px !important;
   background: #a1a1a1;
+  cursor: default;
 }
 
 .tweet-text { margin-right: 5px; color: #b2b2b2; }
@@ -139,7 +139,7 @@
 }
 
 .sm-d img {
-  width: 21px;
+  width: 22px;
 }
 
 .sm-e {
@@ -172,8 +172,17 @@
 .vp-vertical-container {
   display: flex;
   position: absolute;
-  left: -8px;
-  top: -9px;
+  left: 70px;
+  top: -24px;
+}
+
+.leaflet-marker-icon:focus {
+  outline: none;
+  cursor: default;
+}
+
+.leaflet-marker-icon {
+  cursor: default;
 }
 
 .vp-vertical-container span {
@@ -181,24 +190,26 @@
   transform: rotate(-90deg);
   color: #a1a1a1;
   position: absolute;
-  left: 40px;
-  top: 23px;
-  font-size: 10px;
+  left: -34px;
+  top: 41px;
+  font-size: 11px;
+  background: white;
 }
 
 .vp-vertical {
   display: flex;
   flex-direction: column;
   font-size: 10px;
-  position: absolute;
-  left: 70px;
-  background-image: url("/unty.png");
-  background-repeat: no-repeat;
-  background-size: 3px 56px;
+  /* position: absolute; */
+  /* left: 72px; */
+  background: white;
+  justify-content: space-between;
+  height: 100px;
+  align-items: inherit;
 }
 
 .vp-lwr {
-  padding-left: 5px;
+  padding-left: 3px;
   height: 20px;
   display: flex;
   align-items: flex-end;
@@ -207,7 +218,7 @@
 }
 
 .vp-mdl {
-  padding-left: 5px;
+  padding-left: 3px;
   height: 20px;
   display: flex;
   align-items: center;
@@ -215,7 +226,7 @@
 }
 
 .vp-upr {
-  padding-left: 5px;
+  padding-left: 3px;
   height: 20px;
   display: flex;
   font-size: 10px;
@@ -226,4 +237,15 @@
 .vp-d {
   font-size: 9px;
   color: #a1a1a1;
+}
+
+.ubox {
+  width: 5px;
+  height: 100%;
+}
+
+.ubox-container {
+  display: flex;
+  height: 100px;
+  flex-direction: column;
 }

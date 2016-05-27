@@ -61,55 +61,85 @@ Template.sentimentmap.onRendered(function() {
     $(".atlanta_css").append(""+
     "<div class='vp-vertical-container'>" +
     "<span>Happiness</span>" +
+    "<div class='ubox-container'>"+
+    "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
+    "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
+    "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>65</div>"+
-    "<div class='vp-mdl'>52<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>43</div></div>"+
-    "</div>");
+    "<div class='vp-upr'>86</div>"+
+    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>35</div>"+
+    "</div>"+
+    "</div>")
 
     $(".denver_css").append(""+
     "<div class='vp-vertical-container'>" +
     "<span>Happiness</span>" +
+    "<div class='ubox-container'>"+
+    "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
+    "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
+    "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>65</div>"+
-    "<div class='vp-mdl'>32<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>13</div></div>"+
-    "</div>");
+    "<div class='vp-upr'>86</div>"+
+    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>35</div>"+
+    "</div>"+
+    "</div>")
 
     $(".houston_css").append(""+
     "<div class='vp-vertical-container'>" +
     "<span>Happiness</span>" +
+    "<div class='ubox-container'>"+
+    "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
+    "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
+    "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>55</div>"+
-    "<div class='vp-mdl'>41<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>23</div></div>"+
-    "</div>");
+    "<div class='vp-upr'>86</div>"+
+    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>35</div>"+
+    "</div>"+
+    "</div>")
 
     $(".angeles_css").append(""+
     "<div class='vp-vertical-container'>" +
     "<span>Happiness</span>" +
+    "<div class='ubox-container'>"+
+    "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
+    "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
+    "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>85</div>"+
-    "<div class='vp-mdl'>72<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>63</div></div>"+
-    "</div>");
+    "<div class='vp-upr'>86</div>"+
+    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>35</div>"+
+    "</div>"+
+    "</div>")
 
     $(".seattle_css").append(""+
     "<div class='vp-vertical-container'>" +
     "<span>Happiness</span>" +
+    "<div class='ubox-container'>"+
+    "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
+    "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
+    "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>95</div>"+
-    "<div class='vp-mdl'>78<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>73</div></div>"+
-    "</div>");
+    "<div class='vp-upr'>86</div>"+
+    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr'>35</div>"+
+    "</div>"+
+    "</div>")
 
     $(".newyork_css").append(""+
     "<div class='vp-vertical-container'>" +
     "<span>Happiness</span>" +
+    "<div class='ubox-container'>"+
+    "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
+    "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
+    "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>86</div>"+
-    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>35</div></div>"+
+    "<div class='vp-upr css_newyork-upr'>86</div>"+
+    "<div class='vp-mdl css_newyork-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr css_newyork-lwr'>35</div>"+
+    "</div>"+
     "</div>");
 
   });
@@ -450,6 +480,9 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
+    $(".css_newyork-upr").text(Math.round(city));
+    $(".css_newyork-mdl").text(Math.round(city));
+    $(".css_newyork-lwr").text(Math.round(city));
     return city;
   }
 

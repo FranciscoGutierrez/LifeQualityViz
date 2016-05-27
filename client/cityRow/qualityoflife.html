@@ -14,6 +14,15 @@
       <path class="uline animated fadeIn" d="M0  {{prediction.dd1}} L150 {{prediction.dd2}} L150 {{prediction.rdd2}} L0  {{prediction.rdd1}} Z" fill="#e5e5e5"/>
       <path class="uline animated fadeIn" d="M0  {{prediction.ee1}} L150 {{prediction.ee2}} L150 {{prediction.ree2}} L0  {{prediction.ree1}} Z" fill="#f9f9f9"/>
 
+      <line x1="20%"  x2="20%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,2"/>
+      <line x1="40%"  x2="40%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,2"/>
+      <line x1="60%"  x2="60%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,2"/>
+      <line x1="80%"  x2="80%"  y1="0" y2="100%" stroke="#9e9e9e" stroke-width="1" stroke-dasharray="1,2"/>
+      <line x1="0%" x2="100%" y1="20%"  y2="20%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,2"/>
+      <line x1="0%" x2="100%" y1="40%"  y2="40%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,2"/>
+      <line x1="0%" x2="100%" y1="60%"  y2="60%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,2"/>
+      <line x1="0%" x2="100%" y1="80%"  y2="80%" stroke="#BDBDBD" stroke-width="1" stroke-dasharray="1,2"/>
+
       <image class="animated fadeIn" xlink:href="http://localhost:8080/figs/{{weather.name}}" style="opacity: {{weather.opacity}};" x="0" y="0" height="150px" width="150px" />
       <image class="animated fadeIn" xlink:href="http://localhost:8080/figs/{{safety.name}}"  style="opacity: {{safety.opacity}};"  x="0" y="0" height="150px" width="150px" />
       <image class="animated fadeIn" xlink:href="http://localhost:8080/figs/{{traffic.name}}" style="opacity: {{traffic.opacity}};" x="0" y="0" height="150px" width="150px" />
@@ -22,7 +31,10 @@
       <line class="uline" x1="0%" x2="100%"  y1="{{prediction.y}}%" y2="{{prediction.y}}%"  stroke="#6e6e6e"  stroke-width="1"/>
       <line class="sline" x1="{{strength}}%" x2="{{strength}}%"     y1="0%"  y2="100%"      stroke="#6e6e6e"  stroke-width="1"/>
       <path class="uline animated fadeIn" d="M0 {{prediction.lwr}} L150 {{prediction.upr}}" stroke="#6e6e6e"  stroke-width="2"/>
-      <circle class="main-circle" cx="{{strength}}%" cy="{{prediction.y}}%" r="3" fill="#6e6e6e"/>
+      <circle class="main-circle" cx="{{strength}}%" cy="{{prediction.y}}%" r="2" fill="#6e6e6e"/>
+    </svg>
+    <svg>
+    <text class="svg-text" x="101%" y="{{prediction.y}}%"  fill="#808080">{{prediction.value}}%</text>
     </svg>
     {{>svgbig}}
     <div class="legend-y">Happiness</div>
