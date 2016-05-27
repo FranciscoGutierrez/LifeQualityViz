@@ -5,7 +5,7 @@
         <paper-checkbox class="health">Weather</paper-checkbox>
         <div class="importance-value im-h">{{importance.h}}<span>%</span></div>
         <div class="cr-element2 cityrow-health">
-          <div id="health-slider" class="slider" style="background: #C1E009;"></div>
+          <div id="health-slider" class="slider" style="background: #4daf4a;"></div>
           {{>pips}}
         </div>
       </div>
@@ -27,7 +27,7 @@
         <paper-checkbox class="traffic">Traffic</paper-checkbox>
         <div class="importance-value im-t">{{importance.t}}<span>%</span></div>
         <div class="cr-element2 cityrow-traffic">
-          <div id="traffic-slider" class="slider" style="background: #0F3445;"></div>
+          <div id="traffic-slider" class="slider" style="background: #c0392b;"></div>
           {{>pips}}
         </div>
       </div>
@@ -38,28 +38,12 @@
         <paper-checkbox class="polluted">Air Quality</paper-checkbox>
         <div class="importance-value im-p">{{importance.p}}<span>%</span></div>
         <div class="cr-element2 cityrow-polution">
-          <div id="polution-slider" class="slider" style="background: #15AFBD;"></div>
+          <div id="polution-slider" class="slider" style="background: #377eb8;"></div>
           {{>pips}}
         </div>
       </div>
     </div>
 
-    <div class="uncertainty-legend">
-      <div class="uncerainty-legend-title">Accuracy</div>
-      <div style="display: flex; justify-content: space-around;">
-      <div class="ldot ua1"></div>
-      <div class="ldot ua2"></div>
-      <div class="ldot ua3"></div>
-      <div class="ldot ua4"></div>
-      <div class="ldot ua5"></div>
-      <div class="ldot ua6"></div>
-      </div>
-      <div style="width: 100%; display: flex; justify-content: space-between;">
-        <div class="uncertainty-legend-text">Unlikely</div>
-        <div class="uncertainty-legend-text">Likely</div>
-      </div>
-
-    </div>
   </div>
 </template>
 

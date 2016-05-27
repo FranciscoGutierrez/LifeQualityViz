@@ -66,9 +66,9 @@ Template.sentimentmap.onRendered(function() {
     "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
     "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>86</div>"+
-    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>35</div>"+
+    "<div class='vp-upr css_atlanta-upr'>86</div>"+
+    "<div class='vp-mdl css_atlanta-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr css_atlanta-lwr'>35</div>"+
     "</div>"+
     "</div>")
 
@@ -80,9 +80,9 @@ Template.sentimentmap.onRendered(function() {
     "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
     "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>86</div>"+
-    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>35</div>"+
+    "<div class='vp-upr css_denver-upr'>86</div>"+
+    "<div class='vp-mdl css_denver-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr css_denver-lwr'>35</div>"+
     "</div>"+
     "</div>")
 
@@ -94,9 +94,9 @@ Template.sentimentmap.onRendered(function() {
     "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
     "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>86</div>"+
-    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>35</div>"+
+    "<div class='vp-upr css_houston-upr'>86</div>"+
+    "<div class='vp-mdl css_houston-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr css_houston-lwr'>35</div>"+
     "</div>"+
     "</div>")
 
@@ -108,9 +108,9 @@ Template.sentimentmap.onRendered(function() {
     "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
     "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>86</div>"+
-    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>35</div>"+
+    "<div class='vp-upr css_angeles-upr'>86</div>"+
+    "<div class='vp-mdl css_angeles-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr css_angeles-lwr'>35</div>"+
     "</div>"+
     "</div>")
 
@@ -122,9 +122,9 @@ Template.sentimentmap.onRendered(function() {
     "<div class='ubox ua5'></div><div class='ubox ua4'></div><div class='ubox ua3'></div><div class='ubox ua2'></div><div class='ubox ua1'></div>" +
     "</div>"+
     "<div class='vp-vertical'>"+
-    "<div class='vp-upr'>86</div>"+
-    "<div class='vp-mdl'>79<div class='vp-d'>%</div></div>"+
-    "<div class='vp-lwr'>35</div>"+
+    "<div class='vp-upr css_seattle-upr'>86</div>"+
+    "<div class='vp-mdl css_seattle-mdl'>79<div class='vp-d'>%</div></div>"+
+    "<div class='vp-lwr css_seattle-lwr'>35</div>"+
     "</div>"+
     "</div>")
 
@@ -199,6 +199,9 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
+    $(".css_atlanta-upr").text(Math.round(pred+10));
+    $(".css_atlanta-mdl").text(Math.round(pred));
+    $(".css_atlanta-lwr").text(Math.round(pred-10));
     return city;
   },
   denver() {
@@ -256,6 +259,9 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
+    $(".css_denver-upr").text(Math.round(pred+10));
+    $(".css_denver-mdl").text(Math.round(pred));
+    $(".css_denver-lwr").text(Math.round(pred-10));
     return city;
   },
   seattle() {
@@ -312,6 +318,9 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
+    $(".css_seattle-upr").text(Math.round(pred+10));
+    $(".css_seattle-mdl").text(Math.round(pred));
+    $(".css_seattle-lwr").text(Math.round(pred-10));
     return city;
   },
   angeles() {
@@ -368,6 +377,9 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
+    $(".css_angeles-upr").text(Math.round(pred+10));
+    $(".css_angeles-mdl").text(Math.round(pred));
+    $(".css_angeles-lwr").text(Math.round(pred-10));
     return city;
   },
   houston() {
@@ -424,6 +436,9 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
+    $(".css_houston-upr").text(Math.round(pred+10));
+    $(".css_houston-mdl").text(Math.round(pred));
+    $(".css_houston-lwr").text(Math.round(pred-10));
     return city;
   },
   newyork() {
@@ -480,9 +495,9 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-    $(".css_newyork-upr").text(Math.round(city));
-    $(".css_newyork-mdl").text(Math.round(city));
-    $(".css_newyork-lwr").text(Math.round(city));
+    $(".css_newyork-upr").text(Math.round(pred+10));
+    $(".css_newyork-mdl").text(Math.round(pred));
+    $(".css_newyork-lwr").text(Math.round(pred-10));
     return city;
   }
 
