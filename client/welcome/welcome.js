@@ -28,5 +28,10 @@ Template.welcome.events({
         $(this).remove();
       });
     });
+  },
+  "click .skip-tutorial" (event, instance) {
+    $(".welcome-screen").fadeOut(function(){
+      $(this).remove();
+    });
   }
 });

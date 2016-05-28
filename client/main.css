@@ -38,7 +38,8 @@ body {
 }
 .content-left {
   height: 550px;
-  width: 210px;
+  min-width: 210px;
+  max-width: 210px;
 }
 .content-mid {
   height: 550px;

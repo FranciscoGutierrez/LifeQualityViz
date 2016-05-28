@@ -18,3 +18,11 @@ paper-button {
   display: flex;
   flex-direction: column;
 }
+
+.skip-tutorial {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  margin: 0;
+}
