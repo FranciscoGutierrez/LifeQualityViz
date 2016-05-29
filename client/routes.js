@@ -21,8 +21,9 @@ Router.route('/:_id', {
           Session.set("strength-s",0);
           Session.set("strength-h",0);
 
+          Session.set("option",option);
+          
           var isChrome = !!window.chrome && !!window.chrome.webstore;
-
           if(isChrome) {
             Blaze.render(Template.welcome,$(".welcome-screen")[0]);
             if(option == "map")   Blaze.render(Template.map,$("body")[0]);

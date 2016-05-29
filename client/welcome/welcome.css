@@ -26,3 +26,7 @@ paper-button {
   border: none;
   margin: 0;
 }
+
+.welcome-description paper-button {
+  display: none;
+}

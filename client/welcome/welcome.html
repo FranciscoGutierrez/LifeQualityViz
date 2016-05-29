@@ -6,34 +6,34 @@
     <div class="welcome-description wd-0" style="margin: 30px;">
       <p>In this evaluation you will be asked to answer <b>some questions</b>
         about the <b>Happiness</b> and <b>Quality of Life</b> in some cities across the U.S.</p>
-        <p>Use the sliders to adjust the <b>Quality of Life preferences</b>.</p>
+        <p>Please use the <b>sliders</b> to adjust the <b>Quality of Life preferences</b>.</p>
         <img src="/tutorial/sliders.gif"/>
-        <paper-button class="wb-next-0">Next</paper-button>
+        <paper-button class="wb-next-0" style="display: block;">Next</paper-button>
       </div>
 
       <div class="welcome-description wd-1" style="display: none;">
         <p>Then, given the <b>Quality of Life Preferences</b> look for the <b>Happiness</b> prediction in the visualization.</p>
-        <img src="/tutorial/sliders.gif"/>
+        <div style="display: flex; align-items: center;">
+          <img src="/tutorial/{{option}}.gif"/>
+        </div>
         <paper-button class="wb-next-1">Next</paper-button>
       </div>
 
       <div class="welcome-description wd-2" style="display: none;">
-        <p>Pay attention to the <b>accuracy area</b> in the visualization.</p>
-        <img src="/tutorial/sliders.gif"/>
+        <p>Pay special attention to the <b>accuracy area</b> in the visualization.</p>
+        <img src="/tutorial/mapu.png" style="width: 200px;"/>
         <paper-button class="wb-next-2">Next</paper-button>
       </div>
 
       <div class="welcome-description wd-3" style="display: none;">
         <p>
-          Try to give your <b>best guess</b> to answer the questions,
+          Try to give your <b>best guess</b> to answer the <b>questions</b>,
           at the end you will be asked to fill a <b>Google Form</b>.
-          </p>
-          <p>
-            <b>Only then</b> you will recieve your <b>Amazon mTurk Code</b>.
-          </p>
-          <img src="/tutorial/sliders.gif"/>
-          <paper-button class="wb-next-3">Begin</paper-button>
-        </div>
-
+        </p>
+        <p>
+          <b>Only then</b> you will recieve your <b>Amazon mTurk Code</b>.
+        </p>
+        <paper-button class="wb-next-3">Begin</paper-button>
       </div>
-    </template>
+    </div>
+  </template>

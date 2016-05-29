@@ -174,6 +174,7 @@
   position: absolute;
   left: 70px;
   top: -24px;
+  transition: all 300ms ease-out;
 }
 
 .leaflet-marker-icon:focus {
@@ -240,6 +241,7 @@
 .ubox {
   width: 5px;
   height: 100%;
+  transition: all 300ms ease-out;
 }
 
 .ubox-container {
