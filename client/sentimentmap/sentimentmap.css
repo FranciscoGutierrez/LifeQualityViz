@@ -250,6 +250,7 @@
 }
 
 .leaflet-marker-icon {
+  display: none;
   cursor: default;
   width: 45px  !important;
   height: 45px !important;

@@ -212,7 +212,7 @@ Template.sentimentmap.helpers({
     $(".css_atlanta-upr").text(upr);
     $(".css_atlanta-mdl").text(Math.round(pred));
     $(".css_atlanta-lwr").text(lwr);
-    $(".vp-atlanta").css("height",100-((lwr+(100-upr)))+"px");
+    $(".vp-atlanta").css("height",(100-((lwr+(100-upr))))*1.2+"px");
     return city;
   },
   seattle() {
@@ -281,7 +281,7 @@ Template.sentimentmap.helpers({
     $(".css_seattle-upr").text(upr);
     $(".css_seattle-mdl").text(Math.round(pred));
     $(".css_seattle-lwr").text(lwr);
-    $(".vp-seattle").css("height",100-((lwr+(100-upr)))+"px");
+    $(".vp-seattle").css("height",(100-((lwr+(100-upr))))*1.2+"px");
     return city;
   },
   angeles() {
@@ -350,7 +350,7 @@ Template.sentimentmap.helpers({
     $(".css_angeles-upr").text(upr);
     $(".css_angeles-mdl").text(Math.round(pred));
     $(".css_angeles-lwr").text(lwr);
-    $(".vp-angeles").css("height",100-((lwr+(100-upr)))+"px");
+    $(".vp-angeles").css("height",(100-((lwr+(100-upr))))*1.2+"px");
     return city;
   },
   houston() {
@@ -419,7 +419,7 @@ Template.sentimentmap.helpers({
     $(".css_houston-upr").text(upr);
     $(".css_houston-mdl").text(Math.round(pred));
     $(".css_houston-lwr").text(lwr);
-    $(".vp-houston").css("height",100-((lwr+(100-upr)))+"px");
+    $(".vp-houston").css("height",(100-((lwr+(100-upr))))*1.2+"px");
     return city;
   },
   newyork() {
@@ -488,7 +488,7 @@ Template.sentimentmap.helpers({
     $(".css_newyork-upr").text(upr);
     $(".css_newyork-mdl").text(Math.round(pred));
     $(".css_newyork-lwr").text(lwr);
-    $(".vp-newyork").css("height",100-((lwr+(100-upr)))+"px");
+    $(".vp-newyork").css("height",(100-((lwr+(100-upr))))*1.2+"px");
     return city;
   },
   denver() {
@@ -557,7 +557,7 @@ Template.sentimentmap.helpers({
     $(".css_denver-upr").text(upr);
     $(".css_denver-mdl").text(Math.round(pred));
     $(".css_denver-lwr").text(lwr);
-    $(".vp-denver").css("height",100-((lwr+(100-upr)))+"px");
+    $(".vp-denver").css("height",(100-((lwr+(100-upr))))*1.2+"px");
     return city;
   }
 
