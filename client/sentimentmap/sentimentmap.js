@@ -59,7 +59,7 @@ Template.sentimentmap.onRendered(function() {
     $(".newyork_css").append("<p>New York</p>");
 
     $(".atlanta_css").append(""+
-    "<div class='vp-vertical-container'>" +
+    "<div class='vp-vertical-container vp-atlanta'>" +
     "<span>Happiness</span>" +
     "<div class='ubox-container'>"+
     "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
@@ -73,7 +73,7 @@ Template.sentimentmap.onRendered(function() {
     "</div>")
 
     $(".denver_css").append(""+
-    "<div class='vp-vertical-container'>" +
+    "<div class='vp-vertical-container vp-denver'>" +
     "<span>Happiness</span>" +
     "<div class='ubox-container'>"+
     "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
@@ -87,7 +87,7 @@ Template.sentimentmap.onRendered(function() {
     "</div>")
 
     $(".houston_css").append(""+
-    "<div class='vp-vertical-container'>" +
+    "<div class='vp-vertical-container vp-houston'>" +
     "<span>Happiness</span>" +
     "<div class='ubox-container'>"+
     "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
@@ -101,7 +101,7 @@ Template.sentimentmap.onRendered(function() {
     "</div>")
 
     $(".angeles_css").append(""+
-    "<div class='vp-vertical-container'>" +
+    "<div class='vp-vertical-container vp-angeles'>" +
     "<span>Happiness</span>" +
     "<div class='ubox-container'>"+
     "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
@@ -115,7 +115,7 @@ Template.sentimentmap.onRendered(function() {
     "</div>")
 
     $(".seattle_css").append(""+
-    "<div class='vp-vertical-container'>" +
+    "<div class='vp-vertical-container vp-seattle'>" +
     "<span>Happiness</span>" +
     "<div class='ubox-container'>"+
     "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
@@ -129,7 +129,7 @@ Template.sentimentmap.onRendered(function() {
     "</div>")
 
     $(".newyork_css").append(""+
-    "<div class='vp-vertical-container'>" +
+    "<div class='vp-vertical-container vp-newyork'>" +
     "<span>Happiness</span>" +
     "<div class='ubox-container'>"+
     "<div class='ubox ua1'></div><div class='ubox ua2'></div><div class='ubox ua3'></div><div class='ubox ua4'></div><div class='ubox ua5'></div><div class='ubox ua6'></div>" +
@@ -152,6 +152,7 @@ Template.sentimentmap.helpers({
     var city = Cities.findOne({city:"atlanta"});
     var sum_x = [];
     var sum_y = [];
+    var sum_upr2 = [];
     var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
     var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
     var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
@@ -161,28 +162,35 @@ Template.sentimentmap.helpers({
       sum_city.push(city_h);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".traffic").attr("checked")) {
       sum_city.push(city_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".safety").attr("checked")) {
       sum_city.push(city_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".polluted").attr("checked")) {
       sum_city.push(city_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
+      sum_upr2.push(city.w_upr_max);
     }
     var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
+
+    var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
+    var p = upr2-(((y * 100) + x))/5;
     var pred = ((y * city) + x)*10;
     if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
@@ -199,69 +207,12 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-    $(".css_atlanta-upr").text(Math.round(pred+10));
+    var upr = Math.round(pred+(p*3));
+    var lwr = Math.round(pred-(p*3));
+    $(".css_atlanta-upr").text(upr);
     $(".css_atlanta-mdl").text(Math.round(pred));
-    $(".css_atlanta-lwr").text(Math.round(pred-10));
-    return city;
-  },
-  denver() {
-    var sum_city = [];
-    var city_css = ".denver_css";
-    var city = Cities.findOne({city:"denver"});
-    var sum_x = [];
-    var sum_y = [];
-    var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
-    var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
-    var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
-    var city_p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
-
-    if($(".health").attr("checked")) {
-      sum_city.push(city_h);
-      sum_x.push(city.w_m1);
-      sum_y.push(city.w_m2);
-    }
-
-    if($(".traffic").attr("checked")) {
-      sum_city.push(city_t);
-      sum_x.push(city.t_m1);
-      sum_y.push(city.t_m2);
-    }
-
-    if($(".safety").attr("checked")) {
-      sum_city.push(city_s);
-      sum_x.push(city.s_m1);
-      sum_y.push(city.s_m2);
-    }
-
-    if($(".polluted").attr("checked")) {
-      sum_city.push(city_p);
-      sum_x.push(city.a_m1);
-      sum_y.push(city.a_m2);
-    }
-    var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
-    var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
-    var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
-
-    var pred = ((y * city) + x)*10;
-
-    if(city  >  0) {
-      $(city_css).css("background-image","url('/faces/33.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/31.png')");
-    }
-    if(city  > 33) {
-      $(city_css).css("background-image","url('/faces/23.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/21.png')");
-    }
-    if(city  > 66) {
-      $(city_css).css("background-image","url('/faces/13.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
-    }
-    $(".css_denver-upr").text(Math.round(pred+10));
-    $(".css_denver-mdl").text(Math.round(pred));
-    $(".css_denver-lwr").text(Math.round(pred-10));
+    $(".css_atlanta-lwr").text(lwr);
+    $(".vp-atlanta").css("height",100-((lwr+(100-upr)))+"px");
     return city;
   },
   seattle() {
@@ -270,6 +221,7 @@ Template.sentimentmap.helpers({
     var city = Cities.findOne({city:"seattle"});
     var sum_x = [];
     var sum_y = [];
+    var sum_upr2 = [];
     var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
     var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
     var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
@@ -279,29 +231,35 @@ Template.sentimentmap.helpers({
       sum_city.push(city_h);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".traffic").attr("checked")) {
       sum_city.push(city_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".safety").attr("checked")) {
       sum_city.push(city_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".polluted").attr("checked")) {
       sum_city.push(city_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
+      sum_upr2.push(city.w_upr_max);
     }
     var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
 
+    var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
+    var p = upr2-(((y * 100) + x))/5;
     var pred = ((y * city) + x)*10;
     if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
@@ -318,9 +276,12 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-    $(".css_seattle-upr").text(Math.round(pred+10));
+    var upr = Math.round(pred+(p*3));
+    var lwr = Math.round(pred-(p*3));
+    $(".css_seattle-upr").text(upr);
     $(".css_seattle-mdl").text(Math.round(pred));
-    $(".css_seattle-lwr").text(Math.round(pred-10));
+    $(".css_seattle-lwr").text(lwr);
+    $(".vp-seattle").css("height",100-((lwr+(100-upr)))+"px");
     return city;
   },
   angeles() {
@@ -329,6 +290,7 @@ Template.sentimentmap.helpers({
     var city = Cities.findOne({city:"angeles"});
     var sum_x = [];
     var sum_y = [];
+    var sum_upr2 = [];
     var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
     var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
     var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
@@ -338,29 +300,35 @@ Template.sentimentmap.helpers({
       sum_city.push(city_h);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".traffic").attr("checked")) {
       sum_city.push(city_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".safety").attr("checked")) {
       sum_city.push(city_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".polluted").attr("checked")) {
       sum_city.push(city_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
+      sum_upr2.push(city.w_upr_max);
     }
     var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
 
+    var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
+    var p = upr2-(((y * 100) + x))/5;
     var pred = ((y * city) + x)*10;
     if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
@@ -377,9 +345,12 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-    $(".css_angeles-upr").text(Math.round(pred+10));
+    var upr = Math.round(pred+(p*3));
+    var lwr = Math.round(pred-(p*3));
+    $(".css_angeles-upr").text(upr);
     $(".css_angeles-mdl").text(Math.round(pred));
-    $(".css_angeles-lwr").text(Math.round(pred-10));
+    $(".css_angeles-lwr").text(lwr);
+    $(".vp-angeles").css("height",100-((lwr+(100-upr)))+"px");
     return city;
   },
   houston() {
@@ -388,6 +359,7 @@ Template.sentimentmap.helpers({
     var city = Cities.findOne({city:"houston"});
     var sum_x = [];
     var sum_y = [];
+    var sum_upr2 = [];
     var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
     var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
     var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
@@ -397,29 +369,35 @@ Template.sentimentmap.helpers({
       sum_city.push(city_h);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".traffic").attr("checked")) {
       sum_city.push(city_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".safety").attr("checked")) {
       sum_city.push(city_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".polluted").attr("checked")) {
       sum_city.push(city_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
+      sum_upr2.push(city.w_upr_max);
     }
     var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
 
+    var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
+    var p = upr2-(((y * 100) + x))/5;
     var pred = ((y * city) + x)*10;
     if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
@@ -436,9 +414,12 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-    $(".css_houston-upr").text(Math.round(pred+10));
+    var upr = Math.round(pred+(p*3));
+    var lwr = Math.round(pred-(p*3));
+    $(".css_houston-upr").text(upr);
     $(".css_houston-mdl").text(Math.round(pred));
-    $(".css_houston-lwr").text(Math.round(pred-10));
+    $(".css_houston-lwr").text(lwr);
+    $(".vp-houston").css("height",100-((lwr+(100-upr)))+"px");
     return city;
   },
   newyork() {
@@ -447,6 +428,7 @@ Template.sentimentmap.helpers({
     var city = Cities.findOne({city:"newyork"});
     var sum_x = [];
     var sum_y = [];
+    var sum_upr2 = [];
     var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
     var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
     var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
@@ -456,29 +438,35 @@ Template.sentimentmap.helpers({
       sum_city.push(city_h);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".traffic").attr("checked")) {
       sum_city.push(city_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".safety").attr("checked")) {
       sum_city.push(city_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
+      sum_upr2.push(city.w_upr_max);
     }
 
     if($(".polluted").attr("checked")) {
       sum_city.push(city_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
+      sum_upr2.push(city.w_upr_max);
     }
     var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
 
+    var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
+    var p = upr2-(((y * 100) + x))/5;
     var pred = ((y * city) + x)*10;
     if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
@@ -495,9 +483,81 @@ Template.sentimentmap.helpers({
       if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
       if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-    $(".css_newyork-upr").text(Math.round(pred+10));
+    var upr = Math.round(pred+(p*3));
+    var lwr = Math.round(pred-(p*3));
+    $(".css_newyork-upr").text(upr);
     $(".css_newyork-mdl").text(Math.round(pred));
-    $(".css_newyork-lwr").text(Math.round(pred-10));
+    $(".css_newyork-lwr").text(lwr);
+    $(".vp-newyork").css("height",100-((lwr+(100-upr)))+"px");
+    return city;
+  },
+  denver() {
+    var sum_city = [];
+    var city_css = ".denver_css";
+    var city = Cities.findOne({city:"denver"});
+    var sum_x = [];
+    var sum_y = [];
+    var sum_upr2 = [];
+    var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
+    var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
+    var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
+    var city_p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
+
+    if($(".health").attr("checked")) {
+      sum_city.push(city_h);
+      sum_x.push(city.w_m1);
+      sum_y.push(city.w_m2);
+      sum_upr2.push(city.w_upr_max);
+    }
+
+    if($(".traffic").attr("checked")) {
+      sum_city.push(city_t);
+      sum_x.push(city.t_m1);
+      sum_y.push(city.t_m2);
+      sum_upr2.push(city.w_upr_max);
+    }
+
+    if($(".safety").attr("checked")) {
+      sum_city.push(city_s);
+      sum_x.push(city.s_m1);
+      sum_y.push(city.s_m2);
+      sum_upr2.push(city.w_upr_max);
+    }
+
+    if($(".polluted").attr("checked")) {
+      sum_city.push(city_p);
+      sum_x.push(city.a_m1);
+      sum_y.push(city.a_m2);
+      sum_upr2.push(city.w_upr_max);
+    }
+    var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
+    var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
+    var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
+
+    var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
+    var p = upr2-(((y * 100) + x))/5;
+    var pred = ((y * city) + x)*10;
+    if(city  >  0) {
+      $(city_css).css("background-image","url('/faces/33.png')");
+      if(pred>33)  $(city_css).css("background-image","url('/faces/32.png')");
+      if(pred>66)  $(city_css).css("background-image","url('/faces/31.png')");
+    }
+    if(city  > 33) {
+      $(city_css).css("background-image","url('/faces/23.png')");
+      if(pred>33)  $(city_css).css("background-image","url('/faces/22.png')");
+      if(pred>66)  $(city_css).css("background-image","url('/faces/21.png')");
+    }
+    if(city  > 66) {
+      $(city_css).css("background-image","url('/faces/13.png')");
+      if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
+      if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
+    }
+    var upr = Math.round(pred+(p*3));
+    var lwr = Math.round(pred-(p*3));
+    $(".css_denver-upr").text(upr);
+    $(".css_denver-mdl").text(Math.round(pred));
+    $(".css_denver-lwr").text(lwr);
+    $(".vp-denver").css("height",100-((lwr+(100-upr)))+"px");
     return city;
   }
 

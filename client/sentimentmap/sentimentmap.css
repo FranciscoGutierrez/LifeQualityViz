@@ -190,9 +190,8 @@
   transform: rotate(-90deg);
   color: #a1a1a1;
   position: absolute;
-  left: -34px;
-  top: 41px;
-  font-size: 11px;
+  left: -38px;
+  top: 17px;
   background: white;
 }
 
@@ -200,12 +199,11 @@
   display: flex;
   flex-direction: column;
   font-size: 10px;
-  /* position: absolute; */
-  /* left: 72px; */
   background: white;
   justify-content: space-between;
-  height: 100px;
+  height: 100%;
   align-items: inherit;
+  transition: all 300ms ease-out;
 }
 
 .vp-lwr {
@@ -246,8 +244,9 @@
 
 .ubox-container {
   display: flex;
-  height: 100px;
+  height: 100%;
   flex-direction: column;
+  transition: all 300ms ease-out;
 }
 
 .leaflet-marker-icon {
