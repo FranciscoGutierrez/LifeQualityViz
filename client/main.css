@@ -279,3 +279,12 @@ h2 {
   width: 100%;
   margin-bottom: 50px;
 }
+
+.content-mid-map {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 50px;
+  flex-direction: column;
+}

@@ -2,6 +2,7 @@
   min-width: 650px !important;
   background: #a1a1a1;
   cursor: default;
+  align-self: flex-start;
 }
 
 .tweet-text { margin-right: 5px; color: #b2b2b2; }
@@ -169,6 +170,8 @@
   align-items: flex-end;
   background: white;
   z-index: 1;
+  right: 90px;
+  position: absolute;
 }
 
 .vp-vertical-container {
@@ -261,6 +264,6 @@
 }
 
 .leaflet-container .leaflet-control-attribution, .leaflet-container .leaflet-control-scale {
-    font-size: 11px;
-    display: none;
+  font-size: 11px;
+  display: none;
 }
