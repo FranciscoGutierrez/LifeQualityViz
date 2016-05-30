@@ -168,6 +168,7 @@
   display: flex;
   align-items: flex-end;
   background: white;
+  z-index: 1;
 }
 
 .vp-vertical-container {
