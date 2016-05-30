@@ -5,7 +5,7 @@
     {{seattle}} {{angeles}}
     {{newyork}} {{houston}}
   </div>
-  <div style="display: flex; display: flex; justify-content: flex-end; width: 100%; margin-top">
+  <div style="display: flex; display: flex; justify-content: flex-end; width: 100%; flex-direction: row-reverse; justify-content: space-between;">
     <div class="sentimentmap-legend">
       <div class="sm-bot">
         <div class="sm-t" style="height: 30px;"></div>
@@ -29,6 +29,21 @@
           <div class="sm-d sm-med "><img src="faces/mouth2.png" style="align-self: flex-end; width: 18px;"/></div>
           <div class="sm-d sm-high"><img src="faces/mouth1.png" style="align-self: flex-end; width: 19px;"/></div>
         </div>
+      </div>
+    </div>
+    <div class="uncertainty-legend" style="margin-left: 40px;">
+      <div class="uncerainty-legend-title">Accuracy:</div>
+      <div style="display: flex; justify-content: space-around;">
+      <div class="ldot ua1"></div>
+      <div class="ldot ua2"></div>
+      <div class="ldot ua3"></div>
+      <div class="ldot ua4"></div>
+      <div class="ldot ua5"></div>
+      <div class="ldot ua6"></div>
+      </div>
+      <div style="width: 100%; display: flex; justify-content: space-between;">
+        <div class="uncertainty-legend-text">Unlikely</div>
+        <div class="uncertainty-legend-text">Likely</div>
       </div>
     </div>
   </div>

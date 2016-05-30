@@ -22,7 +22,8 @@ Router.route('/:_id', {
           Session.set("strength-h",0);
 
           Session.set("option",option);
-          
+          Session.set("qnumber",1);
+
           var isChrome = !!window.chrome && !!window.chrome.webstore;
           if(isChrome) {
             Blaze.render(Template.welcome,$(".welcome-screen")[0]);

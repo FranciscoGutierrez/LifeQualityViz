@@ -44,22 +44,17 @@
       </div>
     </div>
 
-    <div class="uncertainty-legend">
-      <div class="uncerainty-legend-title">Accuracy:</div>
-      <div style="display: flex; justify-content: space-around;">
-      <div class="ldot ua1"></div>
-      <div class="ldot ua2"></div>
-      <div class="ldot ua3"></div>
-      <div class="ldot ua4"></div>
-      <div class="ldot ua5"></div>
-      <div class="ldot ua6"></div>
-      </div>
-      <div style="width: 100%; display: flex; justify-content: space-between;">
-        <div class="uncertainty-legend-text">Unlikely</div>
-        <div class="uncertainty-legend-text">Likely</div>
-      </div>
+    <div style="width: 90%; border: 1px solid #eee; margin: 5px 0;"></div>
 
+    <div class="questions-navigator">
+      <div class="q-intro">{{question.intro}}</div>
+      <div class="q-question">{{question.body}}</div>
+      <div class="q-title">
+        Question <span>{{qnumber}}</span> of <span>6</span>
+      </div>
+      <paper-button class="q-show-answer">Show/Respond</paper-button>
     </div>
+
   </div>
 </template>
 

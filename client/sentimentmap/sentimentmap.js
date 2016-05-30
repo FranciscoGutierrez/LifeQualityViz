@@ -209,6 +209,9 @@ Template.sentimentmap.helpers({
     }
     var upr = Math.round(pred+(p*3));
     var lwr = Math.round(pred-(p*3));
+    if(isNaN(upr))  upr  = 0;
+    if(isNaN(lwr))  lwr  = 0;
+    if(isNaN(pred)) pred = 0;
     $(".css_atlanta-upr").text(upr);
     $(".css_atlanta-mdl").text(Math.round(pred));
     $(".css_atlanta-lwr").text(lwr);
@@ -278,6 +281,9 @@ Template.sentimentmap.helpers({
     }
     var upr = Math.round(pred+(p*3));
     var lwr = Math.round(pred-(p*3));
+    if(isNaN(upr))  upr  = 0;
+    if(isNaN(lwr))  lwr  = 0;
+    if(isNaN(pred)) pred = 0;
     $(".css_seattle-upr").text(upr);
     $(".css_seattle-mdl").text(Math.round(pred));
     $(".css_seattle-lwr").text(lwr);
@@ -347,6 +353,9 @@ Template.sentimentmap.helpers({
     }
     var upr = Math.round(pred+(p*3));
     var lwr = Math.round(pred-(p*3));
+    if(isNaN(upr))  upr  = 0;
+    if(isNaN(lwr))  lwr  = 0;
+    if(isNaN(pred)) pred = 0;
     $(".css_angeles-upr").text(upr);
     $(".css_angeles-mdl").text(Math.round(pred));
     $(".css_angeles-lwr").text(lwr);
@@ -416,6 +425,9 @@ Template.sentimentmap.helpers({
     }
     var upr = Math.round(pred+(p*3));
     var lwr = Math.round(pred-(p*3));
+    if(isNaN(upr))  upr  = 0;
+    if(isNaN(lwr))  lwr  = 0;
+    if(isNaN(pred)) pred = 0;
     $(".css_houston-upr").text(upr);
     $(".css_houston-mdl").text(Math.round(pred));
     $(".css_houston-lwr").text(lwr);
@@ -485,6 +497,9 @@ Template.sentimentmap.helpers({
     }
     var upr = Math.round(pred+(p*3));
     var lwr = Math.round(pred-(p*3));
+    if(isNaN(upr))  upr  = 0;
+    if(isNaN(lwr))  lwr  = 0;
+    if(isNaN(pred)) pred = 0;
     $(".css_newyork-upr").text(upr);
     $(".css_newyork-mdl").text(Math.round(pred));
     $(".css_newyork-lwr").text(lwr);
@@ -554,6 +569,9 @@ Template.sentimentmap.helpers({
     }
     var upr = Math.round(pred+(p*3));
     var lwr = Math.round(pred-(p*3));
+    if(isNaN(upr))  upr  = 0;
+    if(isNaN(lwr))  lwr  = 0;
+    if(isNaN(pred)) pred = 0;
     $(".css_denver-upr").text(upr);
     $(".css_denver-mdl").text(Math.round(pred));
     $(".css_denver-lwr").text(lwr);

@@ -17,6 +17,22 @@ Template.navfilter.helpers({
       s:parseInt(Session.get("strength-s")),
       p:parseInt(Session.get("strength-p"))
     };
+  },
+  qnumber() {
+    return Session.get("qnumber");
+  },
+  question() {
+    var option = Session.get("option");
+    var number = Session.get("qnumber");
+    return {
+      option: option,
+      intro: "When Quality of Life is around 80% in New York,",
+      body: "The Level of Happiness is between...",
+      checkbox: false,
+      radio: false,
+      slider: true,
+      number: number
+    };
   }
 });
 
@@ -61,12 +77,16 @@ Template.navfilter.events({
     var count = 0;
     $('paper-checkbox[checked]').each(function() { count = count + 1; });
     if(count < 1) {
-      $(".content-mid").css("display", "none");
+      if(Session.get("option") == "map") $(".leaflet-marker-icon").fadeOut();
     }
     if(count > 0) {
-      $(".content-mid").css("display", "flex");
-      $(".leaflet-marker-icon").fadeIn();
+      if(Session.get("option") == "map") $(".leaflet-marker-icon").fadeIn();
     }
+  },
+  'click .q-show-answer' (event, instance) {
+    $(".big-question-container").fadeIn();
+    $(".big-question-container").css("background","rgba(255,255,255,0.7)");
+    $(".big-send-container").css("display","flex");
   }
 });
 

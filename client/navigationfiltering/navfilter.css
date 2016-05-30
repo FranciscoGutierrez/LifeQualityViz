@@ -169,3 +169,29 @@ paper-checkbox {
   text-align: center;
   margin: 1px;
 }
+
+.q-title {
+  font-size: 13px;
+}
+
+.q-title span {
+  color: #A1A1A1;
+}
+
+.q-question {
+  font-weight: 100;
+  font-size: 18px;
+}
+
+.questions-navigator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.questions-navigator paper-button {
+  align-self: flex-end;
+  margin-right: 10px;
+  width: 130px;
+}

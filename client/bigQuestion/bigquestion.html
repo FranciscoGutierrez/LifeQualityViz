@@ -1,0 +1,34 @@
+<template name="bigquestion">
+  <div class="big-question-container">
+    <div class="inner-question-container">
+      <div class="big-question-title">
+        Question <span>{{legend}}</span> of <span>6</span>
+      </div>
+      <div class="big-intro">{{question.intro}}</div>
+      <div class="big-question">{{question.body}}</div>
+
+      <div class="controls">
+        {{#if question.checkbox}}
+        checkbox!
+        {{/if}}
+
+        {{#if question.radio}}
+        radios!
+        {{/if}}
+
+        {{#if question.slider}}
+        slider!
+        {{/if}}
+      </div>
+
+      <div class="big-question-buttons">
+        <paper-button class="big-hide">Hide</paper-button>
+        <div class="big-send-container">
+        <paper-button class="big-send">Send</paper-button>
+        <paper-button class="big-finish">Finish</paper-button>
+        <p class="big-send-p">(will take you to the next question)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
