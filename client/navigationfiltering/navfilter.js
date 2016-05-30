@@ -41,40 +41,40 @@ Template.navfilter.events({
     var sh = Number(Session.get("strength-h"));
     if ($('.health').prop('checked')) {
       $(".im-h, .weather-info, .cr-name-h, .cityrow-health, .crh-health, .crf-health").fadeIn();
-      Session.set("strength-h",Number(sh+1));
+      Session.set("strength-h",Number(sh+0.01));
     } else {
       $(".im-h, .weather-info, .cr-name-h, .crf-health, .crh-health, .cityrow-health").fadeOut();
-      Session.set("strength-h",Number(sh+1));
+      Session.set("strength-h",Number(sh+0.01));
     }
   },
   'click .safety'  (event, template) {
     var ss = Number(Session.get("strength-s"));
     if ($('.safety').prop('checked')) {
       $(".im-s, .safety-info, .cr-name-s, .crf-safety, .crh-safety, .cityrow-safety").fadeIn();
-      Session.set("strength-s",Number(ss+1));
+      Session.set("strength-s",Number(ss+0.01));
     } else {
       $(".im-s, .safety-info, .cr-name-s, .crf-safety, .crh-safety, .cityrow-safety").fadeOut();
-      Session.set("strength-s",Number(ss+1));
+      Session.set("strength-s",Number(ss+0.01));
     }
   },
   'click .traffic' (event, template) {
     var st = Number(Session.get("strength-t"));
     if ($('.traffic').prop('checked')) {
       $(".im-t, .traffic-info, .cr-name-t, .crf-traffic, .crh-traffic, .cityrow-traffic").fadeIn();
-      Session.set("strength-t",Number(st+1));
+      Session.set("strength-t",Number(st+0.01));
     } else {
       $(".im-t, .traffic-info, .cr-name-t, .crf-traffic, .crh-traffic, .cityrow-traffic").fadeOut();
-      Session.set("strength-t",Number(st+1));
+      Session.set("strength-t",Number(st+0.01));
     }
   },
   'click .polluted'(event, template) {
     var sp = Number(Session.get("strength-p"));
     if ($('.polluted').prop('checked')) {
       $(".im-p, .airq-info, .cr-name-p, .crf-polution, .crh-polution, .cityrow-polution").fadeIn();
-      Session.set("strength-p",Number(sp+1));
+      Session.set("strength-p",Number(sp+0.01));
     } else {
       $(".im-p, .airq-info, .cr-name-p, .crf-polution, .crh-polution, .cityrow-polution").fadeOut();
-      Session.set("strength-p",Number(sp+1));
+      Session.set("strength-p",Number(sp+0.01));
     }
   },
   'click paper-checkbox'(event, template) {
