@@ -6,27 +6,46 @@
       </div>
       <div class="big-intro">{{question.intro}}</div>
       <div class="big-question">{{question.body}}</div>
-
-      <div class="controls">
-        {{#if question.checkbox}}
-        checkbox!
-        {{/if}}
-
-        {{#if question.radio}}
-        radios!
-        {{/if}}
-
-        {{#if question.slider}}
-        slider!
-        {{/if}}
+      {{#if question.checkbox}}
+      <div class="question-control">
+        <paper-checkbox>Boston      </paper-checkbox>
+        <paper-checkbox>Seattle     </paper-checkbox>
+        <paper-checkbox>New York    </paper-checkbox>
+        <paper-checkbox>Denver      </paper-checkbox>
+        <paper-checkbox>Houston     </paper-checkbox>
+        <paper-checkbox>Los Ángeles </paper-checkbox>
       </div>
+      {{/if}}
+
+      {{#if question.radio}}
+      <div class="question-control">
+        <paper-radio-button></paper-radio-button>
+        <paper-radio-button></paper-radio-button>
+        <paper-radio-button></paper-radio-button>
+        <paper-radio-button></paper-radio-button>
+        <paper-radio-button></paper-radio-button>
+      </div>
+      {{/if}}
+
+      {{#if question.slider}}
+      <div class="question-control">
+        <div id="question-slider" class="slider"></div>
+        <div class="pips">
+          <span><b>.</b>0</span>
+          <!-- <span><b>|</b>25</span> -->
+          <!-- <span><b>|</b></span> -->
+          <!-- <span><b>|</b>75</span> -->
+          <span><b>.</b>100</span>
+        </div>
+      </div>
+      {{/if}}
 
       <div class="big-question-buttons">
         <paper-button class="big-hide">Hide</paper-button>
         <div class="big-send-container">
-        <paper-button class="big-send">Send</paper-button>
-        <paper-button class="big-finish">Finish</paper-button>
-        <p class="big-send-p">(will take you to the next question)</p>
+          <paper-button class="big-send">Send</paper-button>
+          <paper-button class="big-finish">Finish</paper-button>
+          <p class="big-send-p">(will take you to the next question)</p>
         </div>
       </div>
     </div>

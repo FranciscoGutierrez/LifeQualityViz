@@ -84,9 +84,13 @@ Template.navfilter.events({
     }
   },
   'click .q-show-answer' (event, instance) {
-    $(".big-question-container").fadeIn();
     $(".big-question-container").css("background","rgba(255,255,255,0.7)");
     $(".big-send-container").css("display","flex");
+    $(".big-question-container").fadeIn( function(){
+      $(".question-control").fadeIn();
+    });
+
+
   }
 });
 
