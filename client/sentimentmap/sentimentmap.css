@@ -163,10 +163,11 @@
 }
 
 .sentimentmap-legend {
-  margin-top: 10px;
+  margin-top: -90px;
   cursor: default;
   display: flex;
   align-items: flex-end;
+  background: white;
 }
 
 .vp-vertical-container {
