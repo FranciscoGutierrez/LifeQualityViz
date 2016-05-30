@@ -43,13 +43,13 @@ Template.navfilter.events({
       Session.set("strength-h",80);
     } else {
       $(".im-h, .weather-info, .cr-name-h, .crf-health, .crh-health, .cityrow-health").fadeOut();
-      Session.set("strength-h",0)
+      Session.set("strength-h",0);
     }
   },
   'click .safety'  (event, instance) {
     if ($('.safety').prop('checked')) {
       $(".im-s, .safety-info, .cr-name-s, .crf-safety, .crh-safety, .cityrow-safety").fadeIn();
-      Session.set("strength-s",80)
+      Session.set("strength-s",80);
     } else {
       $(".im-s, .safety-info, .cr-name-s, .crf-safety, .crh-safety, .cityrow-safety").fadeOut();
       Session.set("strength-s",0);
@@ -58,19 +58,15 @@ Template.navfilter.events({
   'click .traffic' (event, instance) {
     if ($('.traffic').prop('checked')) {
       $(".im-t, .traffic-info, .cr-name-t, .crf-traffic, .crh-traffic, .cityrow-traffic").fadeIn();
-      Session.set("strength-t",80);
     } else {
       $(".im-t, .traffic-info, .cr-name-t, .crf-traffic, .crh-traffic, .cityrow-traffic").fadeOut();
-      Session.set("strength-t",0);
     }
   },
   'click .polluted'(event, instance) {
     if ($('.polluted').prop('checked')) {
       $(".im-p, .airq-info, .cr-name-p, .crf-polution, .crh-polution, .cityrow-polution").fadeIn();
-      Session.set("strength-p",80);
     } else {
       $(".im-p, .airq-info, .cr-name-p, .crf-polution, .crh-polution, .cityrow-polution").fadeOut();
-      Session.set("strength-p",0);
     }
   },
   'click paper-checkbox'(event, instance) {
@@ -82,15 +78,6 @@ Template.navfilter.events({
     if(count > 0) {
       if(Session.get("option") == "map") $(".leaflet-marker-icon").fadeIn();
     }
-  },
-  'click .q-show-answer' (event, instance) {
-    $(".big-question-container").css("background","rgba(255,255,255,0.7)");
-    $(".big-send-container").css("display","flex");
-    $(".big-question-container").fadeIn( function(){
-      $(".question-control").fadeIn();
-    });
-
-
   }
 });
 

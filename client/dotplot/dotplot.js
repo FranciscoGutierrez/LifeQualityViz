@@ -79,6 +79,10 @@ Template.dotplot.helpers({
     p = p*1.2;
     var dots = (((y * c) + x)*20);
     var px = 9;
+    var text = Math.round(((dots/20)*10));
+    var qol  = Math.round(c);
+    if(isNaN(text)) text = 0;
+    if(isNaN(qol))   qol = 0;
     return {
       a1: dots-p*5-px,
       a2: dots-p*4-px,
@@ -91,8 +95,8 @@ Template.dotplot.helpers({
       a9: dots+p*3-px,
       a10:dots+p*4-px,
       a11:dots+p*5-px,
-      text: Math.round(((dots/20)*10)),
-      qol: Math.round(c)
+      text: text,
+      qol: qol
     }
   }
 });

@@ -27,22 +27,10 @@ Template.bigquestion.events({
   },
   "click .big-send"  (event, instance) {
     var current = Session.get("qnumber");
-    $(".question-control").fadeOut();
-    $(".big-send-container").fadeOut(function(){
-      if (current == 4) {
-        $(".big-send-p").text("(will take you to the last question)");
-      }
-      if (current == 5) {
-        $(".big-send-p").text("(will take you to the Google Form)");
-        $(".big-send").fadeOut(function(){
-          $(".big-finish").fadeIn();
-        });
-      }
-    })
-    $(".inner-question-container").fadeOut(function(){
-      $(".inner-question-container").delay(100).fadeIn(function(){
-        Session.set("qnumber",current+1);
-      });
+    Session.set("qnumber",current+1);
+    if (current == 5) $(".big-send").fadeOut(function(){$(".big-finish").fadeIn();});
+    $(".big-question-container").fadeOut(function(){
+      $(".big-question-container").delay(100).fadeIn();
     });
 
   },

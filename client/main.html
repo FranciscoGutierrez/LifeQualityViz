@@ -19,14 +19,11 @@
 </head>
 
 <body>
-
   <div class="welcome-screen">
     <div class="loading-screen">
       <paper-spinner active></paper-spinner>
     </div>
   </div>
-  {{>bigquestion}}
-
 </body>
 
 <template name="regression">
@@ -36,20 +33,26 @@
       <div>
         {{>lifequality cityname="angeles"}}
         {{>lifequality cityname="newyork"}}
+      </div>
+      <div>
         {{>lifequality cityname="houston"}}
+        {{>lifequality cityname="denver"}}
       </div>
       <div>
         {{>lifequality cityname="seattle"}}
         {{>lifequality cityname="atlanta"}}
-        {{>lifequality cityname="denver"}}
       </div>
     </div>
+    {{>bigquestion}}
   </div>
 </template>
 
 <template name="map">
   <div class="content-left" style="height: 600px;">{{>navfilter}}</div>
-  <div class="content-mid"  style="width:  650px; height: 600px;">{{>sentimentmap}}</div>
+  <div class="content-mid"  style="width:  650px; height: 600px;">
+    {{>sentimentmap}}
+    {{>bigquestion}}
+  </div>
 </template>
 
 <template name="dots">
@@ -59,54 +62,17 @@
       <div>
         {{>dotplot cityname="denver"}}
         {{>dotplot cityname="newyork"}}
-        {{>dotplot cityname="houston"}}
       </div>
       <div>
+        {{>dotplot cityname="houston"}}
         {{>dotplot cityname="seattle"}}
+      </div>
+      <div>
         {{>dotplot cityname="atlanta"}}
         {{>dotplot cityname="angeles"}}
       </div>
     </div>
-  </div>
-</template>
-
-<template name="tweets">
-  <div class="tweets-template">
-    <h2>Twitter Live Sentiment Feed</h2>
-    <div class="tweets-container">
-      {{#each tweets}}
-      <div class="simple-tweet {{polarity}} animated fadeInDown">
-        <div class="tweet-text">
-          <span>{{tweet}}</span>
-          <div class="tweet-meta">
-            <div class="tweet-track">{{track}},</div>
-            <div class="tweet-date">{{tweetdate}}</div>
-            <!-- <div class="tweet-coordinates">{{coordinates}}</div> -->
-          </div>
-        </div>
-        <div class="tweet-sentiment">{{polarity}}</div>
-      </div>
-      {{/each}}
-    </div>
-  </div>
-</template>
-
-<template name="lifeIndex">
-  <div class="lifeIndex-template">
-    <h2>Current Quality of Life Index</h2>
-    <div class="qli-container">
-      <div>
-        <canvas id="myChart" width="100" height="100"></canvas>
-        {{#with currentIndex}}
-        <div class="qli-stats">
-          <div class="qli-qindex"><span>{{quality_of_life_index}}</span>Quality of Life Index</div>
-        </div>
-        {{/with}}
-      </div>
-      <div>
-        <canvas id="myChart2" width="200" height="200"></canvas>
-      </div>
-    </div>
+    {{>bigquestion}}
   </div>
 </template>
 
