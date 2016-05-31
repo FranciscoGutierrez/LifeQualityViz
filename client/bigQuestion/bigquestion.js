@@ -18,6 +18,15 @@ Template.bigquestion.helpers({
       slider: true,
       number: number
     };
+  },
+  slider() {
+      var val1 = 20;
+      var val2 = 80;
+      val1 = Session.get("answr1");
+      val2 = Session.get("answr2");
+      if(val1<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible"); }
+      if(val2>95){ $(".slider-hound").css("visibility","hidden"); } else { $(".slider-hound").css("visibility","visible"); }
+      return {a: val1, b: val2, x: val1-3, y: val2-3};
   }
 });
 
@@ -46,10 +55,11 @@ Template.bigquestion.events({
 Template.bigquestion.rendered = function () {
   this.$("#question-slider").noUiSlider({
     start: [20,80],
-    connect: true,
-    range: { 'min': 0, 'max': 100 }
+    tooltips: true,
+    connect:  true,
+    range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
-    Session.set("answr1",val);
-    Session.set("answr2",val);
+    Session.set("answr1",val[0]);
+    Session.set("answr2",val[1]);
   });
 };

@@ -66,3 +66,8 @@
 .question-control .noUi-connect {
   background: #717171;
 }
+
+.slider-tooltip {
+  position: absolute;
+  margin-top: 1px;
+}

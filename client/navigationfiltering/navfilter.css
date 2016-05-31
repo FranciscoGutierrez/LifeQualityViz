@@ -81,11 +81,12 @@ paper-checkbox {
 .pips {
   font-size: 9px;
   display: flex;
-  width: 105%;
+  width: 100%;
   justify-content: space-between;
   padding-top: 3px;
   color: #A1A1A1;
   margin-left: -1px;
+  position: relative;
 }
 
 .pips span {

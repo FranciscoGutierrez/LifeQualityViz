@@ -31,11 +31,10 @@
       <div class="question-control">
         <div id="question-slider" class="slider"></div>
         <div class="pips">
-          <span><b>.</b>0</span>
-          <!-- <span><b>|</b>25</span> -->
-          <!-- <span><b>|</b></span> -->
-          <!-- <span><b>|</b>75</span> -->
-          <span><b>.</b>100</span>
+          <span class="slider-zero">0</span>
+          <div  class="slider-tooltip" style="left: {{slider.x}}%">{{slider.a}}</div>
+          <div  class="slider-tooltip" style="left: {{slider.y}}%">{{slider.b}}</div>
+          <span class="slider-hound">100</span>
         </div>
       </div>
       {{/if}}
