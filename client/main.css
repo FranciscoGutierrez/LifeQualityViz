@@ -287,3 +287,7 @@ h2 {
   margin-bottom: 50px;
   flex-direction: column;
 }
+
+paper-button {
+  text-align: center !important;
+}
