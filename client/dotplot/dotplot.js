@@ -27,10 +27,10 @@ Template.dotplot.helpers({
     var sum_lwr1 = [];
     var sum_lwr2 = [];
 
-    var h = (city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100))) * (Session.get("strength-h")/100);
-    var t = (city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100))) * (Session.get("strength-h")/100);
-    var s = (city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100))) * (Session.get("strength-h")/100);
-    var p = (city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100))) * (Session.get("strength-h")/100);
+    var h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100)) ;
+    var t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100)) ;
+    var s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100)) ;
+    var p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100)) ;
 
     if($(".health").attr("checked")) {
       sum_c.push(h);
