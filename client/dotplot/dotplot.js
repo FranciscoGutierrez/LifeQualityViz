@@ -27,13 +27,41 @@ Template.dotplot.helpers({
     var sum_lwr1 = [];
     var sum_lwr2 = [];
 
-    var h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100)) ;
-    var t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100)) ;
-    var s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100)) ;
-    var p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100)) ;
+    var r_w = Session.get("strength-h")/100;
+    var r_t = Session.get("strength-t")/100;
+    var r_s = Session.get("strength-s")/100;
+    var r_p = Session.get("strength-p")/100;
+
+    var weather   = ((city.w1 + city.w2)/2) * r_w;
+    var traffic   = ((city.t1 + city.t2)/2) * r_t;
+    var safety    = ((city.s1 + city.s2)/2) * r_s;
+    var pollution = ((city.a1 + city.a2)/2) * r_p;
+
+    if($('paper-checkbox[checked]').length == 1) {
+      if($(".health").attr("checked")) {
+        var mean = ((city.w1 + city.w2)/2);
+        weather = city.w2 - ((city.w2-city.w1)*(r_w));
+        if(mean > 50) weather  = city.w1 - ((city.w1-city.w2)*(r_w));
+      }
+      if($(".traffic").attr("checked")) {
+        var mean = ((city.t1 + city.t2)/2);
+        traffic = city.t2 - ((city.t2-city.t1)*(r_t));
+        if(mean > 50) traffic = city.t1 - ((city.t1-city.t2)*(r_t));
+      }
+      if($(".safety").attr("checked")) {
+        var mean = ((city.s1 + city.s2)/2);
+        safety = city.s2 - ((city.s2-city.s1)*(r_s));
+        if(mean > 50) safety = city.s1 - ((city.s1-city.s2)*(r_s));
+      }
+      if($(".polluted").attr("checked")) {
+        var mean = ((city.a1 + city.a2)/2);
+        pollution = city.a2 - ((city.a2-city.a1)*(r_p));
+        if(mean > 50) pollution = city.a1 - ((city.a1-city.a2)*(r_p));
+      }
+    }
 
     if($(".health").attr("checked")) {
-      sum_c.push(h);
+      sum_c.push(weather);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
       sum_upr1.push(city.w_upr_min);
@@ -42,7 +70,7 @@ Template.dotplot.helpers({
       sum_lwr2.push(city.w_lwr_max);
     }
     if($(".traffic").attr("checked")) {
-      sum_c.push(t);
+      sum_c.push(traffic);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
       sum_upr1.push(city.t_upr_min);
@@ -51,7 +79,7 @@ Template.dotplot.helpers({
       sum_lwr2.push(city.t_lwr_max);
     }
     if($(".safety").attr("checked")) {
-      sum_c.push(s);
+      sum_c.push(safety);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
       sum_upr1.push(city.s_upr_min);
@@ -60,7 +88,7 @@ Template.dotplot.helpers({
       sum_lwr2.push(city.s_lwr_max);
     }
     if($(".polluted").attr("checked")) {
-      sum_c.push(p);
+      sum_c.push(pollution);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
       sum_upr1.push(city.a_upr_min);
@@ -68,10 +96,11 @@ Template.dotplot.helpers({
       sum_lwr1.push(city.a_lwr_min);
       sum_lwr2.push(city.a_lwr_max);
     }
-    var c = sum_c.reduce((a,b)=>a+b,0)/sum_c.length;
+
+    var c = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
-
     var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
@@ -94,8 +123,6 @@ Template.dotplot.helpers({
     var r_upr1 = ((((upr1 - lwr )/5) * 150)/10);
     var r_lwr2 = ((((upr  - lwr2)/5) * 150)/10);
     var r_lwr1 = ((((lwr  - lwr1)/5) * 150)/10);
-
-
 
     return {
       a1: (dots-px)-(r_upr2*5),
