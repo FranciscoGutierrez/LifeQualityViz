@@ -11,10 +11,10 @@ Template.bigquestion.helpers({
     var number = Session.get("qnumber");
     return {
       option: option,
-      intro: "When Quality of Life is around 80% in New York,",
-      body: "The Level of Happiness is between...",
-      checkbox: false,
-      radio:  false,
+       intro: "When Quality of Life is around 80% in New York,",
+        body: "The Level of Happiness is between...",
+     heckbox: false,
+       radio: false,
       slider: true,
       number: number
     };

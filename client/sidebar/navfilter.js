@@ -7,32 +7,14 @@ Template.navfilter.helpers({
     if(r=="houston"){ city  = Cities.findOne({city:"houston" }); city.cityname = "Houston";}
     if(r=="seattle"){ city  = Cities.findOne({city:"seattle" }); city.cityname = "Seattle";}
     if(r=="atlanta"){ city  = Cities.findOne({city:"atlanta" }); city.cityname = "Atlanta"; }
-
     return city;
   },
   importance() {
-    return {
-      h:parseInt(Session.get("strength-h")),
-      t:parseInt(Session.get("strength-t")),
-      s:parseInt(Session.get("strength-s")),
-      p:parseInt(Session.get("strength-p"))
-    };
-  },
-  qnumber() {
-    return Session.get("qnumber");
-  },
-  question() {
-    var option = Session.get("option");
-    var number = Session.get("qnumber");
-    return {
-      option: option,
-      intro: "When Quality of Life is around 80% in New York,",
-      body: "The Level of Happiness is between...",
-      checkbox: false,
-      radio: false,
-      slider: true,
-      number: number
-    };
+    var health  = parseInt(Session.get("strength-h"));
+    var traffic = parseInt(Session.get("strength-t"));
+    var safety  = parseInt(Session.get("strength-s"));
+    var airqual = parseInt(Session.get("strength-p"));
+    return { h: health, t: traffic, s: safety, p: airqual};
   }
 });
 
