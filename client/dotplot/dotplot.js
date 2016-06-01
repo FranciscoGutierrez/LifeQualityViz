@@ -27,10 +27,10 @@ Template.dotplot.helpers({
     var sum_lwr1 = [];
     var sum_lwr2 = [];
 
-    var h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
-    var t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
-    var s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
-    var p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
+    var h = (city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100))) * (Session.get("strength-h")/100);
+    var t = (city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100))) * (Session.get("strength-h")/100);
+    var s = (city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100))) * (Session.get("strength-h")/100);
+    var p = (city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100))) * (Session.get("strength-h")/100);
 
     if($(".health").attr("checked")) {
       sum_c.push(h);
@@ -71,20 +71,34 @@ Template.dotplot.helpers({
     var c = sum_c.reduce((a,b)=>a+b,0)/sum_c.length;
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
+
     var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
     var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
+
     var p = upr2-(((y * 100) + x))/5;
     p = p*1.2;
     var dots = (((y * c) + x)*20);
     var px = 9;
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(c);
+
     if(isNaN(text)) text = 0;
     if(isNaN(qol))   qol = 0;
+
+    var upr = (y*100)+x;
+    var lwr = x;
+
+    var r_upr2 = ((((upr2 - upr )/5) * 150)/10);
+    var r_upr1 = ((((upr1 - lwr )/5) * 150)/10);
+    var r_lwr2 = ((((upr  - lwr2)/5) * 150)/10);
+    var r_lwr1 = ((((lwr  - lwr1)/5) * 150)/10);
+
+
+
     return {
-      a1: dots-p*5-px,
+      a1: (dots-px)-(r_upr2*5),
       a2: dots-p*4-px,
       a3: dots-p*3-px,
       a4: dots-p*2-px,
