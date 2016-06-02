@@ -113,7 +113,6 @@ Template.lifequality.helpers({
     if(isNaN(c)) c = 0;
     if(isNaN(x)) x = 0;
     if(isNaN(y)) y = 0;
-    if(isNaN(p)) p = 0;
     if(isNaN(upr1)) upr1 = 0;
     if(isNaN(upr2)) upr2 = 0;
     if(isNaN(lwr1)) lwr1 = 0;

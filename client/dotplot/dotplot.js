@@ -19,6 +19,7 @@ Template.dotplot.helpers({
   prediction() {
     var city = Template.instance().my_city.get();
     var sum_c = [];
+    var sum_b = [];
     var sum_x = [];
     var sum_y = [];
 
@@ -62,6 +63,7 @@ Template.dotplot.helpers({
 
     if($(".health").attr("checked")) {
       sum_c.push(weather);
+      sum_b.push(r_w);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
       sum_upr1.push(city.w_upr_min);
@@ -71,6 +73,7 @@ Template.dotplot.helpers({
     }
     if($(".traffic").attr("checked")) {
       sum_c.push(traffic);
+      sum_b.push(r_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
       sum_upr1.push(city.t_upr_min);
@@ -80,6 +83,7 @@ Template.dotplot.helpers({
     }
     if($(".safety").attr("checked")) {
       sum_c.push(safety);
+      sum_b.push(r_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
       sum_upr1.push(city.s_upr_min);
@@ -89,6 +93,7 @@ Template.dotplot.helpers({
     }
     if($(".polluted").attr("checked")) {
       sum_c.push(pollution);
+      sum_b.push(r_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
       sum_upr1.push(city.a_upr_min);
@@ -137,7 +142,8 @@ Template.dotplot.helpers({
       a10:dots+p*4-px,
       a11:dots+p*5-px,
       text: text,
-      qol: qol
+      qol: qol,
+      p: 0
     }
   }
 });
