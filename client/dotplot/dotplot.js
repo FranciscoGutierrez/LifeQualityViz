@@ -128,8 +128,8 @@ Template.dotplot.helpers({
     var r_lwr1 = (((lwr  - lwr1)/5) * 20);
 
     var p = (upr2-(((y * 100) + x))/5)*1.2;
-    var px = 9;
-    var dots = (((y * c) + x)*20)-px;
+    var px = 9; //dot width...
+    var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(c);
 
@@ -141,17 +141,17 @@ Template.dotplot.helpers({
     var r_lwr = (r_lwr1 + r_lwr2)/2;
     var r_upr = (r_upr1 + r_upr2)/2;
     return {
-      a1: dots-r_lwr*5,
-      a2: dots-r_lwr*4,
-      a3: dots-r_lwr*3,
-      a4: dots-r_lwr*2,
-      a5: dots-r_lwr,
-      a6: dots,
-      a7: dots+r_upr,
-      a8: dots+r_upr*2,
-      a9: dots+r_upr*3,
-      a10:dots+r_upr*4,
-      a11:dots+r_upr*5,
+      a1: (dots-r_lwr*5)-px,
+      a2: (dots-r_lwr*4)-px,
+      a3: (dots-r_lwr*3)-px,
+      a4: (dots-r_lwr*2)-px,
+      a5: (dots-r_lwr)-px,
+      a6: (dots)-px,
+      a7: (dots+r_upr)-px,
+      a8: (dots+r_upr*2)-px,
+      a9: (dots+r_upr*3)-px,
+      a10:(dots+r_upr*4)-px,
+      a11:(dots+r_upr*5)-px,
       text: text,
       qol: qol,
       p: 0
