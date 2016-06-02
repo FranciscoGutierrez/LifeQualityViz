@@ -250,7 +250,7 @@ Template.sentimentmap.helpers({
     var r_lwr2 = (((upr  - lwr2)/5) * 20);
     var r_lwr1 = (((lwr  - lwr1)/5) * 20);
     var p = (upr2-(((y * 100) + x))/5)*1.2;
-    var dots = (((y * city) + x)*20);
+    var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
@@ -284,7 +284,7 @@ Template.sentimentmap.helpers({
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
-    return city;
+    return c;
   },
   seattle() {
     var sum_city = [];
@@ -390,7 +390,7 @@ Template.sentimentmap.helpers({
     var r_lwr2 = (((upr  - lwr2)/5) * 20);
     var r_lwr1 = (((lwr  - lwr1)/5) * 20);
     var p = (upr2-(((y * 100) + x))/5)*1.2;
-    var dots = (((y * city) + x)*20);
+    var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
@@ -424,7 +424,7 @@ Template.sentimentmap.helpers({
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
-    return city;
+    return c;
   },
   angeles() {
     var sum_city = [];
@@ -532,7 +532,7 @@ Template.sentimentmap.helpers({
     var p = (upr2-(((y * 100) + x))/5)*1.2;
     var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
-    var qol  = Math.round(city);
+    var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
     if(isNaN(qol))   qol = 0;
     var upr = (y*100)+x;
@@ -545,7 +545,7 @@ Template.sentimentmap.helpers({
     var bot_round = Math.round(bot*10);
     if(top_round > 100) top_round = 100;
     if(bot_round <   0) bot_round = 0;
-    console.log("city: " + city.city + " t: " + top + " b: " + bot + " d:" + dots/20);
+    //console.log("city: " + city.city + " t: " + top + " b: " + bot + " d:" + dots/20);
     $(".css_angeles-upr").text(top_round);
     $(".css_angeles-mdl").text(Math.round(dots/2));
     $(".css_angeles-lwr").text(bot_round);
@@ -565,7 +565,7 @@ Template.sentimentmap.helpers({
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
-    return city;
+    return c;
   },
   houston() {
     var sum_city = [];
@@ -671,7 +671,7 @@ Template.sentimentmap.helpers({
     var r_lwr2 = (((upr  - lwr2)/5) * 20);
     var r_lwr1 = (((lwr  - lwr1)/5) * 20);
     var p = (upr2-(((y * 100) + x))/5)*1.2;
-    var dots = (((y * city) + x)*20);
+    var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
@@ -811,7 +811,7 @@ Template.sentimentmap.helpers({
     var r_lwr2 = (((upr  - lwr2)/5) * 20);
     var r_lwr1 = (((lwr  - lwr1)/5) * 20);
     var p = (upr2-(((y * 100) + x))/5)*1.2;
-    var dots = (((y * city) + x)*20);
+    var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
@@ -845,7 +845,7 @@ Template.sentimentmap.helpers({
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
-    return city;
+    return c;
   },
   denver() {
     var sum_city = [];
@@ -951,7 +951,7 @@ Template.sentimentmap.helpers({
     var r_lwr2 = (((upr  - lwr2)/5) * 20);
     var r_lwr1 = (((lwr  - lwr1)/5) * 20);
     var p = (upr2-(((y * 100) + x))/5)*1.2;
-    var dots = (((y * city) + x)*20);
+    var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
@@ -985,7 +985,7 @@ Template.sentimentmap.helpers({
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
-    return city;
+    return c;
   }
 
 });
