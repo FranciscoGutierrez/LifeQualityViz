@@ -263,24 +263,26 @@ Template.sentimentmap.helpers({
     var bot_p = (((dots/20)-bot)*20)/5;
     var top_round = Math.round(top*10);
     var bot_round = Math.round(bot*10);
+    if(top_round > 100) top_round = 100;
+    if(bot_round <   0) bot_round = 0;
     $(".css_atlanta-upr").text(top_round);
     $(".css_atlanta-mdl").text(Math.round(dots/2));
     $(".css_atlanta-lwr").text(bot_round);
     $(".vp-atlanta").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(city  >  0) {
-      $(city_css).css("background-image","url('/faces/33.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(city  > 33) {
-      $(city_css).css("background-image","url('/faces/23.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(city  > 66) {
-      $(city_css).css("background-image","url('/faces/13.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return city;
   },
@@ -401,24 +403,26 @@ Template.sentimentmap.helpers({
     var bot_p = (((dots/20)-bot)*20)/5;
     var top_round = Math.round(top*10);
     var bot_round = Math.round(bot*10);
+    if(top_round > 100) top_round = 100;
+    if(bot_round <   0) bot_round = 0;
     $(".css_seattle-upr").text(top_round);
     $(".css_seattle-mdl").text(Math.round(dots/2));
     $(".css_seattle-lwr").text(bot_round);
     $(".vp-seattle").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(city  >  0) {
-      $(city_css).css("background-image","url('/faces/33.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(city  > 33) {
-      $(city_css).css("background-image","url('/faces/23.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(city  > 66) {
-      $(city_css).css("background-image","url('/faces/13.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return city;
   },
@@ -539,24 +543,26 @@ Template.sentimentmap.helpers({
     var bot_p = (((dots/20)-bot)*20)/5;
     var top_round = Math.round(top*10);
     var bot_round = Math.round(bot*10);
+    if(top_round > 100) top_round = 100;
+    if(bot_round <   0) bot_round = 0;
     $(".css_angeles-upr").text(top_round);
     $(".css_angeles-mdl").text(Math.round(dots/2));
     $(".css_angeles-lwr").text(bot_round);
     $(".vp-angeles").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(city  >  0) {
-      $(city_css).css("background-image","url('/faces/33.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(city  > 33) {
-      $(city_css).css("background-image","url('/faces/23.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(city  > 66) {
-      $(city_css).css("background-image","url('/faces/13.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return city;
   },
@@ -677,24 +683,26 @@ Template.sentimentmap.helpers({
     var bot_p = (((dots/20)-bot)*20)/5;
     var top_round = Math.round(top*10);
     var bot_round = Math.round(bot*10);
+    if(top_round > 100) top_round = 100;
+    if(bot_round <   0) bot_round = 0;
     $(".css_houston-upr").text(top_round);
     $(".css_houston-mdl").text(Math.round(dots/2));
     $(".css_houston-lwr").text(bot_round);
     $(".vp-houston").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(city  >  0) {
-      $(city_css).css("background-image","url('/faces/33.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(city  > 33) {
-      $(city_css).css("background-image","url('/faces/23.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(city  > 66) {
-      $(city_css).css("background-image","url('/faces/13.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return city;
   },
@@ -815,24 +823,26 @@ Template.sentimentmap.helpers({
     var bot_p = (((dots/20)-bot)*20)/5;
     var top_round = Math.round(top*10);
     var bot_round = Math.round(bot*10);
+    if(top_round > 100) top_round = 100;
+    if(bot_round <   0) bot_round = 0;
     $(".css_newyork-upr").text(top_round);
     $(".css_newyork-mdl").text(Math.round(dots/2));
     $(".css_newyork-lwr").text(bot_round);
     $(".vp-newyork").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(city  >  0) {
-      $(city_css).css("background-image","url('/faces/33.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(city  > 33) {
-      $(city_css).css("background-image","url('/faces/23.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(city  > 66) {
-      $(city_css).css("background-image","url('/faces/13.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return city;
   },
@@ -953,24 +963,26 @@ Template.sentimentmap.helpers({
     var bot_p = (((dots/20)-bot)*20)/5;
     var top_round = Math.round(top*10);
     var bot_round = Math.round(bot*10);
+    if(top_round > 100) top_round = 100;
+    if(bot_round <   0) bot_round = 0;
     $(".css_denver-upr").text(top_round);
     $(".css_denver-mdl").text(Math.round(dots/2));
     $(".css_denver-lwr").text(bot_round);
     $(".vp-denver").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(city  >  0) {
-      $(city_css).css("background-image","url('/faces/33.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(city  > 33) {
-      $(city_css).css("background-image","url('/faces/23.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(city  > 66) {
-      $(city_css).css("background-image","url('/faces/13.png')");
-      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return city;
   }
