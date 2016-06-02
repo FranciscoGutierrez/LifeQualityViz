@@ -228,7 +228,7 @@ Template.sentimentmap.helpers({
       sum_lwr1.push(city.a_lwr_min);
       sum_lwr2.push(city.a_lwr_max);
     }
-    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    var c = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
     if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
@@ -236,7 +236,7 @@ Template.sentimentmap.helpers({
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
     var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
-    if(isNaN(city)) city = 0;
+    if(isNaN(c)) c = 0;
     if(isNaN(x)) x = 0;
     if(isNaN(y)) y = 0;
     if(isNaN(upr1)) upr1 = 0;
@@ -252,7 +252,7 @@ Template.sentimentmap.helpers({
     var p = (upr2-(((y * 100) + x))/5)*1.2;
     var dots = (((y * city) + x)*20);
     var text = Math.round(((dots/20)*10));
-    var qol  = Math.round(city);
+    var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
     if(isNaN(qol))   qol = 0;
     var upr = (y*100)+x;
@@ -269,17 +269,17 @@ Template.sentimentmap.helpers({
     $(".css_atlanta-mdl").text(Math.round(dots/2));
     $(".css_atlanta-lwr").text(bot_round);
     $(".vp-atlanta").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
-    if(city  >  0) {
+    if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(city  > 33) {
+    if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(city  > 66) {
+    if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
@@ -368,7 +368,7 @@ Template.sentimentmap.helpers({
       sum_lwr1.push(city.a_lwr_min);
       sum_lwr2.push(city.a_lwr_max);
     }
-    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    var c = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
     if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
@@ -376,7 +376,7 @@ Template.sentimentmap.helpers({
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
     var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
-    if(isNaN(city)) city = 0;
+    if(isNaN(c)) c = 0;
     if(isNaN(x)) x = 0;
     if(isNaN(y)) y = 0;
     if(isNaN(upr1)) upr1 = 0;
@@ -392,7 +392,7 @@ Template.sentimentmap.helpers({
     var p = (upr2-(((y * 100) + x))/5)*1.2;
     var dots = (((y * city) + x)*20);
     var text = Math.round(((dots/20)*10));
-    var qol  = Math.round(city);
+    var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
     if(isNaN(qol))   qol = 0;
     var upr = (y*100)+x;
@@ -409,17 +409,17 @@ Template.sentimentmap.helpers({
     $(".css_seattle-mdl").text(Math.round(dots/2));
     $(".css_seattle-lwr").text(bot_round);
     $(".vp-seattle").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
-    if(city  >  0) {
+    if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(city  > 33) {
+    if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(city  > 66) {
+    if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
@@ -508,7 +508,7 @@ Template.sentimentmap.helpers({
       sum_lwr1.push(city.a_lwr_min);
       sum_lwr2.push(city.a_lwr_max);
     }
-    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    var c = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
     if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
@@ -516,7 +516,7 @@ Template.sentimentmap.helpers({
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
     var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
-    if(isNaN(city)) city = 0;
+    if(isNaN(c)) c = 0;
     if(isNaN(x)) x = 0;
     if(isNaN(y)) y = 0;
     if(isNaN(upr1)) upr1 = 0;
@@ -530,7 +530,7 @@ Template.sentimentmap.helpers({
     var r_lwr2 = (((upr  - lwr2)/5) * 20);
     var r_lwr1 = (((lwr  - lwr1)/5) * 20);
     var p = (upr2-(((y * 100) + x))/5)*1.2;
-    var dots = (((y * city) + x)*20);
+    var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(city);
     if(isNaN(text)) text = 0;
@@ -545,21 +545,22 @@ Template.sentimentmap.helpers({
     var bot_round = Math.round(bot*10);
     if(top_round > 100) top_round = 100;
     if(bot_round <   0) bot_round = 0;
+    console.log("city: " + city.city + " t: " + top + " b: " + bot + " d:" + dots/20);
     $(".css_angeles-upr").text(top_round);
     $(".css_angeles-mdl").text(Math.round(dots/2));
     $(".css_angeles-lwr").text(bot_round);
     $(".vp-angeles").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
-    if(city  >  0) {
+    if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(city  > 33) {
+    if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(city  > 66) {
+    if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
@@ -648,7 +649,7 @@ Template.sentimentmap.helpers({
       sum_lwr1.push(city.a_lwr_min);
       sum_lwr2.push(city.a_lwr_max);
     }
-    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    var c = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
     if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
@@ -656,7 +657,7 @@ Template.sentimentmap.helpers({
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
     var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
-    if(isNaN(city)) city = 0;
+    if(isNaN(c)) c = 0;
     if(isNaN(x)) x = 0;
     if(isNaN(y)) y = 0;
     if(isNaN(upr1)) upr1 = 0;
@@ -672,7 +673,7 @@ Template.sentimentmap.helpers({
     var p = (upr2-(((y * 100) + x))/5)*1.2;
     var dots = (((y * city) + x)*20);
     var text = Math.round(((dots/20)*10));
-    var qol  = Math.round(city);
+    var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
     if(isNaN(qol))   qol = 0;
     var upr = (y*100)+x;
@@ -689,17 +690,17 @@ Template.sentimentmap.helpers({
     $(".css_houston-mdl").text(Math.round(dots/2));
     $(".css_houston-lwr").text(bot_round);
     $(".vp-houston").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
-    if(city  >  0) {
+    if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(city  > 33) {
+    if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(city  > 66) {
+    if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
@@ -788,7 +789,7 @@ Template.sentimentmap.helpers({
       sum_lwr1.push(city.a_lwr_min);
       sum_lwr2.push(city.a_lwr_max);
     }
-    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    var c = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
     if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
@@ -796,7 +797,7 @@ Template.sentimentmap.helpers({
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
     var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
-    if(isNaN(city)) city = 0;
+    if(isNaN(c)) c = 0;
     if(isNaN(x)) x = 0;
     if(isNaN(y)) y = 0;
     if(isNaN(upr1)) upr1 = 0;
@@ -812,7 +813,7 @@ Template.sentimentmap.helpers({
     var p = (upr2-(((y * 100) + x))/5)*1.2;
     var dots = (((y * city) + x)*20);
     var text = Math.round(((dots/20)*10));
-    var qol  = Math.round(city);
+    var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
     if(isNaN(qol))   qol = 0;
     var upr = (y*100)+x;
@@ -829,17 +830,17 @@ Template.sentimentmap.helpers({
     $(".css_newyork-mdl").text(Math.round(dots/2));
     $(".css_newyork-lwr").text(bot_round);
     $(".vp-newyork").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
-    if(city  >  0) {
+    if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(city  > 33) {
+    if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(city  > 66) {
+    if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
@@ -928,7 +929,7 @@ Template.sentimentmap.helpers({
       sum_lwr1.push(city.a_lwr_min);
       sum_lwr2.push(city.a_lwr_max);
     }
-    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    var c = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
     if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
@@ -936,7 +937,7 @@ Template.sentimentmap.helpers({
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
     var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
-    if(isNaN(city)) city = 0;
+    if(isNaN(c)) c = 0;
     if(isNaN(x)) x = 0;
     if(isNaN(y)) y = 0;
     if(isNaN(upr1)) upr1 = 0;
@@ -952,7 +953,7 @@ Template.sentimentmap.helpers({
     var p = (upr2-(((y * 100) + x))/5)*1.2;
     var dots = (((y * city) + x)*20);
     var text = Math.round(((dots/20)*10));
-    var qol  = Math.round(city);
+    var qol  = Math.round(c);
     if(isNaN(text)) text = 0;
     if(isNaN(qol))   qol = 0;
     var upr = (y*100)+x;
@@ -969,17 +970,17 @@ Template.sentimentmap.helpers({
     $(".css_denver-mdl").text(Math.round(dots/2));
     $(".css_denver-lwr").text(bot_round);
     $(".vp-denver").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
-    if(city  >  0) {
+    if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(city  > 33) {
+    if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(city  > 66) {
+    if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
       if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
       if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
