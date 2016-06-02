@@ -111,15 +111,13 @@ Template.dotplot.helpers({
     var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
     var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
 
-    var p = upr2-(((y * 100) + x))/5;
-    p = p*1.2;
-    var dots = (((y * c) + x)*20);
-    var px = 9;
-    var text = Math.round(((dots/20)*10));
-    var qol  = Math.round(c);
-
-    if(isNaN(text)) text = 0;
-    if(isNaN(qol))   qol = 0;
+    if(isNaN(c)) c = 0;
+    if(isNaN(x)) x = 0;
+    if(isNaN(y)) y = 0;
+    if(isNaN(upr1)) upr1 = 0;
+    if(isNaN(upr2)) upr2 = 0;
+    if(isNaN(lwr1)) lwr1 = 0;
+    if(isNaN(lwr2)) lwr2 = 0;
 
     var upr = (y*100)+x;
     var lwr = x;
@@ -129,18 +127,31 @@ Template.dotplot.helpers({
     var r_lwr2 = ((((upr  - lwr2)/5) * 150)/10);
     var r_lwr1 = ((((lwr  - lwr1)/5) * 150)/10);
 
+    var p = (upr2-(((y * 100) + x))/5)*1.2;
+    var px = 9;
+    var dots = (((y * c) + x)*20)-px;
+    var text = Math.round(((dots/20)*10));
+    var qol  = Math.round(c);
+
+    if(isNaN(text)) text = 0;
+    if(isNaN(qol))   qol = 0;
+
+    var upr = (y*100)+x;
+    var lwr = x;
+    var r_lwr = (r_lwr1 + r_lwr2)/2;
+    var r_upr = (r_upr1 + r_upr2)/2;
     return {
-      a1: (dots-px)-(r_upr2*5),
-      a2: dots-p*4-px,
-      a3: dots-p*3-px,
-      a4: dots-p*2-px,
-      a5: dots-p-px,
-      a6: dots-px,
-      a7: dots+p-px,
-      a8: dots+p*2-px,
-      a9: dots+p*3-px,
-      a10:dots+p*4-px,
-      a11:dots+p*5-px,
+      a1: dots-r_lwr*5,
+      a2: dots-r_lwr*4,
+      a3: dots-r_lwr*3,
+      a4: dots-r_lwr*2,
+      a5: dots-r_lwr,
+      a6: dots,
+      a7: dots+r_upr,
+      a8: dots+r_upr*2,
+      a9: dots+r_upr*3,
+      a10:dots+r_upr*4,
+      a11:dots+r_upr*5,
       text: text,
       qol: qol,
       p: 0
