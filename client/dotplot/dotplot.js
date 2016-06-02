@@ -122,10 +122,10 @@ Template.dotplot.helpers({
     var upr = (y*100)+x;
     var lwr = x;
 
-    var r_upr2 = ((((upr2 - upr )/5) * 150)/10);
-    var r_upr1 = ((((upr1 - lwr )/5) * 150)/10);
-    var r_lwr2 = ((((upr  - lwr2)/5) * 150)/10);
-    var r_lwr1 = ((((lwr  - lwr1)/5) * 150)/10);
+    var r_upr2 = (((upr2 - upr )/5) * 20);
+    var r_upr1 = (((upr1 - lwr )/5) * 20);
+    var r_lwr2 = (((upr  - lwr2)/5) * 20);
+    var r_lwr1 = (((lwr  - lwr1)/5) * 20);
 
     var p = (upr2-(((y * 100) + x))/5)*1.2;
     var px = 9;
