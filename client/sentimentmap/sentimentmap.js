@@ -150,449 +150,828 @@ Template.sentimentmap.helpers({
     var sum_city = [];
     var city_css = ".atlanta_css";
     var city = Cities.findOne({city:"atlanta"});
+    var sum_c = [];
+    var sum_b = [];
     var sum_x = [];
     var sum_y = [];
+    var sum_upr1 = [];
     var sum_upr2 = [];
-    var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
-    var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
-    var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
-    var city_p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
-
+    var sum_lwr1 = [];
+    var sum_lwr2 = [];
+    var r_w = Session.get("strength-h")/100;
+    var r_t = Session.get("strength-t")/100;
+    var r_s = Session.get("strength-s")/100;
+    var r_p = Session.get("strength-p")/100;
+    var weather   = ((city.w1 + city.w2)/2) * r_w;
+    var traffic   = ((city.t1 + city.t2)/2) * r_t;
+    var safety    = ((city.s1 + city.s2)/2) * r_s;
+    var pollution = ((city.a1 + city.a2)/2) * r_p;
+    if($('paper-checkbox[checked]').length == 1) {
+      if($(".health").attr("checked")) {
+        var mean = ((city.w1 + city.w2)/2);
+        weather = city.w2 - ((city.w2-city.w1)*(r_w));
+        if(mean > 50) weather  = city.w1 - ((city.w1-city.w2)*(r_w));
+      }
+      if($(".traffic").attr("checked")) {
+        var mean = ((city.t1 + city.t2)/2);
+        traffic = city.t2 - ((city.t2-city.t1)*(r_t));
+        if(mean > 50) traffic = city.t1 - ((city.t1-city.t2)*(r_t));
+      }
+      if($(".safety").attr("checked")) {
+        var mean = ((city.s1 + city.s2)/2);
+        safety = city.s2 - ((city.s2-city.s1)*(r_s));
+        if(mean > 50) safety = city.s1 - ((city.s1-city.s2)*(r_s));
+      }
+      if($(".polluted").attr("checked")) {
+        var mean = ((city.a1 + city.a2)/2);
+        pollution = city.a2 - ((city.a2-city.a1)*(r_p));
+        if(mean > 50) pollution = city.a1 - ((city.a1-city.a2)*(r_p));
+      }
+    }
     if($(".health").attr("checked")) {
-      sum_city.push(city_h);
+      sum_c.push(weather);
+      sum_b.push(r_w);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr1.push(city.w_upr_min);
       sum_upr2.push(city.w_upr_max);
+      sum_lwr1.push(city.w_lwr_min);
+      sum_lwr2.push(city.w_lwr_max);
     }
-
     if($(".traffic").attr("checked")) {
-      sum_city.push(city_t);
+      sum_c.push(traffic);
+      sum_b.push(r_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.t_upr_min);
+      sum_upr2.push(city.t_upr_max);
+      sum_lwr1.push(city.t_lwr_min);
+      sum_lwr2.push(city.t_lwr_max);
     }
-
     if($(".safety").attr("checked")) {
-      sum_city.push(city_s);
+      sum_c.push(safety);
+      sum_b.push(r_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.s_upr_min);
+      sum_upr2.push(city.s_upr_max);
+      sum_lwr1.push(city.s_lwr_min);
+      sum_lwr2.push(city.s_lwr_max);
     }
-
     if($(".polluted").attr("checked")) {
-      sum_city.push(city_p);
+      sum_c.push(pollution);
+      sum_b.push(r_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.a_upr_min);
+      sum_upr2.push(city.a_upr_max);
+      sum_lwr1.push(city.a_lwr_min);
+      sum_lwr2.push(city.a_lwr_max);
     }
-    var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
+    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
-
+    var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
-    var p = upr2-(((y * 100) + x))/5;
-    var pred = ((y * city) + x)*10;
-
-    var upr = Math.round(pred+(p*3));
-    var lwr = Math.round(pred-(p*3));
-    if(isNaN(upr))  upr  = 0;
-    if(isNaN(lwr))  lwr  = 0;
-    if(isNaN(pred)) pred = 0;
-    $(".css_atlanta-upr").text(upr);
-    $(".css_atlanta-mdl").text(Math.round(pred));
-    $(".css_atlanta-lwr").text(lwr);
-    $(".vp-atlanta").css("height",(100-((lwr+(100-upr))))*1.2+"px");
-
-    if(pred  >  0) {
+    var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
+    var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
+    if(isNaN(city)) city = 0;
+    if(isNaN(x)) x = 0;
+    if(isNaN(y)) y = 0;
+    if(isNaN(upr1)) upr1 = 0;
+    if(isNaN(upr2)) upr2 = 0;
+    if(isNaN(lwr1)) lwr1 = 0;
+    if(isNaN(lwr2)) lwr2 = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var r_upr2 = (((upr2 - upr )/5) * 20);
+    var r_upr1 = (((upr1 - lwr )/5) * 20);
+    var r_lwr2 = (((upr  - lwr2)/5) * 20);
+    var r_lwr1 = (((lwr  - lwr1)/5) * 20);
+    var p = (upr2-(((y * 100) + x))/5)*1.2;
+    var dots = (((y * city) + x)*20);
+    var text = Math.round(((dots/20)*10));
+    var qol  = Math.round(city);
+    if(isNaN(text)) text = 0;
+    if(isNaN(qol))   qol = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var top = (((upr2 - upr1)/100) * (qol)) + upr1;
+    var bot = (((lwr2 - lwr1)/100) * (qol)) + lwr1;
+    var top_p = ((top-(dots/20))*20)/5;
+    var bot_p = (((dots/20)-bot)*20)/5;
+    var top_round = Math.round(top*10);
+    var bot_round = Math.round(bot*10);
+    $(".css_atlanta-upr").text(top_round);
+    $(".css_atlanta-mdl").text(Math.round(dots/2));
+    $(".css_atlanta-lwr").text(bot_round);
+    $(".vp-atlanta").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
+    if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(pred  > 33) {
+    if(city  > 33) {
       $(city_css).css("background-image","url('/faces/23.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(pred  > 66) {
+    if(city  > 66) {
       $(city_css).css("background-image","url('/faces/13.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-
     return city;
   },
   seattle() {
     var sum_city = [];
     var city_css = ".seattle_css";
     var city = Cities.findOne({city:"seattle"});
+    var sum_c = [];
+    var sum_b = [];
     var sum_x = [];
     var sum_y = [];
+    var sum_upr1 = [];
     var sum_upr2 = [];
-    var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
-    var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
-    var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
-    var city_p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
-
+    var sum_lwr1 = [];
+    var sum_lwr2 = [];
+    var r_w = Session.get("strength-h")/100;
+    var r_t = Session.get("strength-t")/100;
+    var r_s = Session.get("strength-s")/100;
+    var r_p = Session.get("strength-p")/100;
+    var weather   = ((city.w1 + city.w2)/2) * r_w;
+    var traffic   = ((city.t1 + city.t2)/2) * r_t;
+    var safety    = ((city.s1 + city.s2)/2) * r_s;
+    var pollution = ((city.a1 + city.a2)/2) * r_p;
+    if($('paper-checkbox[checked]').length == 1) {
+      if($(".health").attr("checked")) {
+        var mean = ((city.w1 + city.w2)/2);
+        weather = city.w2 - ((city.w2-city.w1)*(r_w));
+        if(mean > 50) weather  = city.w1 - ((city.w1-city.w2)*(r_w));
+      }
+      if($(".traffic").attr("checked")) {
+        var mean = ((city.t1 + city.t2)/2);
+        traffic = city.t2 - ((city.t2-city.t1)*(r_t));
+        if(mean > 50) traffic = city.t1 - ((city.t1-city.t2)*(r_t));
+      }
+      if($(".safety").attr("checked")) {
+        var mean = ((city.s1 + city.s2)/2);
+        safety = city.s2 - ((city.s2-city.s1)*(r_s));
+        if(mean > 50) safety = city.s1 - ((city.s1-city.s2)*(r_s));
+      }
+      if($(".polluted").attr("checked")) {
+        var mean = ((city.a1 + city.a2)/2);
+        pollution = city.a2 - ((city.a2-city.a1)*(r_p));
+        if(mean > 50) pollution = city.a1 - ((city.a1-city.a2)*(r_p));
+      }
+    }
     if($(".health").attr("checked")) {
-      sum_city.push(city_h);
+      sum_c.push(weather);
+      sum_b.push(r_w);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr1.push(city.w_upr_min);
       sum_upr2.push(city.w_upr_max);
+      sum_lwr1.push(city.w_lwr_min);
+      sum_lwr2.push(city.w_lwr_max);
     }
-
     if($(".traffic").attr("checked")) {
-      sum_city.push(city_t);
+      sum_c.push(traffic);
+      sum_b.push(r_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.t_upr_min);
+      sum_upr2.push(city.t_upr_max);
+      sum_lwr1.push(city.t_lwr_min);
+      sum_lwr2.push(city.t_lwr_max);
     }
-
     if($(".safety").attr("checked")) {
-      sum_city.push(city_s);
+      sum_c.push(safety);
+      sum_b.push(r_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.s_upr_min);
+      sum_upr2.push(city.s_upr_max);
+      sum_lwr1.push(city.s_lwr_min);
+      sum_lwr2.push(city.s_lwr_max);
     }
-
     if($(".polluted").attr("checked")) {
-      sum_city.push(city_p);
+      sum_c.push(pollution);
+      sum_b.push(r_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.a_upr_min);
+      sum_upr2.push(city.a_upr_max);
+      sum_lwr1.push(city.a_lwr_min);
+      sum_lwr2.push(city.a_lwr_max);
     }
-    var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
+    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
-
+    var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
-    var p = upr2-(((y * 100) + x))/5;
-    var pred = ((y * city) + x)*10;
-
-    var upr = Math.round(pred+(p*3));
-    var lwr = Math.round(pred-(p*3));
-    if(isNaN(upr))  upr  = 0;
-    if(isNaN(lwr))  lwr  = 0;
-    if(isNaN(pred)) pred = 0;
-    $(".css_seattle-upr").text(upr);
-    $(".css_seattle-mdl").text(Math.round(pred));
-    $(".css_seattle-lwr").text(lwr);
-    $(".vp-seattle").css("height",(100-((lwr+(100-upr))))*1.2+"px");
-
+    var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
+    var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
+    if(isNaN(city)) city = 0;
+    if(isNaN(x)) x = 0;
+    if(isNaN(y)) y = 0;
+    if(isNaN(upr1)) upr1 = 0;
+    if(isNaN(upr2)) upr2 = 0;
+    if(isNaN(lwr1)) lwr1 = 0;
+    if(isNaN(lwr2)) lwr2 = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var r_upr2 = (((upr2 - upr )/5) * 20);
+    var r_upr1 = (((upr1 - lwr )/5) * 20);
+    var r_lwr2 = (((upr  - lwr2)/5) * 20);
+    var r_lwr1 = (((lwr  - lwr1)/5) * 20);
+    var p = (upr2-(((y * 100) + x))/5)*1.2;
+    var dots = (((y * city) + x)*20);
+    var text = Math.round(((dots/20)*10));
+    var qol  = Math.round(city);
+    if(isNaN(text)) text = 0;
+    if(isNaN(qol))   qol = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var top = (((upr2 - upr1)/100) * (qol)) + upr1;
+    var bot = (((lwr2 - lwr1)/100) * (qol)) + lwr1;
+    var top_p = ((top-(dots/20))*20)/5;
+    var bot_p = (((dots/20)-bot)*20)/5;
+    var top_round = Math.round(top*10);
+    var bot_round = Math.round(bot*10);
+    $(".css_seattle-upr").text(top_round);
+    $(".css_seattle-mdl").text(Math.round(dots/2));
+    $(".css_seattle-lwr").text(bot_round);
+    $(".vp-seattle").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(city  > 33) {
       $(city_css).css("background-image","url('/faces/23.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(city  > 66) {
       $(city_css).css("background-image","url('/faces/13.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-
     return city;
   },
   angeles() {
     var sum_city = [];
     var city_css = ".angeles_css";
     var city = Cities.findOne({city:"angeles"});
+    var sum_c = [];
+    var sum_b = [];
     var sum_x = [];
     var sum_y = [];
+    var sum_upr1 = [];
     var sum_upr2 = [];
-    var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
-    var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
-    var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
-    var city_p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
-
+    var sum_lwr1 = [];
+    var sum_lwr2 = [];
+    var r_w = Session.get("strength-h")/100;
+    var r_t = Session.get("strength-t")/100;
+    var r_s = Session.get("strength-s")/100;
+    var r_p = Session.get("strength-p")/100;
+    var weather   = ((city.w1 + city.w2)/2) * r_w;
+    var traffic   = ((city.t1 + city.t2)/2) * r_t;
+    var safety    = ((city.s1 + city.s2)/2) * r_s;
+    var pollution = ((city.a1 + city.a2)/2) * r_p;
+    if($('paper-checkbox[checked]').length == 1) {
+      if($(".health").attr("checked")) {
+        var mean = ((city.w1 + city.w2)/2);
+        weather = city.w2 - ((city.w2-city.w1)*(r_w));
+        if(mean > 50) weather  = city.w1 - ((city.w1-city.w2)*(r_w));
+      }
+      if($(".traffic").attr("checked")) {
+        var mean = ((city.t1 + city.t2)/2);
+        traffic = city.t2 - ((city.t2-city.t1)*(r_t));
+        if(mean > 50) traffic = city.t1 - ((city.t1-city.t2)*(r_t));
+      }
+      if($(".safety").attr("checked")) {
+        var mean = ((city.s1 + city.s2)/2);
+        safety = city.s2 - ((city.s2-city.s1)*(r_s));
+        if(mean > 50) safety = city.s1 - ((city.s1-city.s2)*(r_s));
+      }
+      if($(".polluted").attr("checked")) {
+        var mean = ((city.a1 + city.a2)/2);
+        pollution = city.a2 - ((city.a2-city.a1)*(r_p));
+        if(mean > 50) pollution = city.a1 - ((city.a1-city.a2)*(r_p));
+      }
+    }
     if($(".health").attr("checked")) {
-      sum_city.push(city_h);
+      sum_c.push(weather);
+      sum_b.push(r_w);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr1.push(city.w_upr_min);
       sum_upr2.push(city.w_upr_max);
+      sum_lwr1.push(city.w_lwr_min);
+      sum_lwr2.push(city.w_lwr_max);
     }
-
     if($(".traffic").attr("checked")) {
-      sum_city.push(city_t);
+      sum_c.push(traffic);
+      sum_b.push(r_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.t_upr_min);
+      sum_upr2.push(city.t_upr_max);
+      sum_lwr1.push(city.t_lwr_min);
+      sum_lwr2.push(city.t_lwr_max);
     }
-
     if($(".safety").attr("checked")) {
-      sum_city.push(city_s);
+      sum_c.push(safety);
+      sum_b.push(r_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.s_upr_min);
+      sum_upr2.push(city.s_upr_max);
+      sum_lwr1.push(city.s_lwr_min);
+      sum_lwr2.push(city.s_lwr_max);
     }
-
     if($(".polluted").attr("checked")) {
-      sum_city.push(city_p);
+      sum_c.push(pollution);
+      sum_b.push(r_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.a_upr_min);
+      sum_upr2.push(city.a_upr_max);
+      sum_lwr1.push(city.a_lwr_min);
+      sum_lwr2.push(city.a_lwr_max);
     }
-    var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
+    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
-
+    var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
-    var p = upr2-(((y * 100) + x))/5;
-    var pred = ((y * city) + x)*10;
-    var upr = Math.round(pred+(p*3));
-    var lwr = Math.round(pred-(p*3));
-    if(isNaN(upr))  upr  = 0;
-    if(isNaN(lwr))  lwr  = 0;
-    if(isNaN(pred)) pred = 0;
-    $(".css_angeles-upr").text(upr);
-    $(".css_angeles-mdl").text(Math.round(pred));
-    $(".css_angeles-lwr").text(lwr);
-    $(".vp-angeles").css("height",(100-((lwr+(100-upr))))*1.2+"px");
-
+    var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
+    var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
+    if(isNaN(city)) city = 0;
+    if(isNaN(x)) x = 0;
+    if(isNaN(y)) y = 0;
+    if(isNaN(upr1)) upr1 = 0;
+    if(isNaN(upr2)) upr2 = 0;
+    if(isNaN(lwr1)) lwr1 = 0;
+    if(isNaN(lwr2)) lwr2 = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var r_upr2 = (((upr2 - upr )/5) * 20);
+    var r_upr1 = (((upr1 - lwr )/5) * 20);
+    var r_lwr2 = (((upr  - lwr2)/5) * 20);
+    var r_lwr1 = (((lwr  - lwr1)/5) * 20);
+    var p = (upr2-(((y * 100) + x))/5)*1.2;
+    var dots = (((y * city) + x)*20);
+    var text = Math.round(((dots/20)*10));
+    var qol  = Math.round(city);
+    if(isNaN(text)) text = 0;
+    if(isNaN(qol))   qol = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var top = (((upr2 - upr1)/100) * (qol)) + upr1;
+    var bot = (((lwr2 - lwr1)/100) * (qol)) + lwr1;
+    var top_p = ((top-(dots/20))*20)/5;
+    var bot_p = (((dots/20)-bot)*20)/5;
+    var top_round = Math.round(top*10);
+    var bot_round = Math.round(bot*10);
+    $(".css_angeles-upr").text(top_round);
+    $(".css_angeles-mdl").text(Math.round(dots/2));
+    $(".css_angeles-lwr").text(bot_round);
+    $(".vp-angeles").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(city  > 33) {
       $(city_css).css("background-image","url('/faces/23.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(city  > 66) {
       $(city_css).css("background-image","url('/faces/13.png')");
-      if(pred>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(pred>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-
     return city;
   },
   houston() {
     var sum_city = [];
     var city_css = ".houston_css";
     var city = Cities.findOne({city:"houston"});
+    var sum_c = [];
+    var sum_b = [];
     var sum_x = [];
     var sum_y = [];
+    var sum_upr1 = [];
     var sum_upr2 = [];
-    var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
-    var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
-    var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
-    var city_p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
-
+    var sum_lwr1 = [];
+    var sum_lwr2 = [];
+    var r_w = Session.get("strength-h")/100;
+    var r_t = Session.get("strength-t")/100;
+    var r_s = Session.get("strength-s")/100;
+    var r_p = Session.get("strength-p")/100;
+    var weather   = ((city.w1 + city.w2)/2) * r_w;
+    var traffic   = ((city.t1 + city.t2)/2) * r_t;
+    var safety    = ((city.s1 + city.s2)/2) * r_s;
+    var pollution = ((city.a1 + city.a2)/2) * r_p;
+    if($('paper-checkbox[checked]').length == 1) {
+      if($(".health").attr("checked")) {
+        var mean = ((city.w1 + city.w2)/2);
+        weather = city.w2 - ((city.w2-city.w1)*(r_w));
+        if(mean > 50) weather  = city.w1 - ((city.w1-city.w2)*(r_w));
+      }
+      if($(".traffic").attr("checked")) {
+        var mean = ((city.t1 + city.t2)/2);
+        traffic = city.t2 - ((city.t2-city.t1)*(r_t));
+        if(mean > 50) traffic = city.t1 - ((city.t1-city.t2)*(r_t));
+      }
+      if($(".safety").attr("checked")) {
+        var mean = ((city.s1 + city.s2)/2);
+        safety = city.s2 - ((city.s2-city.s1)*(r_s));
+        if(mean > 50) safety = city.s1 - ((city.s1-city.s2)*(r_s));
+      }
+      if($(".polluted").attr("checked")) {
+        var mean = ((city.a1 + city.a2)/2);
+        pollution = city.a2 - ((city.a2-city.a1)*(r_p));
+        if(mean > 50) pollution = city.a1 - ((city.a1-city.a2)*(r_p));
+      }
+    }
     if($(".health").attr("checked")) {
-      sum_city.push(city_h);
+      sum_c.push(weather);
+      sum_b.push(r_w);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr1.push(city.w_upr_min);
       sum_upr2.push(city.w_upr_max);
+      sum_lwr1.push(city.w_lwr_min);
+      sum_lwr2.push(city.w_lwr_max);
     }
-
     if($(".traffic").attr("checked")) {
-      sum_city.push(city_t);
+      sum_c.push(traffic);
+      sum_b.push(r_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.t_upr_min);
+      sum_upr2.push(city.t_upr_max);
+      sum_lwr1.push(city.t_lwr_min);
+      sum_lwr2.push(city.t_lwr_max);
     }
-
     if($(".safety").attr("checked")) {
-      sum_city.push(city_s);
+      sum_c.push(safety);
+      sum_b.push(r_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.s_upr_min);
+      sum_upr2.push(city.s_upr_max);
+      sum_lwr1.push(city.s_lwr_min);
+      sum_lwr2.push(city.s_lwr_max);
     }
-
     if($(".polluted").attr("checked")) {
-      sum_city.push(city_p);
+      sum_c.push(pollution);
+      sum_b.push(r_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.a_upr_min);
+      sum_upr2.push(city.a_upr_max);
+      sum_lwr1.push(city.a_lwr_min);
+      sum_lwr2.push(city.a_lwr_max);
     }
-    var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
+    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
-
+    var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
-    var p = upr2-(((y * 100) + x))/5;
-    var pred = ((y * city) + x)*10;
-
-    var upr = Math.round(pred+(p*3));
-    var lwr = Math.round(pred-(p*3));
-    if(isNaN(upr))  upr  = 0;
-    if(isNaN(lwr))  lwr  = 0;
-    if(isNaN(pred)) pred = 0;
-    $(".css_houston-upr").text(upr);
-    $(".css_houston-mdl").text(Math.round(pred));
-    $(".css_houston-lwr").text(lwr);
-    $(".vp-houston").css("height",(100-((lwr+(100-upr))))*1.2+"px");
-
-    if(pred  >  0) {
+    var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
+    var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
+    if(isNaN(city)) city = 0;
+    if(isNaN(x)) x = 0;
+    if(isNaN(y)) y = 0;
+    if(isNaN(upr1)) upr1 = 0;
+    if(isNaN(upr2)) upr2 = 0;
+    if(isNaN(lwr1)) lwr1 = 0;
+    if(isNaN(lwr2)) lwr2 = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var r_upr2 = (((upr2 - upr )/5) * 20);
+    var r_upr1 = (((upr1 - lwr )/5) * 20);
+    var r_lwr2 = (((upr  - lwr2)/5) * 20);
+    var r_lwr1 = (((lwr  - lwr1)/5) * 20);
+    var p = (upr2-(((y * 100) + x))/5)*1.2;
+    var dots = (((y * city) + x)*20);
+    var text = Math.round(((dots/20)*10));
+    var qol  = Math.round(city);
+    if(isNaN(text)) text = 0;
+    if(isNaN(qol))   qol = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var top = (((upr2 - upr1)/100) * (qol)) + upr1;
+    var bot = (((lwr2 - lwr1)/100) * (qol)) + lwr1;
+    var top_p = ((top-(dots/20))*20)/5;
+    var bot_p = (((dots/20)-bot)*20)/5;
+    var top_round = Math.round(top*10);
+    var bot_round = Math.round(bot*10);
+    $(".css_houston-upr").text(top_round);
+    $(".css_houston-mdl").text(Math.round(dots/2));
+    $(".css_houston-lwr").text(bot_round);
+    $(".vp-houston").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
+    if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(pred  > 33) {
+    if(city  > 33) {
       $(city_css).css("background-image","url('/faces/23.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(pred  > 66) {
+    if(city  > 66) {
       $(city_css).css("background-image","url('/faces/13.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-
     return city;
   },
   newyork() {
     var sum_city = [];
     var city_css = ".newyork_css";
     var city = Cities.findOne({city:"newyork"});
+    var sum_c = [];
+    var sum_b = [];
     var sum_x = [];
     var sum_y = [];
+    var sum_upr1 = [];
     var sum_upr2 = [];
-    var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
-    var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
-    var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
-    var city_p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
-
+    var sum_lwr1 = [];
+    var sum_lwr2 = [];
+    var r_w = Session.get("strength-h")/100;
+    var r_t = Session.get("strength-t")/100;
+    var r_s = Session.get("strength-s")/100;
+    var r_p = Session.get("strength-p")/100;
+    var weather   = ((city.w1 + city.w2)/2) * r_w;
+    var traffic   = ((city.t1 + city.t2)/2) * r_t;
+    var safety    = ((city.s1 + city.s2)/2) * r_s;
+    var pollution = ((city.a1 + city.a2)/2) * r_p;
+    if($('paper-checkbox[checked]').length == 1) {
+      if($(".health").attr("checked")) {
+        var mean = ((city.w1 + city.w2)/2);
+        weather = city.w2 - ((city.w2-city.w1)*(r_w));
+        if(mean > 50) weather  = city.w1 - ((city.w1-city.w2)*(r_w));
+      }
+      if($(".traffic").attr("checked")) {
+        var mean = ((city.t1 + city.t2)/2);
+        traffic = city.t2 - ((city.t2-city.t1)*(r_t));
+        if(mean > 50) traffic = city.t1 - ((city.t1-city.t2)*(r_t));
+      }
+      if($(".safety").attr("checked")) {
+        var mean = ((city.s1 + city.s2)/2);
+        safety = city.s2 - ((city.s2-city.s1)*(r_s));
+        if(mean > 50) safety = city.s1 - ((city.s1-city.s2)*(r_s));
+      }
+      if($(".polluted").attr("checked")) {
+        var mean = ((city.a1 + city.a2)/2);
+        pollution = city.a2 - ((city.a2-city.a1)*(r_p));
+        if(mean > 50) pollution = city.a1 - ((city.a1-city.a2)*(r_p));
+      }
+    }
     if($(".health").attr("checked")) {
-      sum_city.push(city_h);
+      sum_c.push(weather);
+      sum_b.push(r_w);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr1.push(city.w_upr_min);
       sum_upr2.push(city.w_upr_max);
+      sum_lwr1.push(city.w_lwr_min);
+      sum_lwr2.push(city.w_lwr_max);
     }
-
     if($(".traffic").attr("checked")) {
-      sum_city.push(city_t);
+      sum_c.push(traffic);
+      sum_b.push(r_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.t_upr_min);
+      sum_upr2.push(city.t_upr_max);
+      sum_lwr1.push(city.t_lwr_min);
+      sum_lwr2.push(city.t_lwr_max);
     }
-
     if($(".safety").attr("checked")) {
-      sum_city.push(city_s);
+      sum_c.push(safety);
+      sum_b.push(r_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.s_upr_min);
+      sum_upr2.push(city.s_upr_max);
+      sum_lwr1.push(city.s_lwr_min);
+      sum_lwr2.push(city.s_lwr_max);
     }
-
     if($(".polluted").attr("checked")) {
-      sum_city.push(city_p);
+      sum_c.push(pollution);
+      sum_b.push(r_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.a_upr_min);
+      sum_upr2.push(city.a_upr_max);
+      sum_lwr1.push(city.a_lwr_min);
+      sum_lwr2.push(city.a_lwr_max);
     }
-    var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
+    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
-
+    var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
-    var p = upr2-(((y * 100) + x))/5;
-    var pred = ((y * city) + x)*10;
-
-    var upr = Math.round(pred+(p*3));
-    var lwr = Math.round(pred-(p*3));
-    if(isNaN(upr))  upr  = 0;
-    if(isNaN(lwr))  lwr  = 0;
-    if(isNaN(pred)) pred = 0;
-    $(".css_newyork-upr").text(upr);
-    $(".css_newyork-mdl").text(Math.round(pred));
-    $(".css_newyork-lwr").text(lwr);
-    $(".vp-newyork").css("height",(100-((lwr+(100-upr))))*1.2+"px");
-
-    if(pred  >  0) {
+    var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
+    var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
+    if(isNaN(city)) city = 0;
+    if(isNaN(x)) x = 0;
+    if(isNaN(y)) y = 0;
+    if(isNaN(upr1)) upr1 = 0;
+    if(isNaN(upr2)) upr2 = 0;
+    if(isNaN(lwr1)) lwr1 = 0;
+    if(isNaN(lwr2)) lwr2 = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var r_upr2 = (((upr2 - upr )/5) * 20);
+    var r_upr1 = (((upr1 - lwr )/5) * 20);
+    var r_lwr2 = (((upr  - lwr2)/5) * 20);
+    var r_lwr1 = (((lwr  - lwr1)/5) * 20);
+    var p = (upr2-(((y * 100) + x))/5)*1.2;
+    var dots = (((y * city) + x)*20);
+    var text = Math.round(((dots/20)*10));
+    var qol  = Math.round(city);
+    if(isNaN(text)) text = 0;
+    if(isNaN(qol))   qol = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var top = (((upr2 - upr1)/100) * (qol)) + upr1;
+    var bot = (((lwr2 - lwr1)/100) * (qol)) + lwr1;
+    var top_p = ((top-(dots/20))*20)/5;
+    var bot_p = (((dots/20)-bot)*20)/5;
+    var top_round = Math.round(top*10);
+    var bot_round = Math.round(bot*10);
+    $(".css_newyork-upr").text(top_round);
+    $(".css_newyork-mdl").text(Math.round(dots/2));
+    $(".css_newyork-lwr").text(bot_round);
+    $(".vp-newyork").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
+    if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(pred  > 33) {
+    if(city  > 33) {
       $(city_css).css("background-image","url('/faces/23.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(pred  > 66) {
+    if(city  > 66) {
       $(city_css).css("background-image","url('/faces/13.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-
     return city;
   },
   denver() {
     var sum_city = [];
     var city_css = ".denver_css";
     var city = Cities.findOne({city:"denver"});
+    var sum_c = [];
+    var sum_b = [];
     var sum_x = [];
     var sum_y = [];
+    var sum_upr1 = [];
     var sum_upr2 = [];
-    var city_h = city.w2 - ((city.w2-city.w1)*(Session.get("strength-h")/100));
-    var city_t = city.t2 - ((city.t2-city.t1)*(Session.get("strength-t")/100));
-    var city_s = city.s2 - ((city.s2-city.s1)*(Session.get("strength-s")/100));
-    var city_p = city.a2 - ((city.a2-city.a1)*(Session.get("strength-p")/100));
-
+    var sum_lwr1 = [];
+    var sum_lwr2 = [];
+    var r_w = Session.get("strength-h")/100;
+    var r_t = Session.get("strength-t")/100;
+    var r_s = Session.get("strength-s")/100;
+    var r_p = Session.get("strength-p")/100;
+    var weather   = ((city.w1 + city.w2)/2) * r_w;
+    var traffic   = ((city.t1 + city.t2)/2) * r_t;
+    var safety    = ((city.s1 + city.s2)/2) * r_s;
+    var pollution = ((city.a1 + city.a2)/2) * r_p;
+    if($('paper-checkbox[checked]').length == 1) {
+      if($(".health").attr("checked")) {
+        var mean = ((city.w1 + city.w2)/2);
+        weather = city.w2 - ((city.w2-city.w1)*(r_w));
+        if(mean > 50) weather  = city.w1 - ((city.w1-city.w2)*(r_w));
+      }
+      if($(".traffic").attr("checked")) {
+        var mean = ((city.t1 + city.t2)/2);
+        traffic = city.t2 - ((city.t2-city.t1)*(r_t));
+        if(mean > 50) traffic = city.t1 - ((city.t1-city.t2)*(r_t));
+      }
+      if($(".safety").attr("checked")) {
+        var mean = ((city.s1 + city.s2)/2);
+        safety = city.s2 - ((city.s2-city.s1)*(r_s));
+        if(mean > 50) safety = city.s1 - ((city.s1-city.s2)*(r_s));
+      }
+      if($(".polluted").attr("checked")) {
+        var mean = ((city.a1 + city.a2)/2);
+        pollution = city.a2 - ((city.a2-city.a1)*(r_p));
+        if(mean > 50) pollution = city.a1 - ((city.a1-city.a2)*(r_p));
+      }
+    }
     if($(".health").attr("checked")) {
-      sum_city.push(city_h);
+      sum_c.push(weather);
+      sum_b.push(r_w);
       sum_x.push(city.w_m1);
       sum_y.push(city.w_m2);
+      sum_upr1.push(city.w_upr_min);
       sum_upr2.push(city.w_upr_max);
+      sum_lwr1.push(city.w_lwr_min);
+      sum_lwr2.push(city.w_lwr_max);
     }
-
     if($(".traffic").attr("checked")) {
-      sum_city.push(city_t);
+      sum_c.push(traffic);
+      sum_b.push(r_t);
       sum_x.push(city.t_m1);
       sum_y.push(city.t_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.t_upr_min);
+      sum_upr2.push(city.t_upr_max);
+      sum_lwr1.push(city.t_lwr_min);
+      sum_lwr2.push(city.t_lwr_max);
     }
-
     if($(".safety").attr("checked")) {
-      sum_city.push(city_s);
+      sum_c.push(safety);
+      sum_b.push(r_s);
       sum_x.push(city.s_m1);
       sum_y.push(city.s_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.s_upr_min);
+      sum_upr2.push(city.s_upr_max);
+      sum_lwr1.push(city.s_lwr_min);
+      sum_lwr2.push(city.s_lwr_max);
     }
-
     if($(".polluted").attr("checked")) {
-      sum_city.push(city_p);
+      sum_c.push(pollution);
+      sum_b.push(r_p);
       sum_x.push(city.a_m1);
       sum_y.push(city.a_m2);
-      sum_upr2.push(city.w_upr_max);
+      sum_upr1.push(city.a_upr_min);
+      sum_upr2.push(city.a_upr_max);
+      sum_lwr1.push(city.a_lwr_min);
+      sum_lwr2.push(city.a_lwr_max);
     }
-    var city = sum_city.reduce((a,b)=>a+b,0)/sum_city.length;
+    var city = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
+    if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
-
+    var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min
     var upr2 = sum_upr2.reduce((a,b)=>a+b,0)/sum_upr2.length; //max
-    var p = upr2-(((y * 100) + x))/5;
-    var pred = ((y * city) + x)*10;
-
-    var upr = Math.round(pred+(p*3));
-    var lwr = Math.round(pred-(p*3));
-    if(isNaN(upr))  upr  = 0;
-    if(isNaN(lwr))  lwr  = 0;
-    if(isNaN(pred)) pred = 0;
-    $(".css_denver-upr").text(upr);
-    $(".css_denver-mdl").text(Math.round(pred));
-    $(".css_denver-lwr").text(lwr);
-    $(".vp-denver").css("height",(100-((lwr+(100-upr))))*1.2+"px");
-
-    if(pred  >  0) {
+    var lwr1 = sum_lwr1.reduce((a,b)=>a+b,0)/sum_lwr1.length; //min
+    var lwr2 = sum_lwr2.reduce((a,b)=>a+b,0)/sum_lwr2.length; //max
+    if(isNaN(city)) city = 0;
+    if(isNaN(x)) x = 0;
+    if(isNaN(y)) y = 0;
+    if(isNaN(upr1)) upr1 = 0;
+    if(isNaN(upr2)) upr2 = 0;
+    if(isNaN(lwr1)) lwr1 = 0;
+    if(isNaN(lwr2)) lwr2 = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var r_upr2 = (((upr2 - upr )/5) * 20);
+    var r_upr1 = (((upr1 - lwr )/5) * 20);
+    var r_lwr2 = (((upr  - lwr2)/5) * 20);
+    var r_lwr1 = (((lwr  - lwr1)/5) * 20);
+    var p = (upr2-(((y * 100) + x))/5)*1.2;
+    var dots = (((y * city) + x)*20);
+    var text = Math.round(((dots/20)*10));
+    var qol  = Math.round(city);
+    if(isNaN(text)) text = 0;
+    if(isNaN(qol))   qol = 0;
+    var upr = (y*100)+x;
+    var lwr = x;
+    var top = (((upr2 - upr1)/100) * (qol)) + upr1;
+    var bot = (((lwr2 - lwr1)/100) * (qol)) + lwr1;
+    var top_p = ((top-(dots/20))*20)/5;
+    var bot_p = (((dots/20)-bot)*20)/5;
+    var top_round = Math.round(top*10);
+    var bot_round = Math.round(bot*10);
+    $(".css_denver-upr").text(top_round);
+    $(".css_denver-mdl").text(Math.round(dots/2));
+    $(".css_denver-lwr").text(bot_round);
+    $(".vp-denver").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
+    if(city  >  0) {
       $(city_css).css("background-image","url('/faces/33.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/32.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/31.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/32.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(pred  > 33) {
+    if(city  > 33) {
       $(city_css).css("background-image","url('/faces/23.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/22.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/21.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/22.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(pred  > 66) {
+    if(city  > 66) {
       $(city_css).css("background-image","url('/faces/13.png')");
-      if(city>33)  $(city_css).css("background-image","url('/faces/12.png')");
-      if(city>66)  $(city_css).css("background-image","url('/faces/11.png')");
+      if(dots>33)  $(city_css).css("background-image","url('/faces/12.png')");
+      if(dots>66)  $(city_css).css("background-image","url('/faces/11.png')");
     }
-
     return city;
   }
 

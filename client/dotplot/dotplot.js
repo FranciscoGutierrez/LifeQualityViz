@@ -143,7 +143,7 @@ Template.dotplot.helpers({
     var bot = (((lwr2 - lwr1)/100) * (qol)) + lwr1;
     var top_p = ((top-(dots/20))*20)/5;
     var bot_p = (((dots/20)-bot)*20)/5;
-    console.log("city: " + city.city + " t: " + top + " b: " + bot + " d:" + dots/20);
+    //console.log("city: " + city.city + " t: " + top + " b: " + bot + " d:" + dots/20);
     return {
       a1: (dots-(bot_p*5))-px,
       a2: (dots-(bot_p*4))-px,
