@@ -103,6 +103,7 @@ Template.lifequality.helpers({
 
     var c = (sum_c.reduce((a,b)=>a+b,0))/(sum_b.reduce((a,b)=>a+b,0));
     if($('paper-checkbox[checked]').length == 1) c = (sum_c.reduce((a,b)=>a+b,0));
+
     var x = sum_x.reduce((a,b)=>a+b,0)/sum_x.length;
     var y = sum_y.reduce((a,b)=>a+b,0)/sum_y.length;
     var upr1 = sum_upr1.reduce((a,b)=>a+b,0)/sum_upr1.length; //min

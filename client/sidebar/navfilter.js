@@ -80,7 +80,7 @@ Template.navfilter.rendered = function () {
 
 
   health.noUiSlider({
-    start: 80,
+    start: 100,
     connect: "lower",
     range: { 'min': 0, 'max': 100 }
   }).on('slide', function (ev, val) {
@@ -88,7 +88,7 @@ Template.navfilter.rendered = function () {
   });
 
   safety.noUiSlider({
-    start: 80,
+    start: 100,
     connect: "lower",
     range: { 'min': 0, 'max': 100 }
   }).on('slide', function (ev, val) {
@@ -96,7 +96,7 @@ Template.navfilter.rendered = function () {
   });
 
   polution.noUiSlider({
-    start: 80,
+    start: 100,
     connect: "lower",
     range: { 'min': 0, 'max': 100 }
   }).on('slide', function (ev, val) {
@@ -104,7 +104,7 @@ Template.navfilter.rendered = function () {
   });
 
   traffic.noUiSlider({
-    start: 80,
+    start: 100,
     connect: "lower",
     range: { 'min': 0, 'max': 100 }
   }).on('slide', function (ev, val) {

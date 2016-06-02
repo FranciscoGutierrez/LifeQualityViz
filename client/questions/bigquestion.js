@@ -26,7 +26,7 @@ Template.bigquestion.helpers({
       val2 = Session.get("answr2");
       if(val1<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible"); }
       if(val2>95){ $(".slider-hound").css("visibility","hidden"); } else { $(".slider-hound").css("visibility","visible"); }
-      return {a: val1, b: val2, x: val1-3, y: val2-3};
+      return {a: Math.round(val1), b: Math.round(val2), x: val1-3, y: val2-3};
   }
 });
 
@@ -55,6 +55,8 @@ Template.bigquestion.events({
 Template.bigquestion.rendered = function () {
   this.$("#question-slider").noUiSlider({
     start: [20,80],
+    animate: true,
+    step: 1,
     tooltips: true,
     connect:  true,
     range: {'min': 0, 'max': 100}

@@ -14,10 +14,10 @@ Router.route('/:_id', {
       $(".loading-screen").fadeOut(function(){
         $(this).remove();
 
-        Session.setDefault("strength-t",80);
-        Session.setDefault("strength-p",80);
-        Session.setDefault("strength-s",80);
-        Session.setDefault("strength-h",80);
+        Session.setDefault("strength-t",100);
+        Session.setDefault("strength-p",100);
+        Session.setDefault("strength-s",100);
+        Session.setDefault("strength-h",100);
         Session.setDefault("option",option);
         Session.setDefault("qnumber",1);
         Session.setDefault("answr1",20);
