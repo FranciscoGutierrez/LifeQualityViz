@@ -128,7 +128,7 @@ Template.dotplot.helpers({
     var r_lwr1 = (((lwr  - lwr1)/5) * 20);
 
     var p = (upr2-(((y * 100) + x))/5)*1.2;
-    var px = 6; //dot width...
+    var px = 7; //dot width...
     var dots = (((y * c) + x)*20);
     var text = Math.round(((dots/20)*10));
     var qol  = Math.round(c);
