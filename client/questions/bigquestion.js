@@ -31,17 +31,12 @@ Template.bigquestion.helpers({
 });
 
 Template.bigquestion.events({
-  "click .big-hide"  (event, instance) {
-    $(".big-question-container").fadeOut();
-  },
-  "click .big-send"  (event, instance) {
+  "click .big-next"  (event, instance) {
     var current = Session.get("qnumber");
-    Session.set("qnumber",current+1);
-    if (current == 5) $(".big-send").fadeOut(function(){$(".big-finish").fadeIn();});
-    $(".big-question-container").fadeOut(function(){
-      $(".big-question-container").delay(100).fadeIn();
+    $(".question-"+current).fadeOut(function(){
+        Session.set("qnumber",current+1);
+        $(".question-"+current+1).fadeIn();
     });
-
   },
   "click .big-finish" (event, instance) {
     $(".inner-question-container").fadeOut(function(){
@@ -52,16 +47,16 @@ Template.bigquestion.events({
 
 
 
-Template.bigquestion.rendered = function () {
-  this.$("#question-slider").noUiSlider({
-    start: [20,80],
-    animate: true,
-    step: 1,
-    tooltips: true,
-    connect:  true,
-    range: {'min': 0, 'max': 100}
-  }).on('slide', function (ev, val) {
-    Session.set("answr1",val[0]);
-    Session.set("answr2",val[1]);
-  });
-};
+// Template.bigquestion.rendered = function () {
+//   this.$("#question-slider").noUiSlider({
+//     start: [20,80],
+//     animate: true,
+//     step: 1,
+//     tooltips: true,
+//     connect:  true,
+//     range: {'min': 0, 'max': 100}
+//   }).on('slide', function (ev, val) {
+//     Session.set("answr1",val[0]);
+//     Session.set("answr2",val[1]);
+//   });
+// };

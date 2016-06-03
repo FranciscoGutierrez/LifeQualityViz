@@ -2,23 +2,48 @@
   background: rgba(255,255,255,1);
   display: flex;
   justify-content: flex-start;
+  align-self: center;
   flex-direction: column;
-  align-self: flex-start;
-  margin-left: 40px;
-  width: 500px;
-  min-height: 200px;
+  width: 600px;
+  cursor: default;
 }
 
-.big-question {
-  font-size: 24px;
+/*** Question Colors start **/
+.question-nav {
+  font-size: 18px;
   font-weight: 100;
+  color: #424242;
+  border-bottom: 1px solid #ecf0f1;
 }
-
-.big-question-title {
-  font-size: 13px;
+.question-intro {
+  font-size: 14px;
   font-weight: 500;
   align-self: flex-start;
   margin: 10px 0px;
+  color: #424242;
+}
+
+.question-body {
+  font-weight: 100;
+  font-size: 18px;
+  color: #9E9E9E;
+}
+
+.question-body b {
+  font-weight: 300;
+  color: #424242;
+}
+/*** Question Colors end **/
+
+.question-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.question-answers {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px 0;
 }
 
 .big-question-title span {
