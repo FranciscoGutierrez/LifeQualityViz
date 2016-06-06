@@ -60,8 +60,8 @@ Template.bigquestion.events({
 
 
     Session.set("sentencea",$(".sentence-a-"+current+" option:selected").text());
-    Session.set("sentenceb",$(".sentence-a-"+current+" option:selected").text());
-    Session.set("sentencec",$(".sentence-a-"+current+" option:selected").text());
+    Session.set("sentenceb",$(".sentence-b-"+current+" option:selected").text());
+    Session.set("sentencec",$(".sentence-c-"+current+" option:selected").text());
 
     $(".question-"+current).fadeOut(function(){
       $(".feedback-difficulty").fadeIn();
@@ -134,7 +134,7 @@ Template.bigquestion.events({
         slider2: slider2,
         senta: sa,
         sentb: sb,
-        setc:  sc
+        sentc: sc
       });
       $(".question-container").fadeOut(function(){
         $(".big-thanks").fadeIn();
@@ -219,7 +219,7 @@ Template.bigquestion.events({
         slider2: slider2,
         senta: sa,
         sentb: sb,
-        setc:  sc
+        sentc: sc
       });
 
       Session.set("qstart",Date.now());
