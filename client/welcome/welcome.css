@@ -19,14 +19,32 @@ paper-button {
   flex-direction: column;
 }
 
-.skip-tutorial {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  border: none;
-  margin: 0;
+.welcome-content h1 {
+  padding: 0px;
 }
 
-.welcome-description paper-button {
-  display: none;
+.skip-tutorial {
+  margin-top: 10px;
+  border: 1px solid #A1A1A1;
+  align-self: flex-end;
+}
+
+.welcome-description paper-input {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.welcome-description h1 {
+  padding: 0;
+  font-size: 21px;
+  font-weight: 300;
+  color: #424242;
+}
+
+.welcome-user {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  color: #A1A1A1;
 }

@@ -18,7 +18,7 @@ img {
 body {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   margin: 0;
   padding: 0;
   min-width: 800px;
@@ -42,7 +42,6 @@ body {
   max-width: 210px;
 }
 .content-mid {
-  height: 550px;
   min-width: 800px;
   display: flex;
   align-items: center;
@@ -276,7 +275,7 @@ h2 {
   align-items: flex-start;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 140px;
+  margin-bottom: 40px;
 }
 
 .content-mid-map {

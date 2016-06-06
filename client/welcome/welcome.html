@@ -1,9 +1,13 @@
 <template name="welcome">
   <div class="welcome-content">
-    <paper-button class="skip-tutorial">Skip</paper-button>
     <h1>Welcome to this evaluation!</h1>
 
-    <div class="welcome-description wd-0" style="margin: 30px;">
+    <div class="welcome-description wd-x" style="margin: 30px; display: flex; justify-content: flex-start; flex-direction: column; align-items: flex-start;">
+      <paper-input class="welcome-input" label="Hello, what's your name?"></paper-input>
+      <paper-button class="skip-tutorial" style="display: none;">Begin!</paper-button>
+    </div>
+
+    <div class="welcome-description wd-0" style="margin: 30px; display: none">
       <p>In this evaluation you will be asked to answer <b>some questions</b>
         about the <b>Happiness</b> and <b>Quality of Life</b> in some cities across the U.S.</p>
         <p>Please use the <b>sliders</b> to adjust the <b>Quality of Life preferences</b>.</p>

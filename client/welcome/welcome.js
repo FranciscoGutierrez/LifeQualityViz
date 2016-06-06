@@ -36,8 +36,17 @@ Template.welcome.events({
     });
   },
   "click .skip-tutorial" (event, instance) {
-    $(".welcome-screen").fadeOut(function(){
-      $(this).remove();
-    });
+    var value=$.trim($(".welcome-input").val());
+    if(value.length>0) {
+      Session.set("username",$(".welcome-input").val());
+      $(".welcome-screen").fadeOut(function(){
+        Session.set("qstart",Date.now());
+        $(this).remove();
+        Session.set("qnumber",1);
+      });
+    }
+  },
+  "keyup .welcome-input" (event, instance) {
+    $(".skip-tutorial").fadeIn();
   }
 });

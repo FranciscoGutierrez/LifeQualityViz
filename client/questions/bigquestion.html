@@ -1,20 +1,53 @@
 <template name="bigquestion">
   <div class="big-question-container">
+    <div class="welcome-user">Greetings, <span>{{username}}</span></div>
     <div class="question-nav">Question {{legend}}</div>
+
+    <div class="question-container feedback-difficulty" style="display: none;" >
+      <div class="question-body">
+        Please rate the <b>difficulty</b> of this question,
+      </div>
+      <div class="question-answers">
+        <label>Very Easy &nbsp;<input type="radio" name="difficulty" value="1" class="radio-button fd-1"></label>
+        <label><input type="radio" name="difficulty" value="2" class="radio-button fd-2"></label>
+        <label><input type="radio" name="difficulty" value="3" class="radio-button fd-3"></label>
+        <label><input type="radio" name="difficulty" value="4" class="radio-button fd-4"></label>
+        <label><input type="radio" name="difficulty" value="5" class="radio-button fd-5">&nbsp;Very Hard</label>
+      </div>
+      <div class="question-buttons">
+        <paper-button class="fd-next">Next</paper-button>
+      </div>
+    </div>
+
+    <div class="question-container feedback-preference"  style="display: none;">
+      <div class="question-body">
+        How <b>suitable</b> was this viz for solving the question?
+      </div>
+      <div class="question-answers">
+        <label>Very unsuitable &nbsp;<input type="radio" name="preference" value="1" class="radio-button fp-1"></label>
+        <label><input type="radio" name="preference" value="2" class="radio-button fp-2"></label>
+        <label><input type="radio" name="preference" value="3" class="radio-button fp-3"></label>
+        <label><input type="radio" name="preference" value="4" class="radio-button fp-4"></label>
+        <label><input type="radio" name="preference" value="5" class="radio-button fp-5">&nbsp;Very suitable</label>
+      </div>
+      <div class="question-buttons">
+        <paper-button class="fp-next">Next</paper-button>
+      </div>
+    </div>
 
     <div class="question-container question-1" style="display: block;">
       <div class="question-intro">
         Regarding the city of <b>New York</b>:
       </div>
       <div class="question-body">
-        If <b>weather</b> is very important to you,
-        what is the impact of <b>air quality</b> on the <b>quality of life</b>
-        when you set <b>air quality</b> to be <b>very important</b> too?
+        If <b>Weather</b> is very important to you,
+        what is the impact of <b>Air Quality</b> on the <b>Quality of Life</b>
+        when you set <b>Air Quality</b> to be <b>very important</b> too?
       </div>
       <div class="question-answers">
-        <paper-radio-button>Low(0-5)    </paper-radio-button>
-        <paper-radio-button>Medium(6-10)</paper-radio-button>
-        <paper-radio-button>High(>10)   </paper-radio-button>
+        <label><input type="radio" name="importance" value="low"    class="radio-button rb-low"   >Low(0-5)</label>
+        <label><input type="radio" name="importance" value="medium" class="radio-button rb-medium">Medium(6-10)</label>
+        <label><input type="radio" name="importance" value="high"   class="radio-button rb-high"  >High(>10)</label>
       </div>
       <div class="question-buttons">
         <paper-button class="big-next">Next</paper-button>
@@ -23,394 +56,694 @@
 
     <div class="question-container question-2" style="display: none;">
       <div class="question-body">
-        Which 2 factors (set as very important) have a medium quality
-        of life but high happiness across all cities?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
+        Which <b>2 factors</b> (when set as <b>very important</b>) have a <b>medium Quality
+          of Life</b> but <b>high Happiness</b> across all cities?
         </div>
-        <div class="dropdown dropdown-b">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
+        <div class="question-answers">
+          <select class="form-control control-a-2" style="width: 200px;">
+            <option>None</option>
+            <option>Traffic</option>
+            <option>Air Quality</option>
+            <option>Safety</option>
+            <option>Weather</option>
+          </select>
+          <select class="form-control control-b-2" style="width: 200px;">
+            <option>None</option>
+            <option>Traffic</option>
+            <option>Air Quality</option>
+            <option>Safety</option>
+            <option>Weather</option>
+          </select>
         </div>
-
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-
-    <div class="question-container question-3" style="display: none;">
-      <div class="question-body">
-        Which city has the highest impact of an increase of importance of
-        <b>weather</b> on the <b>quality of life</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-4" style="display: none;">
-      <div class="question-intro"></div>
-      <div class="question-body">
-        By combining which <b>3 factors</b> with which degree of importance
-        do you get the highest quality of life in <b>Los Angeles</b>?
-      </div>
-      <div class="question-answers"></div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-5" style="display: none;">
-      <div class="question-intro">
-        If <b>air quality</b> and <b>weather</b> are very important to you.
+      <div class="question-container question-3" style="display: none;">
+        <div class="question-body">
+          Which city has the <b>highest impact</b> of an increase of importance of
+          <b>Weather</b> on the <b>Quality of Life</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
       </div>
-      <div class="question-body">
-        In which city do you have to make the lowest compromise between
-        these two properties regarding the <b>quality of life</b>?
-        Why? Please provide a <b>short</b> justification.
-      </div>
-      <div class="question-answers"></div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-6" style="display: none;">
-      <div class="question-body">
-        <b>New York</b> and <b>Denver</b> are very similar regarding which 2 <b>factors</b>?
+      <div class="question-container question-4" style="display: none;">
+        <div class="question-intro"></div>
+        <div class="question-body">
+          By combining which <b>3 factors</b> with which degree of importance
+          do you get the <b>highest Quality of Life in Los Angeles</b>?
+        </div>
+        <div class="question-footer">(Adjust the sliders)</div>
+        <div class="question-answers">
+          {{#if factors.w}}
+          <div class="qopt">Weather:<span style="border-bottom: 2px solid #4daf4a;">{{factors.w}}</span></div>
+          {{/if}}
+          {{#if factors.s}}
+          <div class="qopt">Safety:<span style="border-bottom: 2px solid #fabe0f;">{{factors.s}}</span></div>
+          {{/if}}
+          {{#if factors.t}}
+          <div class="qopt">Traffic:<span style="border-bottom: 2px solid #b8382a;">{{factors.t}}</span></div>
+          {{/if}}
+          {{#if factors.a}}
+          <div class="qopt">Air Quality:<span style="border-bottom: 2px solid #377eb8;">{{factors.a}}</span></div>
+          {{/if}}
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
       </div>
-      <div class="question-answers"></div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-7" style="display: none;">
-      <div class="question-intro">
-        If <b>traffic</b> is very important to you,
-      </div>
-      <div class="question-body">
-        in which city are <b>happiness</b> and <b>quality of life</b>
-        not affected by increasing the importance of <b>safety</b>?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <div class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
+      <div class="question-container question-5" style="display: none;">
+        <div class="question-intro">
+          <b>Air Quality</b> and <b>Weather</b> are very important to you.
+        </div>
+        <div class="question-body">
+          In which city do you have to make the <b>lowest</b> compromise between
+          these <b>two properties</b> regarding the <b>Quality of Life</b>?
+          Why? Please provide a <b>short</b> justification.
+        </div>
+        <div class="question-answers">
+          <div style="display: flex; flex-direction: column;">
+            <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+            <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+            <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
           </div>
-          <ul class="dropdown-menu">
-            <li><a href="#">New York</a></li>
-            <li><a href="#">Los Ángeles</a></li>
-            <li><a href="#">Houston</a></li>
-            <li><a href="#">Denver</a></li>
-            <li><a href="#">Atlanta</a></li>
-            <li><a href="#">Seattle</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-8" style="display: none;">
-      <div class="question-intro">Sometimes opinions differ widely,</div>
-      <div class="question-body">
-        Find the city with the <b>highest variance</b> in <b>happiness</b> related to <b>safety</b>.
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <div class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
+          <div style="display: flex; flex-direction: column;">
+            <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+            <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+            <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
           </div>
-          <ul class="dropdown-menu">
-            <li><a href="#">New York</a></li>
-            <li><a href="#">Los Ángeles</a></li>
-            <li><a href="#">Houston</a></li>
-            <li><a href="#">Denver</a></li>
-            <li><a href="#">Atlanta</a></li>
-            <li><a href="#">Seattle</a></li>
-          </ul>
+          <textarea rows="4" cols="50"></textarea>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-9" style="display: none;">
-      <div class="question-body">
-        Which factor (high importance) has a very <b>high quality</b> of life and very <b>high happiness</b> in <b>all cities</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-6" style="display: none;">
+        <div class="question-body">
+          <b>New York</b> and <b>Denver</b> are very similar regarding which 2 <b>factors</b>?
+        </div>
+        <div class="question-answers">
+          <select class="form-control control-a-6" style="width: 200px;">
+            <option>Traffic</option>
+            <option>Air Quality</option>
+            <option>Safety</option>
+            <option>Weather</option>
+          </select>
+          <select class="form-control control-b-6" style="width: 200px;">
+            <option>Traffic</option>
+            <option>Air Quality</option>
+            <option>Safety</option>
+            <option>Weather</option>
+          </select>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-10" style="display: none;">
-      <div class="question-body">
-        What aspect has the highest <b>quality of life</b> across <b>all cities</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="factors-radio radio-air    ">Air Quality</paper-radio-button>
-          <paper-radio-button class="factors-radio radio-safety ">Safety     </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-traffic">Traffic    </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-weather">Weather    </paper-radio-button>
+      <div class="question-container question-7" style="display: none;">
+        <div class="question-intro">
+          If <b>Traffic</b> is very important to you,
+        </div>
+        <div class="question-body">
+          In which city are <b>Happiness</b> and <b>Quality of Life</b>
+          not affected by increasing the importance of <b>Safety</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-11" style="display: none;">
-      <div class="question-intro">
-        If traffic and air quality are important to you,
-      </div>
-      <div class="question-body">
-        Which is the best city to live in and why?
-      </div>
-      <div class="question-footer">
-        Please provide a short justification.
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-8" style="display: none;">
+        <div class="question-intro">Sometimes opinions differ widely,</div>
+        <div class="question-body">
+          Find the city with the <b>highest variance</b>
+          in <b>Happiness</b> related to <b>Safety</b>.
         </div>
-        <input type="text">
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-12" style="display: none;">
-      <div class="question-intro">
-        Sometimes opinions are pretty similar.
-      </div>
-      <div class="question-body">
-        Find the city with the lowest variance in happiness related to traffic.
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="factors-radio radio-air    ">Air Quality</paper-radio-button>
-          <paper-radio-button class="factors-radio radio-safety ">Safety     </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-traffic">Traffic    </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-weather">Weather    </paper-radio-button>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-13" style="display: none;">
-      <div class="question-intro">
-        If <b>weather</b> and <b>traffic</b> are very important,
-      </div>
-      <div class="question-body">
-        in which city is <b>happiness</b> not affected by an increase of
-        importance of <b>air quality</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-9" style="display: none;">
+        <div class="question-body">
+          Which factor <b>(high importance)</b> has a very <b>high quality</b> of
+          life and very <b>high Happiness</b> in <b>all cities</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-14" style="display: none;">
-      <div class="question-body">
-        Which city has the lowest compromise between <b>weather</b> and
-        <b>traffic</b> considering both the <b>quality of life</b>
-        and <b>happiness</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-10" style="display: none;">
+        <div class="question-body">
+          What aspect has the highest <b>Quality of Life</b> across <b>all cities</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="factors" value="air"     class="radio-button factors-radio rb-air"    >Air   </label>
+          <label><input type="radio" name="factors" value="safety"  class="radio-button factors-radio rb-safety" >Safety</label>
+          <label><input type="radio" name="factors" value="traffic" class="radio-button factors-radio rb-traffic">Traffic</label>
+          <label><input type="radio" name="factors" value="weather" class="radio-button factors-radio rb-weather">Weather</label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-15" style="display: none;">
-      <div class="question-intro">
-        <b>Weather</b> and <b>safety</b> are very important to you.
-      </div>
-      <div class="question-body">
-        How do they differ in <b>Atlanta</b>?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">[Weather] has a [higher] QOL than [safety]</a></li>
-            <li><a href="#">[Weather] is [less] spread out in terms of QOL and happiness than [safety]</a></li>
-            <li><a href="#">Opinions on [safety] are [better] than on [weather]</a></li>
-          </ul>
+      <div class="question-container question-11" style="display: none;">
+        <div class="question-intro">
+          If <b>Traffic</b> and <b>Air Quality</b> are important to you,
+        </div>
+        <div class="question-body">
+          Which is the <b>best city</b> to live in and <b>why</b>?
+        </div>
+        <div class="question-footer">
+          Please provide a short justification.
+        </div>
+        <div class="question-answers">
+          <div style="display: flex; flex-direction: column;">
+            <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+            <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+            <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+            <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+            <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+          </div>
+          <textarea rows="4" cols="50"></textarea>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-16" style="display: none;">
-      <div class="question-intro">
-        If <b>weather</b> is very important, which is the city with the <b>lowest happiness</b>?)
-      </div>
-      <div class="question-body">
-        How do they differ in <b>Atlanta</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-12" style="display: none;">
+        <div class="question-intro">
+          Sometimes opinions are pretty similar.
+        </div>
+        <div class="question-body">
+          Find the city with the <b>lowest</b> variance in Happiness related to Traffic.
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="factors" value="air"     class="radio-button factors-radio rb-air"    >Air   </label>
+          <label><input type="radio" name="factors" value="safety"  class="radio-button factors-radio rb-safety" >Safety</label>
+          <label><input type="radio" name="factors" value="traffic" class="radio-button factors-radio rb-traffic">Traffic</label>
+          <label><input type="radio" name="factors" value="weather" class="radio-button factors-radio rb-weather">Weather</label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-17" style="display: none;">
-      <div class="question-body">
-        Which single factor has a low <b>quality of life</b>
-        in 3 cities and a high <b>quality of life</b> in 3 other cities?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="factors-radio radio-air    ">Air Quality</paper-radio-button>
-          <paper-radio-button class="factors-radio radio-safety ">Safety     </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-traffic">Traffic    </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-weather">Weather    </paper-radio-button>
+      <div class="question-container question-13" style="display: none;">
+        <div class="question-intro">
+          If <b>Weather</b> and <b>Traffic</b> are very important,
+        </div>
+        <div class="question-body">
+          In which city is <b>Happiness</b> not affected by an increase of
+          importance of <b>Air Quality</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-18" style="display: none;">
-      <div class="question-intro">
-        If weather is very important,
-      </div>
-      <div class="question-body">
-        Which is the city with the lowest <b>happiness</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-14" style="display: none;">
+        <div class="question-body">
+          Which city has the <b>lowest</b> compromise between <b>Weather</b> and
+          <b>Traffic</b> considering both the <b>Quality of Life</b>
+          and <b>Happiness</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-19" style="display: none;">
-      <div class="question-intro">
-        Which factor has a very similar, positive impact on quality of life in all cities?
-      </div>
-      <div class="question-body">
-        Which is the city with the lowest <b>happiness</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="factors-radio radio-air    ">Air Quality</paper-radio-button>
-          <paper-radio-button class="factors-radio radio-safety ">Safety     </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-traffic">Traffic    </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-weather">Weather    </paper-radio-button>
+      <div class="question-container question-15" style="display: none;">
+        <div class="question-intro">
+          <b>Weather</b> and <b>Safety</b> are very important to you.
+        </div>
+        <div class="question-body">
+          How do they differ in <b>Atlanta</b>?
+        </div>
+        <div class="question-answers">
+          <select class="form-control control-a-15" style="width: 200px;">
+            <option>[Weather] has a [higher] QOL than [Safety]</option>
+            <option>[Weather] is [less] spread out in terms of QOL and Happiness than [Safety]</option>
+            <option>Opinions on [Safety] are [better] than on [Weather]</option>
+          </select>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-20" style="display: none;">
-      <div class="question-body">
-        Which <b>2 factors</b> together give you the most precise
-        prediction regarding <b>happiness</b> in <b>Atlanta</b>?
+      <div class="question-container question-16" style="display: none;">
+        <div class="question-intro">
+          If <b>Weather</b> is very important, which is the city with the <b>lowest Happiness</b>?)
+        </div>
+        <div class="question-body">
+          How do they differ in <b>Atlanta</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
       </div>
-      <div class="question-footer">
-        Why? Please provide a short justification.
+
+      <div class="question-container question-17" style="display: none;" answer="???">
+        <div class="question-body">
+          Which single factor has a low <b>Quality of Life</b>
+          in 3 cities and a high <b>Quality of Life</b> in 3 other cities?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="factors" value="air"     class="radio-button factors-radio rb-air"    >Air   </label>
+          <label><input type="radio" name="factors" value="safety"  class="radio-button factors-radio rb-safety" >Safety</label>
+          <label><input type="radio" name="factors" value="traffic" class="radio-button factors-radio rb-traffic">Traffic</label>
+          <label><input type="radio" name="factors" value="weather" class="radio-button factors-radio rb-weather">Weather</label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
       </div>
-      <div class="question-answers">
-        <div class="question-radios">
+
+      <div class="question-container question-18" style="display: none;" answer="[traffic] + [safety]">
+        <div class="question-intro">
+          If Weather is very important,
+        </div>
+        <div class="question-body">
+          Which is the city with the <b>lowest Happiness</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-19" style="display: none;" answer="">
+        <div class="question-intro">
+          Which <b>factor</b> has a very similar, positive impact on <b>Quality of Life</b> in all cities?
+        </div>
+        <div class="question-body">
+          Which is the city with the <b>lowest Happiness</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="factors" value="air"     class="radio-button factors-radio rb-air"    >Air   </label>
+          <label><input type="radio" name="factors" value="safety"  class="radio-button factors-radio rb-safety" >Safety</label>
+          <label><input type="radio" name="factors" value="traffic" class="radio-button factors-radio rb-traffic">Traffic</label>
+          <label><input type="radio" name="factors" value="weather" class="radio-button factors-radio rb-weather">Weather</label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-20" style="display: none;">
+        <div class="question-body">
+          Which <b>2 factors</b> together give you the most precise
+          prediction regarding <b>Happiness</b> in <b>Atlanta</b>?
+        </div>
+        <div class="question-footer">
+          Why? Please provide a short justification.
+        </div>
+        <div class="question-answers">
+          <div class="question-radios">
+            <select class="form-control control-a-20" style="width: 200px;">
+              <option>Traffic</option>
+              <option>Air Quality</option>
+              <option>Safety</option>
+              <option>Weather</option>
+            </select>
+            <select class="form-control control-b-20" style="width: 200px;">
+              <option>Traffic</option>
+              <option>Air Quality</option>
+              <option>Safety</option>
+              <option>Weather</option>
+            </select>
+          </div>
+          <textarea rows="4" cols="50"></textarea>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-21" style="display: none;">
+        <div class="question-body">
+          Describe the opinions on <b>Traffic</b> in <b>Seattle</b> and <b>Los Angeles</b>.
+        </div>
+        <div class="question-answers">
+          <div class="question-radios">
+            <select class="form-control control-a-21" style="width: 200px;">
+              <option>[opinions] are better in [Los Angeles] than in [Seattle]</option>
+              <option>[Quality of Life] is higher in {Los Angeles} than in [Seattle]</option>
+              <option>Opinions differ more in [Los Angeles]</option>
+            </select>
+          </div>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-22" style="display: none;">
+        <div class="question-intro">
+          If <b>Traffic</b> and <b>Safety</b> are very important to you,
+        </div>
+        <div class="question-body">
+          Which city has the <b>least diverging</b> opinion and
+          therefore the most <b>accurate prediction</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-23" style="display: none;">
+        <div class="question-body">
+          Which factor has the greatest difference regarding
+          its impact on the <b>Quality of Life</b> across all cities?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="factors" value="air"     class="radio-button factors-radio rb-air"    >Air   </label>
+          <label><input type="radio" name="factors" value="safety"  class="radio-button factors-radio rb-safety" >Safety</label>
+          <label><input type="radio" name="factors" value="traffic" class="radio-button factors-radio rb-traffic">Traffic</label>
+          <label><input type="radio" name="factors" value="weather" class="radio-button factors-radio rb-weather">Weather</label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-24" style="display: none;">
+        <div class="question-intro">
+          Regarding the range of opinions on <b>Traffic</b> in Los Angeles and Seattle,
+        </div>
+        <div class="question-body">
+          in which <b>city</b> do opinions <b>differ less</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-25" style="display: none;">
+        <div class="question-body">
+          In which city is the <b>Quality of Life</b> and <b>Happiness</b> roughly
+          the same considering <b>Weather</b>, <b>Traffic</b>, and <b>Air Quality</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-26" style="display: none;">
+        <div class="question-intro">
+          Considering only Traffic:
+        </div>
+        <div class="question-body">
+          Which two cities are the most similar in <b>Happiness</b>
+          when examining all degrees of importance?
+        </div>
+        <div class="question-answers">
+          <select class="form-control control-a-26" style="width: 200px;">
+            <option>Houston</option>
+            <option>Los Angeles</option>
+            <option>New York</option>
+            <option>Seattle</option>
+            <option>Denver</option>
+            <option>Atlanta</option>
+          </select>
+          <select class="form-control control-b-26" style="width: 200px;">
+            <option>Houston</option>
+            <option>Los Angeles</option>
+            <option>New York</option>
+            <option>Seattle</option>
+            <option>Denver</option>
+            <option>Atlanta</option>
+          </select>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-27" style="display: none;">
+        <div class="question-body">
+          Which 2 cities have a high <b>Quality of Life</b>
+          considering the <b>Air Quality</b> and a low <b>Quality of Life</b>
+          considering the <b>Weather</b>?
+        </div>
+        <div class="question-answers">
+          <select class="form-control control-a-27" style="width: 200px;">
+            <option>Houston</option>
+            <option>Los Angeles</option>
+            <option>New York</option>
+            <option>Seattle</option>
+            <option>Denver</option>
+            <option>Atlanta</option>
+          </select>
+          <select class="form-control control-b-27" style="width: 200px;">
+            <option>Houston</option>
+            <option>Los Angeles</option>
+            <option>New York</option>
+            <option>Seattle</option>
+            <option>Denver</option>
+            <option>Atlanta</option>
+          </select>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-28" style="display: none;">
+        <div class="question-body">
+          Compare the Weather in Seattle and Atlanta
+        </div>
+        <div class="question-answers">
           <div class="dropdown dropdown-a">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Answer
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Quality of Life is higher [Atlanta]</a></li>
+              <li><a href="#">People are happier in [Seattle]</a></li>
+              <li><a href="#">Opinions deviate more in [Seattle]</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-29" style="display: none;">
+        <div class="question-intro">
+          In New York and Denver,
+        </div>
+        <div class="question-body">
+          Which 2 factors are the most different regarding the Quality of Life?
+        </div>
+        <div class="question-answers">
+          <select class="form-control control-a-29" style="width: 200px;">
+            <option>Traffic</option>
+            <option>Air Quality</option>
+            <option>Safety</option>
+            <option>Weather</option>
+          </select>
+          <select class="form-control control-b-29" style="width: 200px;">
+            <option>Traffic</option>
+            <option>Air Quality</option>
+            <option>Safety</option>
+            <option>Weather</option>
+          </select>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-30" style="display: none;">
+        <div class="question-intro">
+          Compare the Traffic in <b>Denver</b> and <b>Houston</b>?
+        </div>
+        <div class="question-body">
+          What do you see?
+        </div>
+        <div class="question-answers">
+          <select class="form-control" style="width: 500px;">
+            <option>[QOL] is more affected in [Houston] than in [Denver]</option>
+            <option>Opinions deviate more in [Houston]</option>
+            <option>As Traffic becomes more important, Happiness [increases] in [Houston]</option>
+          </select>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-31" style="display: none;">
+        <div class="question-intro">
+          Sometimes opinions differ and range
+          widely between <b>negative</b> and <b>positive</b>.
+          However, in three cities opinions <b>(Happiness)</b>
+          regarding a certain aspect are very similar
+        </div>
+        <div class="question-body">
+          Tell us which aspect in which cities you think we mean.
+        </div>
+        <div class="question-footer">
+          Please provide a short justification.
+        </div>
+        <div class="question-answers">
+          <select class="form-control control-a-31" style="width: 200px;">
+            <option>[QOL] is more affected in [Houston] than in [Denver]</option>
+            <option>Opinions deviate more in [Houston]</option>
+            <option>As Traffic becomes more important, Happiness [increases] in [Houston]</option>
+          </select>
+          <div>
+            <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+            <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+            <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+            <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+            <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+            <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+          </div>
+          <textarea rows="4" cols="50"></textarea>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-32" style="display: none;">
+        <div class="question-intro">
+          If Air Quality is the most important to you,
+        </div>
+        <div class="question-body">
+          Where do you get the highest <b>Quality of Life</b> and <b>Happiness</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
+      </div>
+
+      <div class="question-container question-33" style="display: none;">
+        <div class="question-intro">
+          Sometimes opinions differ and range widely between negative and positive.
+        </div>
+        <div class="question-body">
+          However, there is <b>one aspect in one city</b>
+          regarding which opinions are mostly negative <b>(low Happiness)</b>.
+        </div>
+        <div class="question-footer">
+          Tell us which aspect in which city you think we mean.
+        </div>
+        <div class="question-answers">
+          <div class="dropdown dropdown-a">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Answer
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
@@ -421,560 +754,170 @@
             </ul>
           </div>
           <div class="dropdown dropdown-b">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Answer
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#">Traffic</a></li>
-              <li><a href="#">Air Quality</a></li>
-              <li><a href="#">Safety</a></li>
-              <li><a href="#">Weather</a></li>
+              <li><a href="#">New York</a></li>
+              <li><a href="#">Atlanta</a></li>
+              <li><a href="#">Seattle</a></li>
+              <li><a href="#">Los Angeles</a></li>
+              <li><a href="#">Houston</a></li>
+              <li><a href="#">Denver</a></li>
             </ul>
           </div>
         </div>
-        <input type="text">
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-21" style="display: none;">
-      <div class="question-body">
-        Describe the opinions on traffic in Seattle and LA
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <div class="dropdown dropdown-a">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="#">[opinions] are better in [Los Angeles] than in [Seattle]</a></li>
-              <li><a href="#">[Quality of Life] is higher in {Los Angeles} than in [Seattle]</a></li>
-              <li><a href="#">Opinions differ more in [Los Angeles]</a></li>
-            </ul>
-          </div>
+      <div class="question-container question-34" style="display: none;">
+        <div class="question-body">
+          If <b>Safety</b> is important to you but you don’t care much about <b>Weather</b>
+          (importance:10%) would you be happier – <b>in New York</b> or <b>Seattle</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-22" style="display: none;">
-      <div class="question-intro">
-        If traffic and safety are very important to you,
-      </div>
-      <div class="question-body">
-        Which city has the least diverging opinion and
-        therefore the most accurate prediction?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-35" style="display: none;">
+        <div class="question-body">
+          If both <b>Safety</b> and <b>Weather</b> are important to you,
+          in which city would you have the best <b>Quality of Life</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-23" style="display: none;">
-      <div class="question-body">
-        Which factor has the greatest difference regarding
-        its impact on the quality of life across all cities?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="factors-radio radio-air    ">Air Quality</paper-radio-button>
-          <paper-radio-button class="factors-radio radio-safety ">Safety     </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-traffic">Traffic    </paper-radio-button>
-          <paper-radio-button class="factors-radio radio-weather">Weather    </paper-radio-button>
+      <div class="question-container question-36" style="display: none;">
+        <div class="question-body">
+          In which city does <b>Quality of Life</b> increase,
+          but not <b>Happiness</b>, when <b>Air Quality</b> becomes more important?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-24" style="display: none;">
-      <div class="question-intro">
-        Regarding the range of opinions on traffic in Los Angeles and Seattle,
-      </div>
-      <div class="question-body">
-        in which city do opinions differ less?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-37" style="display: none;">
+        <div class="question-intro">
+          If <b>Air Quality</b> and <b>Safety</b> are important to you (100%),
+        </div>
+        <div class="question-body">
+          and <b>Traffic</b> is of average importance (50%),
+          which city seems to have the <b>happiest</b> people?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-25" style="display: none;">
-      <div class="question-body">
-        In which city is the <b>quality of life</b> and <b>happiness</b> roughly
-        the same considering <b>weather</b>, <b>traffic</b>, and <b>air quality</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
+      <div class="question-container question-38" style="display: none;">
+        <div class="question-intro">
+          If only <b>Air Quality</b> is important to you in <b>New York</b>,
+        </div>
+        <div class="question-body">
+          Happiness is between:
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
         </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-26" style="display: none;">
-      <div class="question-intro">
-        Considering only traffic:
-      </div>
-      <div class="question-body">
-        Which two cities are the most similar in <b>happiness</b>
-        when examining all degrees of importance?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
+      <div class="question-container question-39" style="display: none;">
+        <div class="question-intro">
+          If <b>Traffic</b> is important to you,
+          in which city are opinions the least diverse?
         </div>
-        <div class="dropdown dropdown-b">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
         </div>
-        <input type="text">
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-27" style="display: none;">
-      <div class="question-body">
-        Which 2 cities have a high <b>quality of life</b>
-        considering the <b>air quality</b> and a low <b>quality of life</b>
-        considering the <b>weather</b>?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
+      <div class="question-container question-40" style="display: none;">
+        <div class="question-body">
+          In which city does <b>Safety</b> have the highest diversity
+          in opinion <b>(Happiness)</b> as well as the highest impact on <b>Quality of Life</b>?
         </div>
-        <div class="dropdown dropdown-b">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
         </div>
-        <input type="text">
+        <div class="question-buttons">
+          <paper-button class="big-next">Next</paper-button>
+        </div>
       </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
 
-    <div class="question-container question-28" style="display: none;">
-      <div class="question-body">
-        Compare the weather in Seattle and Atlanta
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Quality of Life is higher [Atlanta]</a></li>
-            <li><a href="#">People are happier in [Seattle]</a></li>
-            <li><a href="#">Opinions deviate more in [Seattle]</a></li>
-          </ul>
+      <div class="question-container question-41" style="display: none;">
+        <div class="question-intro">
+          If <b>Traffic</b> and <b>Safety</b> are very important to you,
         </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
+        <div class="question-body">
+          Which city has the least <b>diverging opinion</b>
+          and therefore the most <b>accurate prediction</b>?
+        </div>
+        <div class="question-answers">
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+        </div>
+        <div class="question-buttons">
+          <paper-button class="big-finish">Finish</paper-button>
+        </div>
       </div>
     </div>
-
-    <div class="question-container question-29" style="display: none;">
-      <div class="question-intro">
-        In New York and Denver,
-      </div>
-      <div class="question-body">
-        Which 2 factors are the most different regarding the Quality of Life?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
-        </div>
-        <div class="dropdown dropdown-b">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-30" style="display: none;">
-      <div class="question-intro">
-        Compare the traffic in <b>Denver</b> and <b>Houston</b>?
-      </div>
-      <div class="question-body">
-        What do you see?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">[QOL] is more affected in [Houston] than in [Denver]</a></li>
-            <li><a href="#">Opinions deviate more in [Houston]</a></li>
-            <li><a href="#">As traffic becomes more important, happiness [increases] in [Houston]</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-31" style="display: none;">
-      <div class="question-intro">
-        Sometimes opinions differ and range widely between negative and positive.
-        However, in three cities opinions (happiness) regarding a certain aspect are very similar
-      </div>
-      <div class="question-body">
-        Tell us which aspect in which cities you think we mean.
-      </div>
-      <div class="question-footer">
-        Please provide a short justification.
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">[QOL] is more affected in [Houston] than in [Denver]</a></li>
-            <li><a href="#">Opinions deviate more in [Houston]</a></li>
-            <li><a href="#">As traffic becomes more important, happiness [increases] in [Houston]</a></li>
-          </ul>
-        </div>
-        <div class="question-checkbox">
-          <paper-checkbox class="city-checkbox">New York   </paper-checkbox>
-          <paper-checkbox class="city-checkbox">Los Angeles</paper-checkbox>
-          <paper-checkbox class="city-checkbox">Houston</paper-checkbox>
-          <paper-checkbox class="city-checkbox">Denver </paper-checkbox>
-          <paper-checkbox class="city-checkbox">Atlanta</paper-checkbox>
-          <paper-checkbox class="city-checkbox">Seattle</paper-checkbox>
-        </div>
-        <input type="text">
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-32" style="display: none;">
-      <div class="question-intro">
-        If air quality is the most important to you,
-      </div>
-      <div class="question-body">
-        Where do you get the highest <b>Quality of Life</b> and <b>happiness</b>?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-33" style="display: none;">
-      <div class="question-intro">
-        Sometimes opinions differ and range widely between negative and positive.
-      </div>
-      <div class="question-body">
-        However, there is <b>one aspect in one city</b> regarding which opinions are mostly negative (low happiness).
-      </div>
-      <div class="question-footer">
-        Tell us which aspect in which city you think we mean.
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-a">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Traffic</a></li>
-            <li><a href="#">Air Quality</a></li>
-            <li><a href="#">Safety</a></li>
-            <li><a href="#">Weather</a></li>
-          </ul>
-        </div>
-        <div class="dropdown dropdown-b">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">New York</a></li>
-            <li><a href="#">Atlanta</a></li>
-            <li><a href="#">Seattle</a></li>
-            <li><a href="#">Los Angeles</a></li>
-            <li><a href="#">Houston</a></li>
-            <li><a href="#">Denver</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-34" style="display: none;">
-      <div class="question-body">
-        If <b>safety</b> is important to you but you don’t care much about weather
-        (importance:10%) would you be happier – <b>in New York</b> or <b>Seattle</b>?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-b">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">New York</a></li>
-            <li><a href="#">Atlanta</a></li>
-            <li><a href="#">Seattle</a></li>
-            <li><a href="#">Los Angeles</a></li>
-            <li><a href="#">Houston</a></li>
-            <li><a href="#">Denver</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-35" style="display: none;">
-      <div class="question-body">
-        If both <b>safety</b> and <b>weather</b> are important to you,
-        in which city would you have the best <b>Quality of Life</b>?
-      </div>
-      <div class="question-answers">
-        <div class="dropdown dropdown-b">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">New York</a></li>
-            <li><a href="#">Atlanta</a></li>
-            <li><a href="#">Seattle</a></li>
-            <li><a href="#">Los Angeles</a></li>
-            <li><a href="#">Houston</a></li>
-            <li><a href="#">Denver</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-36" style="display: none;">
-      <div class="question-body">
-        In which city does <b>Quality of Life</b> increase,
-        but not <b>happiness</b>, when <b>air quality</b> becomes more important?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-37" style="display: none;">
-      <div class="question-intro">
-        If air quality and safety are important to you (100%),
-      </div>
-      <div class="question-body">
-        and traffic is of average importance (50%), which city seems to have the happiest people?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-38" style="display: none;">
-      <div class="question-intro">
-        If only <b>air quality</b> is important to you in New York,
-      </div>
-      <div class="question-body">
-        happiness is between:
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-39" style="display: none;">
-      <div class="question-intro">
-        If <b>traffic</b> is important to you,
-        in which city are opinions the least diverse?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-40" style="display: none;">
-      <div class="question-body">
-        In which city does safety have the highest diversity
-        in opinion (happiness) as well as the highest impact on Quality of Life?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-next">Next</paper-button>
-      </div>
-    </div>
-
-    <div class="question-container question-41" style="display: none;">
-      <div class="question-intro">
-        If traffic and safety are very important to you,
-      </div>
-      <div class="question-body">
-        Which city has the least diverging opinion
-        and therefore the most accurate prediction?
-      </div>
-      <div class="question-answers">
-        <div class="question-radios">
-          <paper-radio-button class="city-radio">New York   </paper-radio-button>
-          <paper-radio-button class="city-radio">Los Angeles</paper-radio-button>
-          <paper-radio-button class="city-radio">Houston</paper-radio-button>
-          <paper-radio-button class="city-radio">Denver </paper-radio-button>
-          <paper-radio-button class="city-radio">Atlanta</paper-radio-button>
-          <paper-radio-button class="city-radio">Seattle</paper-radio-button>
-        </div>
-      </div>
-      <div class="question-buttons">
-        <paper-button class="big-finish">Finish</paper-button>
-      </div>
-    </div>
-  </div>
-</template>
+  </template>

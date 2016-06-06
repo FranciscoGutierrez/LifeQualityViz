@@ -1,8 +1,21 @@
+/*
+* why you are doing this... (not clear)
+* Design slide, split figures in two slides.
+* separate in components.
+* explain the flow...
+* transparency-user control in separate slides.
+* Statistics things not clear...
+* boxplots part needs to be fix.
+*/
+*:focus {
+  outline: none;
+}
+
 .big-question-container {
   background: rgba(255,255,255,1);
   display: flex;
   justify-content: flex-start;
-  align-self: center;
+  align-self: flex-start;
   flex-direction: column;
   width: 600px;
   cursor: default;
@@ -23,10 +36,16 @@
   color: #424242;
 }
 
+.question-footer {
+  font-weight: 500;
+  color: #A1A1A1;
+}
+
 .question-body {
   font-weight: 100;
   font-size: 18px;
-  color: #9E9E9E;
+  margin-top: 3px;
+  color: #868686;
 }
 
 .question-body b {
@@ -35,6 +54,11 @@
 }
 /*** Question Colors end **/
 
+.question-radios {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
 .question-buttons {
   display: flex;
   justify-content: flex-end;
@@ -96,4 +120,55 @@
   position: absolute;
   margin-top: 5px;
   font-size: 12px;
+}
+
+/** Button checkbox! **/
+.btn {
+  background: white;
+  border: 1px solid #424242;
+  color: #424242;
+}
+
+.btn:hover {
+  background: white;
+  border: 1px solid #424242;
+  color: #424242;
+}
+
+.btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
+  background: white;
+  border: 1px solid #424242;
+  color: #424242;
+}
+
+.welcome-user {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  color: #A1A1A1;
+}
+
+.welcome-user span {
+  color: #424242;
+}
+
+.question-answers .radio-button {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.question-answers label {
+  cursor: pointer;
+}
+
+.qopt {
+  font-weight: 100;
+  font-size: 20px;
+}
+
+.qopt span {
+  font-weight: 500;
+  margin-left: 3px;
+  font-size: 14px;
 }
