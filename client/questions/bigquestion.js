@@ -110,7 +110,7 @@ Template.bigquestion.events({
       $("input:checkbox").removeAttr("checked");
       $('textarea').val("");
 
-      console.log({
+      Answers.insert({
         checkbox:   checkbox,
         timestart:  timestart,
         timeend:    timeend,
@@ -194,8 +194,8 @@ Template.bigquestion.events({
       $("input:checkbox").removeAttr("checked");
       $('textarea').val("");
 
-      //Answers.insert({
-      console.log({
+      //
+      Answers.insert({
         checkbox:   checkbox,
         timestart:  timestart,
         timeend:    timeend,
