@@ -290,3 +290,28 @@ h2 {
 paper-button {
   text-align: center !important;
 }
+
+
+.big-thanks {
+  width: 100%;
+  height:100%;
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  background: white;
+}
+
+.big-thanks-container {
+  width: 100%;
+  height:100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-thanks-container h1 {
+  font-weight: 100;
+  font-size: 25px;
+  padding: 0px;
+}

@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 Tweets = new Meteor.Collection('tweets');
 Cities = new Meteor.Collection('cities');
+Answers = new Meteor.Collection('answers');
 
 Meteor.startup(() => {});
 Meteor.publish("tweets", function () {
@@ -10,4 +11,8 @@ Meteor.publish("tweets", function () {
 
 Meteor.publish("cities", function () {
   return Cities.find({});
+});
+
+Meteor.publish("answers", function () {
+  return Answers.find({});
 });

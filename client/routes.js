@@ -14,6 +14,8 @@ Router.route('/:_id', {
       $(".loading-screen").fadeOut(function(){
         $(this).remove();
 
+        Meteor.subscribe("answers");  
+
         Session.setDefault("strength-t",100);
         Session.setDefault("strength-p",100);
         Session.setDefault("strength-s",100);
