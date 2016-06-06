@@ -61,14 +61,14 @@
         </div>
         <div class="question-answers">
           <select class="form-control control-a-2" style="width: 200px;">
-            <option>None</option>
+            <option></option>
             <option>Traffic</option>
             <option>Air Quality</option>
             <option>Safety</option>
             <option>Weather</option>
           </select>
           <select class="form-control control-b-2" style="width: 200px;">
-            <option>None</option>
+            <option></option>
             <option>Traffic</option>
             <option>Air Quality</option>
             <option>Safety</option>
@@ -158,12 +158,14 @@
         </div>
         <div class="question-answers">
           <select class="form-control control-a-6" style="width: 200px;">
+            <option></option>
             <option>Traffic</option>
             <option>Air Quality</option>
             <option>Safety</option>
             <option>Weather</option>
           </select>
           <select class="form-control control-b-6" style="width: 200px;">
+            <option></option>
             <option>Traffic</option>
             <option>Air Quality</option>
             <option>Safety</option>
@@ -342,11 +344,22 @@
           How do they differ in <b>Atlanta</b>?
         </div>
         <div class="question-answers">
-          <select class="form-control control-a-15" style="width: 500px;">
-            <option>[Weather] has a [higher] QOL than [Safety]</option>
-            <option>[Weather] is [less] spread out in terms of QOL and Happiness than [Safety]</option>
-            <option>Opinions on [Safety] are [better] than on [Weather]</option>
-          </select>
+          <div class="crazy-sentences">
+            <div class="sentence sentence-a-15">
+              <select><option></option><option>Weather</option><option>Safety</option></select>
+              has a <select><option></option><option>lower</option><option>higher</option></select> Quality of Life than <select><option></option><option>Weather</option><option>Safety</option></select>.
+            </div>
+            <div class="sentence sentence-b-15">
+              <select><option></option><option>Weather</option><option>Safety</option></select>
+              is <select><option></option><option>less</option><option>more</option></select> spread out in terms of Quality of Life and Happinnes than
+              <select><option></option><option>Weather</option><option>Safety</option></select>.
+            </div>
+            <div class="sentence sentence-c-15">
+              Opinions on <select><option></option><option>Weather</option><option>Safety</option></select>
+              are <select><option></option><option>worse</option><option>better</option></select> than on
+              <select><option></option><option>Weather</option><option>Safety</option></select>.
+            </div>
+          </div>
         </div>
         <div class="question-buttons">
           <paper-button class="big-next">Next</paper-button>
@@ -435,12 +448,14 @@
         <div class="question-answers">
           <div class="question-radios">
             <select class="form-control control-a-20" style="width: 200px;">
+              <option></option>
               <option>Traffic</option>
               <option>Air Quality</option>
               <option>Safety</option>
               <option>Weather</option>
             </select>
             <select class="form-control control-b-20" style="width: 200px;">
+              <option></option>
               <option>Traffic</option>
               <option>Air Quality</option>
               <option>Safety</option>
@@ -460,11 +475,20 @@
         </div>
         <div class="question-answers">
           <div class="question-radios">
-            <select class="form-control control-a-21" style="width: 500px;">
-              <option>[opinions] are better in [Los Angeles] than in [Seattle]</option>
-              <option>[Quality of Life] is higher in {Los Angeles} than in [Seattle]</option>
-              <option>Opinions differ more in [Los Angeles]</option>
-            </select>
+            <div class="crazy-sentences">
+              <div class="sentence sentence-a-21">
+                Opinions are better in <select><option>Los Angeles</option><option>Seattle</option></select>
+                than in <select><option>Los Angeles</option><option>Seattle</option></select>.
+              </div>
+              <div class="sentence sentence-b-21">
+                <select><option>Quality of Life</option><option>Happiness</option></select>
+                is higher in <select><option>Los Angeles</option><option>Seattle</option></select>
+                than in <select><option>Los Angeles</option><option>Seattle</option></select>.
+              </div>
+              <div class="sentence sentence-c-21">
+                Opinions differ more in <select><option>Los Angeles</option><option>Seattle</option></select>.
+              </div>
+            </div>
           </div>
         </div>
         <div class="question-buttons">
@@ -557,6 +581,7 @@
         </div>
         <div class="question-answers">
           <select class="form-control control-a-26" style="width: 200px;">
+            <option></option>
             <option>Houston</option>
             <option>Los Angeles</option>
             <option>New York</option>
@@ -565,6 +590,7 @@
             <option>Atlanta</option>
           </select>
           <select class="form-control control-b-26" style="width: 200px;">
+            <option></option>
             <option>Houston</option>
             <option>Los Angeles</option>
             <option>New York</option>
@@ -586,6 +612,7 @@
         </div>
         <div class="question-answers">
           <select class="form-control control-a-27" style="width: 200px;">
+            <option></option>
             <option>Houston</option>
             <option>Los Angeles</option>
             <option>New York</option>
@@ -594,6 +621,7 @@
             <option>Atlanta</option>
           </select>
           <select class="form-control control-b-27" style="width: 200px;">
+            <option></option>
             <option>Houston</option>
             <option>Los Angeles</option>
             <option>New York</option>
@@ -612,11 +640,17 @@
           Compare the <b>Weather</b> in <b>Seattle</b> and <b>Atlanta</b>
         </div>
         <div class="question-answers">
-          <select class="form-control control-a-28" style="width: 500px;">
-            <option>Quality of Life is higher [Atlanta]</option>
-            <option>People are happier in [Seattle]</option>
-            <option>Opinions deviate more in [Seattle]</option>
-          </select>
+          <div class="crazy-sentences">
+            <div class="sentence sentence-a-28">
+              Quality of Life is higher in <select><option></option><option>Seattle</option><option>Atlanta</option></select>
+            </div>
+            <div class="sentence sentence-b-28">
+              People are happier in <select><option></option><option>Seattle</option><option>Atlanta</option></select>
+            </div>
+            <div class="sentence sentence-c-28">
+              Opinions deviate more in <select><option></option><option>Atlanta</option><option>Seattle</option></select>
+            </div>
+          </div>
         </div>
         <div class="question-buttons">
           <paper-button class="big-next">Next</paper-button>
@@ -632,12 +666,14 @@
         </div>
         <div class="question-answers">
           <select class="form-control control-a-29" style="width: 200px;">
+            <option></option>
             <option>Traffic</option>
             <option>Air Quality</option>
             <option>Safety</option>
             <option>Weather</option>
           </select>
           <select class="form-control control-b-29" style="width: 200px;">
+            <option></option>
             <option>Traffic</option>
             <option>Air Quality</option>
             <option>Safety</option>
@@ -657,11 +693,17 @@
           What do you see?
         </div>
         <div class="question-answers">
-          <select class="form-control" style="width: 500px;">
-            <option>[Quality of Life] is more affected in [Houston] than in [Denver]</option>
-            <option>Opinions deviate more in [Houston]</option>
-            <option>As Traffic becomes more important, Happiness [increases] in [Houston]</option>
-          </select>
+          <div class="crazy-sentences">
+            <div class="sentence sentence-a-30">
+              Quality of Life is more affected in <select><option></option><option>Houston</option><option>Denver</option></select> than in <select><option></option><option>Houston</option><option>Denver</option></select>
+            </div>
+            <div class="sentence sentence-b-30">
+              Opinions deviate more in <select><option></option><option>Houston</option><option>Denver</option></select>
+            </div>
+            <div class="sentence sentence-c-30">
+              As traffic becomes more important, happiness <select><option></option><option>increases</option><option>decreases</option></select>  in <select><option></option><option>Houston</option><option>Denver</option></select>
+            </div>
+          </div>
         </div>
         <div class="question-buttons">
           <paper-button class="big-next">Next</paper-button>
@@ -683,6 +725,7 @@
         </div>
         <div class="question-answers">
           <select class="form-control control-a-31" style="width: 200px;">
+            <option></option>
             <option>Traffic</option>
             <option>Air Quality</option>
             <option>Safety</option>
@@ -742,12 +785,14 @@
         </div>
         <div class="question-answers">
           <select class="form-control control-a-33" style="width: 200px;">
+            <option></option>
             <option>Traffic</option>
             <option>Air Quality</option>
             <option>Safety</option>
             <option>Weather</option>
           </select>
           <select class="form-control control-b-33" style="width: 200px;">
+            <option></option>
             <option>Seattle</option>
             <option>New York</option>
             <option>Houston</option>

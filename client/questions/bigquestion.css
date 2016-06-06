@@ -172,3 +172,12 @@
   margin-left: 3px;
   font-size: 14px;
 }
+
+.crazy-sentences {
+  display: flex;
+  flex-direction: column;
+}
+
+.sentence {
+  margin-bottom: 10px;
+}

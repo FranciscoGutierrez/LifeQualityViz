@@ -17,12 +17,7 @@ Template.bigquestion.helpers({
     if(!$(".traffic" ).attr("checked")) t = false
     if(!$(".polluted").attr("checked")) a = false
 
-    return {
-      w: w,
-      s: s,
-      t: t,
-      a: a
-    };
+    return { w: w, s: s, t: t, a: a };
   },
   username() {
     return Session.get("username");
@@ -63,6 +58,11 @@ Template.bigquestion.events({
     $("input[name=cities]:checked").each(function(){ checkbox = checkbox + $(this).attr("value")+" " });
     Session.set("checkbox", checkbox);
 
+
+    Session.set("sentencea",$(".sentence-a-"+current+" option:selected").text());
+    Session.set("sentenceb",$(".sentence-a-"+current+" option:selected").text());
+    Session.set("sentencec",$(".sentence-a-"+current+" option:selected").text());
+
     $(".question-"+current).fadeOut(function(){
       $(".feedback-difficulty").fadeIn();
     });
@@ -88,6 +88,10 @@ Template.bigquestion.events({
     var slider1 = Session.get("slider1");
     var slider2 = Session.get("slider2");
 
+    var sa = Session.get("sentencea");
+    var sb = Session.get("sentenceb");
+    var sc = Session.get("sentencec");
+
     var w = Math.round(Session.get("strength-h"));
     var s = Math.round(Session.get("strength-s"));
     var t = Math.round(Session.get("strength-t"));
@@ -106,7 +110,7 @@ Template.bigquestion.events({
       $("input:checkbox").removeAttr("checked");
       $('textarea').val("");
 
-      Answers.insert({
+      console.log({
         checkbox:   checkbox,
         timestart:  timestart,
         timeend:    timeend,
@@ -127,7 +131,10 @@ Template.bigquestion.events({
         traffic:    t,
         polluted:   a,
         slider1: slider1,
-        slider2: slider2
+        slider2: slider2,
+        senta: sa,
+        sentb: sb,
+        setc:  sc
       });
       $(".question-container").fadeOut(function(){
         $(".big-thanks").fadeIn();
@@ -170,6 +177,10 @@ Template.bigquestion.events({
     var t = Math.round(Session.get("strength-t"));
     var a = Math.round(Session.get("strength-p"));
 
+    var sa = Session.get("sentencea");
+    var sb = Session.get("sentenceb");
+    var sc = Session.get("sentencec");
+
     if (w == 0) w = "0"; if (s == 0) s = "0";
     if (t == 0) t = "0"; if (a == 0) a = "0";
 
@@ -183,7 +194,8 @@ Template.bigquestion.events({
       $("input:checkbox").removeAttr("checked");
       $('textarea').val("");
 
-      Answers.insert({
+      //Answers.insert({
+      console.log({
         checkbox:   checkbox,
         timestart:  timestart,
         timeend:    timeend,
@@ -204,7 +216,10 @@ Template.bigquestion.events({
         traffic:    t,
         polluted:   a,
         slider1: slider1,
-        slider2: slider2
+        slider2: slider2,
+        senta: sa,
+        sentb: sb,
+        setc:  sc
       });
 
       Session.set("qstart",Date.now());
