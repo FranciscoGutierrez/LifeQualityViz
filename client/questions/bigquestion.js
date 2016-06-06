@@ -194,7 +194,6 @@ Template.bigquestion.events({
       $("input:checkbox").removeAttr("checked");
       $('textarea').val("");
 
-      //
       Answers.insert({
         checkbox:   checkbox,
         timestart:  timestart,
