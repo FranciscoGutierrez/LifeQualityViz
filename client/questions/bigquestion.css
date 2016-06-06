@@ -14,8 +14,8 @@
 .big-question-container {
   background: rgba(255,255,255,1);
   display: flex;
-  justify-content: flex-start;
-  align-self: flex-start;
+  justify-content: center;
+  align-self: center;
   flex-direction: column;
   width: 600px;
   cursor: default;
