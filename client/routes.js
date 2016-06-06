@@ -14,7 +14,7 @@ Router.route('/:_id', {
       $(".loading-screen").fadeOut(function(){
         $(this).remove();
 
-        Meteor.subscribe("answers");  
+        Meteor.subscribe("answers");
 
         Session.setDefault("strength-t",100);
         Session.setDefault("strength-p",100);
@@ -22,8 +22,8 @@ Router.route('/:_id', {
         Session.setDefault("strength-h",100);
         Session.setDefault("option",option);
         Session.setDefault("qnumber",1);
-        Session.setDefault("answr1",20);
-        Session.setDefault("answr2",80);
+        Session.setDefault("slider1",20);
+        Session.setDefault("slider2",80);
 
         var isChrome = !!window.chrome && !!window.chrome.webstore;
         if(isChrome) {

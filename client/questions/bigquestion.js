@@ -41,11 +41,11 @@ Template.bigquestion.helpers({
   slider() {
     var val1 = 20;
     var val2 = 80;
-    val1 = Session.get("answr1");
-    val2 = Session.get("answr2");
+    val1 = Number(Session.get("slider1"));
+    val2 = Number(Session.get("slider2"));
     if(val1<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible"); }
     if(val2>95){ $(".slider-hound").css("visibility","hidden"); } else { $(".slider-hound").css("visibility","visible"); }
-    return {a: Math.round(val1), b: Math.round(val2), x: val1-3, y: val2-3};
+    return {a: Math.round(val1), b: Math.round(val2), x: val1-2, y: val2-2};
   }
 });
 
@@ -85,6 +85,9 @@ Template.bigquestion.events({
     var timestart = Session.get("qstart");
     var timeend   = Session.get("qend");
 
+    var slider1 = Session.get("slider1");
+    var slider2 = Session.get("slider2");
+
     var w = Math.round(Session.get("strength-h"));
     var s = Math.round(Session.get("strength-s"));
     var t = Math.round(Session.get("strength-t"));
@@ -102,8 +105,8 @@ Template.bigquestion.events({
       $("input:radio").removeAttr("checked");
       $("input:checkbox").removeAttr("checked");
       $('textarea').val("");
-      //Answers.insert
-      console.log({
+
+      Answers.insert({
         checkbox:   checkbox,
         timestart:  timestart,
         timeend:    timeend,
@@ -122,7 +125,9 @@ Template.bigquestion.events({
         weather:    w,
         safety:     s,
         traffic:    t,
-        polluted:   a
+        polluted:   a,
+        slider1: slider1,
+        slider2: slider2
       });
       $(".question-container").fadeOut(function(){
         $(".big-thanks").fadeIn();
@@ -130,7 +135,7 @@ Template.bigquestion.events({
     });
   },
   "click .radio-button" (event, instance) {
-    console.log(event.target);
+    //console.log(event.target);
   },
   "click .fd-next" (event, instance) {
     var a = $("input[name=difficulty]:checked").val();
@@ -157,6 +162,9 @@ Template.bigquestion.events({
     var timestart = Session.get("qstart");
     var timeend   = Session.get("qend");
 
+    var slider1 = Session.get("slider1");
+    var slider2 = Session.get("slider2");
+
     var w = Math.round(Session.get("strength-h"));
     var s = Math.round(Session.get("strength-s"));
     var t = Math.round(Session.get("strength-t"));
@@ -174,8 +182,8 @@ Template.bigquestion.events({
       $("input:radio").removeAttr("checked");
       $("input:checkbox").removeAttr("checked");
       $('textarea').val("");
-      //Answers.insert
-      console.log({
+
+      Answers.insert({
         checkbox:   checkbox,
         timestart:  timestart,
         timeend:    timeend,
@@ -194,11 +202,29 @@ Template.bigquestion.events({
         weather:    w,
         safety:     s,
         traffic:    t,
-        polluted:   a
+        polluted:   a,
+        slider1: slider1,
+        slider2: slider2
       });
+
       Session.set("qstart",Date.now());
       Session.set("qnumber",current+1);
       $(".question-"+(current+1)).fadeIn();
     });
   }
 });
+
+
+Template.bigquestion.rendered = function () {
+  this.$("#question-slider").noUiSlider({
+    start: [20,80],
+    animate: true,
+    step: 1,
+    tooltips: true,
+    connect:  true,
+    range: {'min': 0, 'max': 100}
+  }).on('slide', function (ev, val) {
+    Session.set("slider1",Number(val[0]));
+    Session.set("slider2",Number(val[1]));
+  });
+};

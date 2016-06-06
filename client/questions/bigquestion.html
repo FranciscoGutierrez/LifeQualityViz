@@ -690,16 +690,16 @@
           </select>
           <div class="question-checkboxes">
             <div>
-            <label><input type="checkbox" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
-            <label><input type="checkbox" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+              <label><input type="checkbox" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+              <label><input type="checkbox" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
             </div>
             <div>
-            <label><input type="checkbox" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
-            <label><input type="checkbox" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+              <label><input type="checkbox" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+              <label><input type="checkbox" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
             </div>
             <div>
-            <label><input type="checkbox" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
-            <label><input type="checkbox" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+              <label><input type="checkbox" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+              <label><input type="checkbox" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
             </div>
           </div>
           <textarea class="textarea-31" rows="4" cols="50"></textarea>
@@ -840,12 +840,15 @@
           Happiness is between:
         </div>
         <div class="question-answers">
-          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
-          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
-          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
-          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
-          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
-          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+          <div style="display: flex; flex-direction: column; width: 100%;">
+            <div id="question-slider" class="slider"></div>
+            <div class="pips">
+              <span class="slider-zero">0</span>
+              <div  class="slider-tooltip" style="left: {{slider.x}}%">{{slider.a}}</div>
+              <div  class="slider-tooltip" style="left: {{slider.y}}%">{{slider.b}}</div>
+              <span class="slider-hound">100</span>
+            </div>
+          </div>
         </div>
         <div class="question-buttons">
           <paper-button class="big-next">Next</paper-button>
