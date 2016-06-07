@@ -22,42 +22,42 @@ Template.welcome.events({
   "click .wb-next-0" (event, instance) {
     $(".wd-0").fadeOut(function(){
       $(".wd-1").fadeIn(function(){
-        $(".wb-next-1").delay(2500).fadeIn();
+        $(".wb-next-1").delay(1000).fadeIn();
       });
     });
   },
   "click .wb-next-1" (event, instance) {
     $(".wd-1").fadeOut(function(){
       $(".wd-2").fadeIn(function(){
-        $(".wb-next-2").delay(2500).fadeIn();
+        $(".wb-next-2").delay(1000).fadeIn();
       });
     });
   },
   "click .wb-next-2" (event, instance) {
     $(".wd-2").fadeOut(function(){
       $(".wd-3").fadeIn(function(){
-        $(".wb-next-3").delay(2500).fadeIn();
+        $(".wb-next-3").delay(1000).fadeIn();
       });
     });
   },
   "click .wb-next-3" (event, instance) {
     $(".wd-3").fadeOut(function(){
       $(".wd-4").fadeIn(function(){
-        $(".wb-next-4").delay(2500).fadeIn();
+        $(".wb-next-4").delay(1000).fadeIn();
       });
     });
   },
   "click .wb-next-4" (event, instance) {
     $(".wd-4").fadeOut(function(){
       $(".wd-5").fadeIn(function(){
-        $(".wb-next-5").delay(2500).fadeIn();
+        $(".wb-next-5").delay(1000).fadeIn();
       });
     });
   },
   "click .wb-next-5" (event, instance) {
     $(".wd-5").fadeOut(function(){
       $(".wd-end").fadeIn(function(){
-        $(".wb-next-end").delay(2500).fadeIn();
+        $(".wb-next-end").delay(1000).fadeIn();
       });
     });
   },
