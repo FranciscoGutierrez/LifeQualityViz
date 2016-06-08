@@ -44,3 +44,20 @@ paper-button {
   padding: 0;
   text-align: center;
 }
+
+
+#test-slider {
+  margin-top: 20px;
+  width: 400px;
+  height: 10px;
+}
+
+.tutorial-test img {
+  align-self: center;
+}
+
+.tutorial-test {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
