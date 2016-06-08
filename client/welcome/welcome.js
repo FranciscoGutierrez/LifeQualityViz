@@ -69,7 +69,9 @@ Template.welcome.events({
       Session.set("qnumber",1);
     });
   },
-  "keyup .welcome-input" (event, instance) {
-    $(".skip-tutorial").fadeIn();
+  "click .skip-tutorial" (event, instance) {
+    $(".welcome-screen").fadeOut(function(){
+      $(this).remove();
+    });
   }
 });

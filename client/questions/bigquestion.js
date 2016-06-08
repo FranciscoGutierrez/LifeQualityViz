@@ -57,14 +57,32 @@ Template.bigquestion.events({
     var checkbox = "";
     $("input[name=cities]:checked").each(function(){ checkbox = checkbox + $(this).attr("value")+" " });
     Session.set("checkbox", checkbox);
-
-
     Session.set("sentencea",$(".sentence-a-"+current+" option:selected").text());
     Session.set("sentenceb",$(".sentence-b-"+current+" option:selected").text());
     Session.set("sentencec",$(".sentence-c-"+current+" option:selected").text());
 
+    // Reset the sidebar...
+    Session.set("strength-t",100);
+    Session.set("strength-p",100);
+    Session.set("strength-s",100);
+    Session.set("strength-h",100);
+
+    // Clear the sidebar
+    $(".content-left").empty();
+    Blaze.render(Template.navfilter,$(".content-left")[0]);
+
+    $(".question-answers").css("visibility","hidden");
+    $(".question-buttons").css("visibility","hidden");
+
     $(".question-"+current).fadeOut(function(){
-      $(".feedback-difficulty").fadeIn();
+      Session.set("qnumber",current+1);
+      $(".question-"+(current+1)).fadeIn();
+    });
+  },
+  "click .start-question" (event,instance) {
+    $(".start-question").fadeOut();
+    $(".start-question-container").fadeOut( function() {
+      $(".navfilter-container").css("visibility","visible");
     });
   },
   "click .big-finish" (event, instance) {
@@ -222,8 +240,6 @@ Template.bigquestion.events({
       });
 
       Session.set("qstart",Date.now());
-      Session.set("qnumber",current+1);
-      $(".question-"+(current+1)).fadeIn();
     });
   }
 });

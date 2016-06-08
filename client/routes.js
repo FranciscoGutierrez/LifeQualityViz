@@ -35,6 +35,24 @@ Router.route('/:_id', {
           $(".welcome-screen").text("This evaluation is only available in Google Chrome. 1.0 - 48 or above.");
         }
 
+        jQuery(document).ready(function($) {
+          if (window.history && window.history.pushState) {
+            $(window).on('popstate', function() {
+              var hashLocation = location.hash;
+              var hashSplit = hashLocation.split("#!/");
+              var hashName = hashSplit[1];
+              if (hashName !== '') {
+                var hash = window.location.hash;
+                if (hash === '') {
+                  alert('Warning, if you press back button, you will lose your progress...');
+                }
+              }
+            });
+            window.history.pushState('forward', null, './'+option);
+          }
+        });
+
+
       });
     });
   }

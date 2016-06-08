@@ -35,16 +35,17 @@
   <div class="content-left">{{>navfilter}}</div>
   <div class="content-mid">
     <div class="content-mid-regression">
-      <div>
-        {{>lifequality cityname="angeles"}}
-        {{>lifequality cityname="newyork"}}
-      </div>
-      <div>
-        {{>lifequality cityname="houston"}}
-        {{>lifequality cityname="denver"}}
-      </div>
+      <div class="start-question-container"></div>
       <div>
         {{>lifequality cityname="seattle"}}
+        {{>lifequality cityname="angeles"}}
+      </div>
+      <div>
+        {{>lifequality cityname="denver"}}
+        {{>lifequality cityname="houston"}}
+      </div>
+      <div>
+        {{>lifequality cityname="newyork"}}
         {{>lifequality cityname="atlanta"}}
       </div>
     </div>
@@ -56,9 +57,10 @@
   <div class="content-left" style="height: 600px;">{{>navfilter}}</div>
   <div class="content-mid"  style="width:  550px; height: 620px;">
     <div class="content-mid-map">
-    {{>sentimentmap}}
-    <br>
-    {{>bigquestion}}
+      <div class="start-question-container"></div>
+      {{>sentimentmap}}
+      <br>
+      {{>bigquestion}}
     </div>
   </div>
 </template>
@@ -67,17 +69,18 @@
   <div class="content-left">{{>navfilter}}</div>
   <div class="content-mid">
     <div class="content-mid-dotplot">
+      <div class="start-question-container"></div>
+      <div>
+        {{>dotplot cityname="seattle"}}
+        {{>dotplot cityname="angeles"}}
+      </div>
       <div>
         {{>dotplot cityname="denver"}}
-        {{>dotplot cityname="newyork"}}
-      </div>
-      <div>
         {{>dotplot cityname="houston"}}
-        {{>dotplot cityname="seattle"}}
       </div>
       <div>
+        {{>dotplot cityname="newyork"}}
         {{>dotplot cityname="atlanta"}}
-        {{>dotplot cityname="angeles"}}
       </div>
     </div>
     {{>bigquestion}}
