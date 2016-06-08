@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   cursor: default;
+  visibility: hidden;
 }
 
 .navfilter-title {

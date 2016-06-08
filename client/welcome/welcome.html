@@ -1,43 +1,236 @@
 <template name="welcome">
   <div class="welcome-content">
     <h1>Welcome to this evaluation!</h1>
-
+    <paper-button class="skip-tutorial">Skip</paper-button>
+    <!--
     <div class="welcome-description wd-x" style="margin: 30px; display: flex; justify-content: flex-start; flex-direction: column; align-items: flex-start;">
-      <paper-input class="welcome-input" label="Hello, what's your name?"></paper-input>
-      <paper-button class="skip-tutorial" style="display: none;">Begin!</paper-button>
-    </div>
+    <paper-input class="welcome-input" label="Hello, what's your name?"></paper-input>
+    <paper-button class="skip-tutorial" style="display: none;">Begin!</paper-button>
+  </div> -->
 
-    <div class="welcome-description wd-0" style="margin: 30px; display: none">
-      <p>In this evaluation you will be asked to answer <b>some questions</b>
-        about the <b>Happiness</b> and <b>Quality of Life</b> in some cities across the U.S.</p>
-        <p>Please use the <b>sliders</b> to adjust the <b>Quality of Life preferences</b>.</p>
-        <img src="/tutorial/sliders.gif"/>
-        <paper-button class="wb-next-0" style="display: block;">Next</paper-button>
-      </div>
+  <div class="welcome-description wd-0" style="margin: 30px; display: flex">
+    <p>
+      In this evaluation we will ask you to explore the impact of things like
+      traffic, safety, and air quality on the quality of life.
+      Further, we want you to explore how people think about these factors.
+    </p>
+    <p>
+      We will show you a visualisation of these factors in 6 cities in the US.
+      We will then give you some tasks in which we will ask you to answer simple
+      questions or to describe similarities and differences.
+    </p>
+    <p>
+      But first, a brief tutorial.
+    </p>
+    <paper-button class="wb-next-0" style="display: block;">Ok</paper-button>
+  </div>
 
-      <div class="welcome-description wd-1" style="display: none;">
-        <p>Then, given the <b>Quality of Life Preferences</b> look for the <b>Happiness</b> prediction in the visualization.</p>
-        <div style="display: flex; align-items: center;">
-          <img src="/tutorial/{{option}}.gif"/>
-        </div>
-        <paper-button class="wb-next-1">Next</paper-button>
-      </div>
-
-      <div class="welcome-description wd-2" style="display: none;">
-        <p>Pay special attention to the <b>accuracy area</b> in the visualization.</p>
-        <img src="/tutorial/mapu.png" style="width: 200px;"/>
-        <paper-button class="wb-next-2">Next</paper-button>
-      </div>
-
-      <div class="welcome-description wd-3" style="display: none;">
+  <div class="welcome-description wd-1" style="display: none;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <img src="/tutorial/sliders.gif"/>
+      <div>
         <p>
-          Try to give your <b>best guess</b> to answer the <b>questions</b>,
-          at the end you will be asked to fill a <b>Google Form</b>.
+          On the left of the screen you can see the <b>different properties</b>
+          that <b>determine quality of life and happiness</b>.
         </p>
         <p>
-          <b>Only then</b> you will recieve your <b>Amazon mTurk Code</b>.
+          You can <b>activate</b> and <b>deactivate</b> them so that they will
+          be considered (or) not in the prediction
+          of the quality of life and happiness in all cities.
         </p>
-        <paper-button class="wb-next-3">Begin</paper-button>
       </div>
     </div>
-  </template>
+    <br>
+    <div style="display: flex; flex-direction:column; justify-content: flex-start; align-items: flex-start;">
+      <p>
+        In addition, you can <b>move the sliders</b> to change their <b>importance</b>.
+      </p>
+      <p>
+        For example:
+      </p>
+      <ul>
+        <li>If the weather is of <b>high importance</b> to you, set its slider to <b>100%</b>.</li>
+        <li>If it is of <b>medium importance</b> to you, set it to <b>50%</b>.</li>
+        <li>If it is of <b>low importance</b> to you, set it to <b>10%</b>.</li>
+        <li>If it is <b>not important</b> to you, but you still want it to be considered in the prediction, set it to 0%, but keep the checkbox activated.</li>
+      </ul>
+    </div>
+    <p>
+      By deactivating a property using the checkbox,
+      it will be completely removed from the prediction.
+    </p>
+    <paper-button class="wb-next-1">Ok</paper-button>
+  </div>
+
+
+  {{#if option.dots}}
+  <div class="welcome-description wd-2" style="display: none;">
+    <p>
+      The visualisation shows you,
+      how widely opinions differ regarding all active aspects.
+    </p>
+    <ul>
+      <li>A <b>wide spread</b> means that <b>opinions</b> are <b>very different.</b></li>
+      <li>A <b>narrow spread</b> means that <b>opinions</b> are <b>rather similar.</b></li>
+    </ul>
+    <img src="/tutorial/dots.png" height="200px"/>
+    <paper-button class="wb-next-2">Ok</paper-button>
+  </div>
+
+  <div class="welcome-description wd-3" style="display: none;">
+    <p>
+      <b>Quality of life and happiness</b> regarding all active aspects
+      are shown below and above the visualisation:
+    </p>
+    <img src="/tutorial/dots2.png" height="200px"/>
+    <paper-button class="wb-next-3">Ok</paper-button>
+  </div>
+
+  <div class="welcome-description wd-4" style="display: none;">
+    <p>
+      When you <b>change a property</b>, you will often see a
+      <b>change regarding the predicted quality of life</b> or <b>happiness</b>
+      in a city.
+    </p>
+    <img src="/tutorial/dots3.png" height="250px"/>
+    <p>
+      <b>But pay attention:</b> Sometimes, if you change the importance of a factor,
+      <b>the quality of life may increase while the happiness decreases</b>.
+      This means that the factor may contribute to a <b>high quality of life</b>,
+      but that people have a <b>negative opinion of it</b>.
+    </p>
+    <paper-button class="wb-next-4">Ok</paper-button>
+  </div>
+
+  <div class="welcome-description wd-5" style="display: none;">
+    <p>
+      DO A SHORT TEST?
+      User to interpret 3 times variety of QOL/happiness settings including uncertainty/spread?
+      ...just based on 3 example images with 3 sliders each (one slider for each aspect)
+    </p>
+    <paper-button class="wb-next-5">Ok</paper-button>
+  </div>
+
+  {{/if}}
+
+  {{#if option.chart}}
+  <div class="welcome-description wd-2" style="display: none;">
+    <p>The visualisation shows you the following things:</p>
+    <p><b>X-axis:</b> The quality of life of a certain aspect. This is incremental from left to right.</p>
+    <img src="/tutorial/chart1.png" style="height: 200px;"/>
+    <paper-button class="wb-next-2">Next</paper-button>
+  </div>
+
+  <div class="welcome-description wd-3" style="display: none;">
+    <div>
+    <p><b>Y-axis:</b> The spread of opinions regarding a certain aspect:</p>
+    <p>A <b>tall</b> cloud means that people have a very <b>different</b> opinion.</p>
+    <p>A <b>small</b> cloud means people thing roughly the <b>same.</b></p>
+    </div>
+    <img src="/tutorial/chart2.png" style="height: 200px;"/>
+    <paper-button class="wb-next-3">Next</paper-button>
+  </div>
+
+  <div class="welcome-description wd-4" style="display: none;">
+    <div>
+    <p>
+      The <b>thick horizontal grey line</b> shows you the trend between the aspects.
+      It combines the mean value of happiness concerning both aspects.
+    </p>
+    <p>
+      The vertical line shows you the mean <b>quality of life</b>.
+    </p>
+    <p>
+      When you <b>change a property</b>, you will often see a <b>change regarding
+      the predicted quality of life</b> or <b>happiness</b> in a city.
+    </p>
+    </div>
+    <img src="/tutorial/chart3.png" style="height: 250px;"/>
+    <p>
+      <b>But pay attention:</b> Sometimes, if you change the importance of a factor,
+      <b>the quality of life may increase while the happiness decreases.</b>
+      This means that the factor may contribute to a <b>high quality of life</b>,
+      but that people have a <b>negative opinion of it.</b>
+    </p>
+    <paper-button class="wb-next-4">Ok</paper-button>
+  </div>
+
+  <div class="welcome-description wd-5" style="display: none;">
+    <p>
+      DO A SHORT TEST?
+      User to interpret 3 times variety of QOL/happiness settings including uncertainty/spread?
+      ...just based on 3 example images with 3 sliders each (one slider for each aspect)
+    </p>
+    <paper-button class="wb-next-5">Ok</paper-button>
+  </div>
+
+  {{/if}}
+
+  {{#if option.map}}
+  <div class="welcome-description wd-2" style="display: none;">
+    <p>Quality of life and happiness regarding a certain aspect are encoded in a face’s eyes and mouth:</p>
+    <img src="/tutorial/map1.png" style="width: 300px;"/>
+    <paper-button class="wb-next-2">Next</paper-button>
+  </div>
+
+  <div class="welcome-description wd-3" style="display: none;">
+    <p>When you <b>change a property</b>, you will often see a
+      <b>change regarding the predicted quality of life or happiness</b> in a city.</p>
+      <img src="/tutorial/map2.png" style="width: 600px;"/>
+      <p><b>But pay attention:</b> Sometimes, if you change the importance of a factor,
+        <b>the quality of life may increase while the happiness decreases.</b>
+        This means that the factor may contribute to a <b>high quality of life</b>,
+        but that people have a <b>negative opinion of it.</b>
+      </p>
+      <paper-button class="wb-next-3">Next</paper-button>
+    </div>
+
+    <div class="welcome-description wd-4" style="display: none;">
+      <p>
+        You can also read the happiness of people from the <b>black</b> number
+        next to each face. The small <b>grey numbers</b>,
+        <b>together with the height of the bar,</b> show you how widely
+        <b>opinions differ.</b>
+      </p>
+      <p>
+        A <b>high bar</b> with a large range means that <b>opinions differ widely</b>.
+        A <b>small bar</b> with a small range means <b>opinions are largely the same</b>.
+      </p>
+      <img src="/tutorial/map3.png" style="width: 600px;"/>
+      <paper-button class="wb-next-4">Next</paper-button>
+    </div>
+
+    <div class="welcome-description wd-5" style="display: none;">
+      <p>
+        DO A SHORT TEST?
+        User to interpret 3 times variety of QOL/happiness settings including uncertainty/spread?
+        ...just based on 3 example images with 3 sliders each (one slider for each aspect)
+      </p>
+      <paper-button class="wb-next-5">Ok</paper-button>
+    </div>
+
+    {{/if}}
+
+    <div class="welcome-description wd-end" style="display: none;">
+      <p>
+        That’s it. Now we will give you some tasks to answer using the
+        slider and the visualisation. After that we will ask you some questions.
+      </p>
+      <p>
+        IMPORTANT: We know this test may not be easy. However,
+        <b>we will pay you more money, the better you do</b>.
+        Here is the payment you can expect:
+      </p>
+      <div>
+        <p><b>33%</b> of questions correct: <b>$1</b></p>
+        <p><b>66%</b> of questions correct: <b>$2</b></p>
+        <p><b>99%</b> of questions correct: <b>$3</b></p>
+      </div>
+      <br>
+      <p>
+        Good luck!
+      </p>
+      <paper-button class="wb-next-end">Ok</paper-button>
+    </div>
+  </div>
+</template>
