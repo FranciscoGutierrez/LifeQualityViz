@@ -22,8 +22,8 @@ Router.route('/:_id', {
         Session.setDefault("strength-h",100);
         Session.setDefault("option",option);
         Session.setDefault("qnumber",1);
-        Session.setDefault("slider1",20);
-        Session.setDefault("slider2",80);
+        Session.setDefault("slider1",100);
+        Session.setDefault("slider2",100);
 
         var isChrome = !!window.chrome && !!window.chrome.webstore;
         if(isChrome) {

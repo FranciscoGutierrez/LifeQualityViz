@@ -16,7 +16,7 @@ Template.welcome.helpers({
     val = Number(Session.get("slider1"));
     if(val<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible"); }
     if(val>95){ $(".slider-hound").css("visibility","hidden"); } else { $(".slider-hound").css("visibility","visible"); }
-    return {a: Math.round(val), x: val-2};
+    return {a: Math.round(val), x: val-3};
   }
 });
 

@@ -60,4 +60,5 @@ paper-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: default;
 }
