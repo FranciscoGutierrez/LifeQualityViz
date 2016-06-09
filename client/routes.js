@@ -24,6 +24,7 @@ Router.route('/:_id', {
         Session.setDefault("qnumber",1);
         Session.setDefault("slider1",100);
         Session.setDefault("slider2",100);
+        Session.setDefault("ssid",Meteor.default_connection._lastSessionId);
 
         var isChrome = !!window.chrome && !!window.chrome.webstore;
         if(isChrome) {

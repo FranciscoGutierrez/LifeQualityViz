@@ -94,7 +94,7 @@ Template.bigquestion.events({
     var select1 = Session.get("select1");
     var select2 = Session.get("select2");
     var text    = Session.get("textarea");
-    var user_id = Meteor.default_connection._lastSessionId;
+    var user_id = Session.get("ssid");
     var diff = Session.get("feedback-difficulty");
     var pref = $("input[name=preference]:checked").val();
     var resp = Session.get("answer");

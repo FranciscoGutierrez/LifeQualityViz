@@ -55,7 +55,7 @@
         <div class="question-body">
           By combining which <b>3 factors</b> do you get the <b>highest Quality of Life</b> in <b>Los Angeles</b>?
         </div>
-        <div class="question-footer">(Adjust the sliders in the sidebar)</div>
+        <div class="question-footer">Please adjust the sliders in the sidebar.</div>
         <div class="question-answers">
           {{#if factors.w}}
           <div class="qopt">Weather:<span style="border-bottom: 2px solid #4daf4a;">{{factors.w}}</span></div>
@@ -104,12 +104,12 @@
           Which is the <b>best city</b> to live in?
         </div>
         <div class="question-answers">
-            <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
-            <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
-            <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
-            <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
-            <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
-            <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+          <label><input type="radio" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+          <label><input type="radio" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+          <label><input type="radio" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+          <label><input type="radio" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+          <label><input type="radio" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+          <label><input type="radio" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
         </div>
         <div class="question-buttons">
           <paper-button class="big-next">Sumbit</paper-button>
@@ -175,15 +175,17 @@
             <option>Weather</option>
           </select>
           <div class="question-checkboxes">
-            <div>
-              <label><input type="checkbox" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
-              <label><input type="checkbox" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
-              <label><input type="checkbox" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
-            </div>
-            <div>
-              <label><input type="checkbox" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
-              <label><input type="checkbox" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
-              <label><input type="checkbox" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+            <div style="display: flex; width: 300px; justify-content: space-around;">
+              <div style="display: flex; flex-direction: column;">
+                <label><input type="checkbox" name="cities" value="newyork" class="radio-button city-radio rb-newyork">New York   </label>
+                <label><input type="checkbox" name="cities" value="angeles" class="radio-button city-radio rb-angeles">Los Angeles</label>
+                <label><input type="checkbox" name="cities" value="houston" class="radio-button city-radio rb-houston">Houston    </label>
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <label><input type="checkbox" name="cities" value="denver"  class="radio-button city-radio rb-denver" >Denver     </label>
+                <label><input type="checkbox" name="cities" value="atlanta" class="radio-button city-radio rb-atlanta">Atlanta    </label>
+                <label><input type="checkbox" name="cities" value="seattle" class="radio-button city-radio rb-seattle">Seattle    </label>
+              </div>
             </div>
           </div>
         </div>
