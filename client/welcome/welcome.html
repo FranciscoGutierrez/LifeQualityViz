@@ -215,7 +215,7 @@
     <!-- SHORT TEST -->
     <div class="welcome-description wd-5" style="display: none;">
       <div class="tutorial-test test-1">
-        <img src="/tutorial/dt1.png" height="200px"/>
+        <img src="/tutorial/ct1.png" height="200px"/>
         <div class="question-intro"  style="margin: 0;">Given to the visualisation,</div>
         <div class="question-body"   style="margin: 0; font-size: 20px;">What is the value of Happinness?</div>
         <div class="question-footer" style="margin: 0; font-size: 12px;">Adjust the slider to the corresponding value.</div>
@@ -235,7 +235,7 @@
         {{/if}}
       </div>
       <div class="tutorial-test test-2" style="display: none;">
-        <img src="/tutorial/dt2.png" height="200px"/>
+        <img src="/tutorial/ct2.png" height="200px"/>
         <div class="question-intro"  style="margin: 0;">Given the visualisation,</div>
         <div class="question-body"   style="margin: 0; font-size: 20px;">What is the value of Quality of Life?</div>
         <div class="question-footer" style="margin: 0; font-size: 12px;">Adjust the slider to the corresponding value.</div>
@@ -255,7 +255,7 @@
         {{/if}}
       </div>
       <div class="tutorial-test test-3" style="display: none;">
-        <img src="/tutorial/dt3.png" height="200px"/>
+        <img src="/tutorial/ct3.png" height="200px"/>
         <div class="question-intro"  style="margin: 0;">Given the visualisation,</div>
         <div class="question-body"   style="margin: 0; font-size: 20px;">The value of Happiness is between...</div>
         <div class="question-footer" style="margin: 0; font-size: 12px;">Adjust the sliders to the corresponding values.</div>
@@ -316,7 +316,10 @@
       <!-- SHORT TEST -->
       <div class="welcome-description wd-5" style="display: none;">
         <div class="tutorial-test test-1">
-          <img src="/tutorial/dt1.png" height="200px"/>
+          <div style="display: flex; align-items: flex-end;">
+            <img src="/tutorial/mt1.png" height="200px"/>
+            <img src="/tutorial/mtx.png" height="100px"/>
+          </div>
           <div class="question-intro"  style="margin: 0;">Given to the visualisation,</div>
           <div class="question-body"   style="margin: 0; font-size: 20px;">What is the value of Happinness?</div>
           <div class="question-footer" style="margin: 0; font-size: 12px;">Adjust the slider to the corresponding value.</div>
@@ -336,27 +339,30 @@
           {{/if}}
         </div>
         <div class="tutorial-test test-2" style="display: none;">
-          <img src="/tutorial/dt2.png" height="200px"/>
+          <div style="display: flex; align-items: flex-end;">
+            <img src="/tutorial/mt2.png" height="200px"/>
+            <img src="/tutorial/mtx.png" height="100px"/>
+          </div>
           <div class="question-intro"  style="margin: 0;">Given the visualisation,</div>
           <div class="question-body"   style="margin: 0; font-size: 20px;">What is the value of Quality of Life?</div>
           <div class="question-footer" style="margin: 0; font-size: 12px;">Adjust the slider to the corresponding value.</div>
           <div class="slider-container">
             <div id="test-slider2" style="background: grey;"></div>
             <div class="pips">
-              <span class="slider-zero">0</span>
+              <span class="slider-zero">Low</span>
               <div  class="slider-tooltip" style="color: {{qtwo.color}}; left: {{simpleslider.x}}%">{{simpleslider.a}}</div>
-              <span class="slider-hound"   style="visibility:hidden;">100</span>
+              <span class="slider-hound"   style="visibility:hidden;">High</span>
             </div>
           </div>
           {{#if qtwo.display}}
           <div class="tutorial-success">
-            <p>That's correct! The Quality of Life value is <b>89</b></p>
+            <p>That's correct! The Quality of Life value is <b>High</b></p>
             <paper-button class="wb-next-5-3" style="display: block;">Next</paper-button>
           </div>
           {{/if}}
         </div>
         <div class="tutorial-test test-3" style="display: none;">
-          <img src="/tutorial/dt3.png" height="200px"/>
+          <img src="/tutorial/mt3.png" height="200px"/>
           <div class="question-intro"  style="margin: 0;">Given the visualisation,</div>
           <div class="question-body"   style="margin: 0; font-size: 20px;">The value of Happiness is between...</div>
           <div class="question-footer" style="margin: 0; font-size: 12px;">Adjust the sliders to the corresponding values.</div>

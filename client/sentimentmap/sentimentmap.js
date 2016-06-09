@@ -271,18 +271,18 @@ Template.sentimentmap.helpers({
     $(".vp-atlanta").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/32.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/22.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/12.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return c;
   },
@@ -411,18 +411,18 @@ Template.sentimentmap.helpers({
     $(".vp-seattle").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/32.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/22.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/12.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return c;
   },
@@ -552,18 +552,18 @@ Template.sentimentmap.helpers({
     $(".vp-angeles").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/32.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/22.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/12.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return c;
   },
@@ -692,18 +692,18 @@ Template.sentimentmap.helpers({
     $(".vp-houston").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/32.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/22.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/12.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return city;
   },
@@ -830,20 +830,21 @@ Template.sentimentmap.helpers({
     $(".css_newyork-mdl").text(Math.round(dots/2));
     $(".css_newyork-lwr").text(bot_round);
     $(".vp-newyork").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
-    if(c  >  0) {
-      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/32.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/31.png')");
+    console.log(dots);
+    if( c  >=  0 && c  <=  33) {
+      if(Math.round(dots/2) > 0)  $(city_css).css("background-image","url('/faces/33.png')");
+      if(Math.round(dots/2) > 33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2) > 66) $(city_css).css("background-image","url('/faces/31.png')");
     }
-    if(c  > 33) {
-      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/22.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/21.png')");
+    if( c  >=  33 && c  <=  66) {
+      if(Math.round(dots/2) > 0)  $(city_css).css("background-image","url('/faces/23.png')");
+      if(Math.round(dots/2) > 33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2) > 66) $(city_css).css("background-image","url('/faces/21.png')");
     }
-    if(c  > 66) {
-      if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/12.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/11.png')");
+    if( c  >=  66) {
+      if(Math.round(dots/2) > 0)  $(city_css).css("background-image","url('/faces/13.png')");
+      if(Math.round(dots/2) > 33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2) > 66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return c;
   },
@@ -972,18 +973,18 @@ Template.sentimentmap.helpers({
     $(".vp-denver").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
     if(c  >  0) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/33.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/32.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/31.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/32.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/31.png')");
     }
     if(c  > 33) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/23.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/22.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/21.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/22.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/21.png')");
     }
     if(c  > 66) {
       if(Math.round(dots/2)>0)  $(city_css).css("background-image","url('/faces/13.png')");
-      if(Math.round(dots/2)>42) $(city_css).css("background-image","url('/faces/12.png')");
-      if(Math.round(dots/2)>55) $(city_css).css("background-image","url('/faces/11.png')");
+      if(Math.round(dots/2)>33) $(city_css).css("background-image","url('/faces/12.png')");
+      if(Math.round(dots/2)>66) $(city_css).css("background-image","url('/faces/11.png')");
     }
     return c;
   }
