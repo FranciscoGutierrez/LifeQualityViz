@@ -61,7 +61,7 @@ Template.navfilter.events({
   },
   'click paper-checkbox'(event, template) {
     $(".question-answers").css("visibility","visible");
-    $(".question-buttons").css("visibility","visible");
+    if(Number(Session.get("qnumber")) == 3) $(".question-buttons").css("visibility","visible");
     var count = 0;
     $('paper-checkbox[checked]').each(function() { count = count + 1; });
     if(count < 1) {

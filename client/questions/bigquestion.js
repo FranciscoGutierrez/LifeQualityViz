@@ -41,6 +41,9 @@ Template.bigquestion.helpers({
 });
 
 Template.bigquestion.events({
+  "click .question-answers" (event,instance) {
+    $(".question-buttons").css("visibility","visible");
+  },
   "click .big-golden"(event, instance) {
     var current = Number(Session.get("qnumber"));
     // Reset the sidebar...
