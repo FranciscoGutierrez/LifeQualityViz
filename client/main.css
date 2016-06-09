@@ -276,7 +276,7 @@ h2 {
 
 .content-mid-map {
   display: flex;
-  height: 100%;
+  height: 400px;
   align-items: flex-start;
   width: 100%;
   margin-bottom: 50px;
