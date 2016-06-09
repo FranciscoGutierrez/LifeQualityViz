@@ -830,7 +830,6 @@ Template.sentimentmap.helpers({
     $(".css_newyork-mdl").text(Math.round(dots/2));
     $(".css_newyork-lwr").text(bot_round);
     $(".vp-newyork").css("height",(100-((bot_round+(100-top_round))))*1.2+"px");
-    console.log(dots);
     if( c  >=  0 && c  <=  33) {
       if(Math.round(dots/2) > 0)  $(city_css).css("background-image","url('/faces/33.png')");
       if(Math.round(dots/2) > 33) $(city_css).css("background-image","url('/faces/32.png')");

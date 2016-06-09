@@ -93,3 +93,12 @@ paper-button {
 #test-slider3 .noUi-connect {
   background: grey;
 }
+
+.slider-container input {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.slider-container label {
+  cursor: pointer;
+}

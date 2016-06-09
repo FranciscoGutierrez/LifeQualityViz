@@ -52,7 +52,7 @@
         <li>If the weather is of <b>high importance</b> to you, set its slider to <b>100%</b>.</li>
         <li>If it is of <b>medium importance</b> to you, set it to <b>50%</b>.</li>
         <li>If it is of <b>low importance</b> to you, set it to <b>10%</b>.</li>
-        <li>If it is <b>not important</b> to you, but you still want it to be considered in the prediction, set it to 0%, but keep the checkbox activated.</li>
+        <li>If it is <b>not important</b> to you, but you still want it to be considered in the prediction, set it to <b>0%</b>, but keep the checkbox activated.</li>
       </ul>
     </div>
     <p>
@@ -281,14 +281,14 @@
     {{#if option.map}}
     <div class="welcome-description wd-2" style="display: none;">
       <p>Quality of life and happiness regarding a certain aspect are encoded in a face’s eyes and mouth:</p>
-      <img src="/tutorial/map1.png" style="width: 300px;"/>
+      <img src="/tutorial/map1.png" style="height: 200px;"/>
       <paper-button class="wb-next-2">Next</paper-button>
     </div>
 
     <div class="welcome-description wd-3" style="display: none;">
       <p>When you <b>change a property</b>, you will often see a
         <b>change regarding the predicted quality of life or happiness</b> in a city.</p>
-        <img src="/tutorial/map2.png" style="width: 600px;"/>
+        <img src="/tutorial/map2.png" style="height: 200px;"/>
         <p><b>But pay attention:</b> Sometimes, if you change the importance of a factor,
           <b>the quality of life may increase while the happiness decreases.</b>
           This means that the factor may contribute to a <b>high quality of life</b>,
@@ -308,7 +308,7 @@
           A <b>high bar</b> with a large range means that <b>opinions differ widely</b>.
           A <b>small bar</b> with a small range means <b>opinions are largely the same</b>.
         </p>
-        <img src="/tutorial/map3.png" style="width: 600px;"/>
+        <img src="/tutorial/map3.png" style="height: 200px;"/>
         <paper-button class="wb-next-4">Next</paper-button>
       </div>
       <!-- SHORT TEST -->
@@ -318,7 +318,7 @@
         <div class="tutorial-test test-1">
           <div style="display: flex; align-items: flex-end;">
             <img src="/tutorial/mt1.png" height="200px"/>
-            <img src="/tutorial/mtx.png" height="100px"/>
+            <img src="/tutorial/mtx.png" height="100px" style="align-self: flex-end;"/>
           </div>
           <div class="question-intro"  style="margin: 0;">Given to the visualisation,</div>
           <div class="question-body"   style="margin: 0; font-size: 20px;">What is the value of Happinness?</div>
@@ -339,28 +339,25 @@
           {{/if}}
         </div>
         <div class="tutorial-test test-2" style="display: none;">
-          <div style="display: flex; align-items: flex-end;">
+          <div style="display: flex; align-items: flex-end; margin-bottom: 20px;">
             <img src="/tutorial/mt2.png" height="200px"/>
-            <img src="/tutorial/mtx.png" height="100px"/>
+            <img src="/tutorial/mtx.png" height="100px" style="align-self: flex-end;"/>
           </div>
           <div class="question-intro"  style="margin: 0;">Given the visualisation,</div>
           <div class="question-body"   style="margin: 0; font-size: 20px;">What is the value of Quality of Life?</div>
           <div class="question-footer" style="margin: 0; font-size: 12px;">Adjust the slider to the corresponding value.</div>
-          <div class="slider-container">
-            <div id="test-slider2" style="background: grey;"></div>
-            <div class="pips">
-              <span class="slider-zero">Low</span>
-              <div  class="slider-tooltip" style="color: {{qtwo.color}}; left: {{simpleslider.x}}%">{{simpleslider.a}}</div>
-              <span class="slider-hound"   style="visibility:hidden;">High</span>
-            </div>
+          <div class="slider-container" style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <div id="test-slider2" style="display: none;"></div>
+            <label><input type="radio" name="faces" value="low"    class="radio-button faces-radio rb-low"   >Low   </label>
+            <label><input type="radio" name="faces" value="medium" class="radio-button faces-radio rb-medium">Medium</label>
+            <label><input type="radio" name="faces" value="high"   class="radio-button faces-radio rb-high"  >High  </label>
           </div>
-          {{#if qtwo.display}}
-          <div class="tutorial-success">
+          <div class="tutorial-success tutorial-map-two" style="display: none;">
             <p>That's correct! The Quality of Life value is <b>High</b></p>
             <paper-button class="wb-next-5-3" style="display: block;">Next</paper-button>
           </div>
-          {{/if}}
         </div>
+
         <div class="tutorial-test test-3" style="display: none;">
           <img src="/tutorial/mt3.png" height="200px"/>
           <div class="question-intro"  style="margin: 0;">Given the visualisation,</div>

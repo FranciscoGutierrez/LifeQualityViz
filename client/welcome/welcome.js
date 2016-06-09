@@ -55,6 +55,12 @@ Template.welcome.helpers({
 });
 
 Template.welcome.events({
+  "click .rb-high" (event, instance) {
+    $(".tutorial-map-two").fadeIn();
+  },
+  "click .rb-medium, click .rb-low" (event, instance) {
+    $(".tutorial-map-two").fadeOut();
+  },
   'click .wb-ok'  (event, instance) {
     $(".welcome-screen").fadeOut(function(){
       $(this).remove();
