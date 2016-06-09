@@ -70,19 +70,77 @@ Template.bigquestion.events({
   },
   "click .big-next"  (event, instance) {
     var current = Number(Session.get("qnumber"));
-    Session.set("aimp",$("input[name=importance]:checked").val());
-    Session.set("acity",$("input[name=cities]:checked").val());
-    Session.set("afactor",$("input[name=factors]:checked").val());
-    Session.set("select1",$(".control-a-"+current+" option:selected").text());
-    Session.set("select2",$(".control-b-"+current+" option:selected").text());
-    Session.set("textarea",$(".textarea-"+current).val());
-    Session.set("qend",Date.now());
-    var checkbox = "";
-    $("input[name=cities]:checked").each(function(){ checkbox = checkbox + $(this).attr("value")+" " });
-    Session.set("checkbox", checkbox);
-    Session.set("sentencea",$(".sentence-a-"+current+" option:selected").text());
-    Session.set("sentenceb",$(".sentence-b-"+current+" option:selected").text());
-    Session.set("sentencec",$(".sentence-c-"+current+" option:selected").text());
+    var timeend = Date.now();
+    var weather = Math.round(Session.get("strength-h"));
+    var safety  = Math.round(Session.get("strength-s"));
+    var traffic = Math.round(Session.get("strength-t"));
+    var air     = Math.round(Session.get("strength-p"));
+    var gold1 = Session.get("gold1");
+    var gold2 = Session.get("gold2");
+    var gold3 = Session.get("gold3");
+    var gold4 = Session.get("gold4");
+    var trust = 5;
+    if(Number(gold1) != 60  && current > 2) trust = trust - 1;
+    if(Number(gold2) != 35  && current > 3) trust = trust - 1;
+    if(Number(gold3) != 25  && current > 5) trust = trust - 1;
+    if(Number(gold4) != 75  && current > 7) trust = trust - 1;
+    var actions_sw = Session.get("actions_sw",0);
+    var actions_ss = Session.get("actions_ss",0);
+    var actions_st = Session.get("actions_st",0);
+    var actions_sa = Session.get("actions_sa",0);
+    var actions_cw = Session.get("actions_cw",0);
+    var actions_cs = Session.get("actions_cs",0);
+    var actions_ct = Session.get("actions_ct",0);
+    var actions_ca = Session.get("actions_ca",0);
+    var actions = actions_sw + actions_ss + actions_st + actions_sa + actions_cw + actions_cs + actions_ct + actions_ca;
+
+    if(weather == 0) weather = "0"; if(safety == 0) safety = "0";
+    if(traffic == 0) traffic = "0"; if(air    == 0) air    = "0";
+
+    if(!$(".health"  ).attr("checked")) weather = false;
+    if(!$(".safety"  ).attr("checked")) safety  = false;
+    if(!$(".traffic" ).attr("checked")) traffic = false;
+    if(!$(".polluted").attr("checked")) air     = false;
+
+    $("input:radio").removeAttr("checked");
+    $("input:checkbox").removeAttr("checked");
+
+    console.log({
+      userid:    Session.get("ssid"),
+      timestart: Session.get("qstart"),
+      timeend:   timeend,
+      timespent: timeend - Session.get("qstart"),
+      actions_sw: actions_sw,
+      actions_ss: actions_ss,
+      actions_st: actions_st,
+      actions_sa: actions_sa,
+      actions_cw: actions_cw,
+      actions_cs: actions_cs,
+      actions_ct: actions_ct,
+      actions_ca: actions_ca,
+      golden1: gold1,
+      golden2: gold2,
+      golden3: gold3,
+      golden4: gold4,
+      trust:   trust,
+      actions:  actions,
+      question: current,
+      viz:      Session.get("option"),
+      weather:  weather,
+      safety:   safety,
+      traffic:  traffic,
+      air:      air
+    });
+
+    Session.set("actions_sw",0);
+    Session.set("actions_ss",0);
+    Session.set("actions_st",0);
+    Session.set("actions_sa",0);
+    Session.set("actions_cw",0);
+    Session.set("actions_cs",0);
+    Session.set("actions_ct",0);
+    Session.set("actions_ca",0);
+
     // Reset the sidebar...
     Session.set("strength-t",100);
     Session.set("strength-p",100);
@@ -126,74 +184,6 @@ Template.bigquestion.events({
       }
     });
 
-    // Record to database
-    var current = Number(Session.get("qnumber"));
-    var option  = Session.get("option");
-    var city    = Session.get("acity");
-    var factor  = Session.get("afactor");
-    var imp     = Session.get("aimp");
-    var select1 = Session.get("select1");
-    var select2 = Session.get("select2");
-    var text    = Session.get("textarea");
-    var user_id = Session.get("ssid");
-    var diff = Session.get("feedback-difficulty");
-    var pref = $("input[name=preference]:checked").val();
-    var resp = Session.get("answer");
-    var checkbox = Session.get("checkbox");
-    var timestart = Session.get("qstart");
-    var timeend   = Session.get("qend");
-
-    var slider1 = Session.get("slider1");
-    var slider2 = Session.get("slider2");
-
-    var w = Math.round(Session.get("strength-h"));
-    var s = Math.round(Session.get("strength-s"));
-    var t = Math.round(Session.get("strength-t"));
-    var a = Math.round(Session.get("strength-p"));
-
-    var sa = Session.get("sentencea");
-    var sb = Session.get("sentenceb");
-    var sc = Session.get("sentencec");
-
-    if (w == 0) w = "0"; if (s == 0) s = "0";
-    if (t == 0) t = "0"; if (a == 0) a = "0";
-
-    if(!$(".health"  ).attr("checked")) w = false
-    if(!$(".safety"  ).attr("checked")) s = false
-    if(!$(".traffic" ).attr("checked")) t = false
-    if(!$(".polluted").attr("checked")) a = false
-
-
-    $("input:radio").removeAttr("checked");
-    $("input:checkbox").removeAttr("checked");
-    $('textarea').val("");
-    //Answers.insert
-    console.log({
-      checkbox:   checkbox,
-      timestart:  timestart,
-      timeend:    timeend,
-      ssid:       user_id,
-      question:   current,
-      viz:        option,
-      difficulty: diff,
-      preference: pref,
-      acity:      city,
-      afactor:    factor,
-      aimp:       imp,
-      aoption1:   select1,
-      aoption2:   select2,
-      atext:      text,
-      weather:    w,
-      safety:     s,
-      traffic:    t,
-      polluted:   a,
-      slider1: slider1,
-      slider2: slider2,
-      senta: sa,
-      sentb: sb,
-      sentc: sc
-    });
-
 
   },
   "click .start-question" (event,instance) {
@@ -205,77 +195,71 @@ Template.bigquestion.events({
   },
   "click .big-finish" (event, instance) {
     var current = Number(Session.get("qnumber"));
-    var option  = Session.get("option");
-    var name    = Session.get("username");
-    var city    = Session.get("acity");
-    var factor  = Session.get("afactor");
-    var imp     = Session.get("aimp");
-    var select1 = Session.get("select1");
-    var select2 = Session.get("select2");
-    var text    = Session.get("textarea");
-    var user_id = Meteor.default_connection._lastSessionId;
-    var diff    = Session.get("feedback-difficulty");
-    var pref    = $("input[name=preference]:checked").val();
-    var resp    = Session.get("answer");
-    var checkbox  = Session.get("checkbox");
-    var timestart = Session.get("qstart");
-    var timeend   = Session.get("qend");
+    var timeend = Date.now();
+    var weather = Math.round(Session.get("strength-h"));
+    var safety  = Math.round(Session.get("strength-s"));
+    var traffic = Math.round(Session.get("strength-t"));
+    var air     = Math.round(Session.get("strength-p"));
+    var gold1 = Session.get("gold1");
+    var gold2 = Session.get("gold2");
+    var gold3 = Session.get("gold3");
+    var gold4 = Session.get("gold4");
+    var trust = 5;
+    if(Number(gold1) != 60  && current > 2) trust = trust - 1;
+    if(Number(gold2) != 35  && current > 3) trust = trust - 1;
+    if(Number(gold3) != 25  && current > 5) trust = trust - 1;
+    if(Number(gold4) != 75  && current > 7) trust = trust - 1;
+    var actions_sw = Session.get("actions_sw",0);
+    var actions_ss = Session.get("actions_ss",0);
+    var actions_st = Session.get("actions_st",0);
+    var actions_sa = Session.get("actions_sa",0);
+    var actions_cw = Session.get("actions_cw",0);
+    var actions_cs = Session.get("actions_cs",0);
+    var actions_ct = Session.get("actions_ct",0);
+    var actions_ca = Session.get("actions_ca",0);
+    var actions = actions_sw + actions_ss + actions_st + actions_sa + actions_cw + actions_cs + actions_ct + actions_ca;
 
-    var slider1 = Session.get("slider1");
-    var slider2 = Session.get("slider2");
+    if(weather == 0) weather = "0"; if(safety == 0) safety = "0";
+    if(traffic == 0) traffic = "0"; if(air    == 0) air    = "0";
 
-    var sa = Session.get("sentencea");
-    var sb = Session.get("sentenceb");
-    var sc = Session.get("sentencec");
-
-    var w = Math.round(Session.get("strength-h"));
-    var s = Math.round(Session.get("strength-s"));
-    var t = Math.round(Session.get("strength-t"));
-    var a = Math.round(Session.get("strength-p"));
-
-    if (w == 0) w = "0"; if (s == 0) s = "0";
-    if (t == 0) t = "0"; if (a == 0) a = "0";
-
-    if(!$(".health"  ).attr("checked")) w = false
-    if(!$(".safety"  ).attr("checked")) s = false
-    if(!$(".traffic" ).attr("checked")) t = false
-    if(!$(".polluted").attr("checked")) a = false
+    if(!$(".health"  ).attr("checked")) weather = false;
+    if(!$(".safety"  ).attr("checked")) safety  = false;
+    if(!$(".traffic" ).attr("checked")) traffic = false;
+    if(!$(".polluted").attr("checked")) air     = false;
 
     $("input:radio").removeAttr("checked");
     $("input:checkbox").removeAttr("checked");
-    $('textarea').val("");
 
     console.log({
-      checkbox:   checkbox,
-      timestart:  timestart,
-      timeend:    timeend,
-      ssid:       user_id,
-      question:   current,
-      viz:        option,
-      difficulty: diff,
-      preference: pref,
-      acity:      city,
-      afactor:    factor,
-      aimp:       imp,
-      aoption1:   select1,
-      aoption2:   select2,
-      atext:      text,
-      weather:    w,
-      safety:     s,
-      traffic:    t,
-      polluted:   a,
-      slider1: slider1,
-      slider2: slider2,
-      senta: sa,
-      sentb: sb,
-      sentc: sc
+      userid:    Session.get("ssid"),
+      timestart: Session.get("qstart"),
+      timeend:   timeend,
+      timespent: timeend - Session.get("qstart"),
+      actions_sw: actions_sw,
+      actions_ss: actions_ss,
+      actions_st: actions_st,
+      actions_sa: actions_sa,
+      actions_cw: actions_cw,
+      actions_cs: actions_cs,
+      actions_ct: actions_ct,
+      actions_ca: actions_ca,
+      golden1: gold1,
+      golden2: gold2,
+      golden3: gold3,
+      golden4: gold4,
+      trust:   trust,
+      actions:  actions,
+      question: current,
+      viz:      Session.get("option"),
+      weather:  weather,
+      safety:   safety,
+      traffic:  traffic,
+      air:      air
     });
+
     $(".question-container").fadeOut(function(){
       $(".big-thanks").fadeIn();
     });
-  },
-  "click .radio-button" (event, instance) {
-    //console.log(event.target);
   },
   "click .fd-next" (event, instance) {
     var a = $("input[name=difficulty]:checked").val();
@@ -299,6 +283,8 @@ Template.bigquestion.rendered = function () {
   }).on('slide', function (ev, val) {
     Session.set("gold1",Number(val));
     $(".question-answers").css("visibility","visible");
+  }).on('set', function(){
+    $(".question-answers").css("visibility","visible");
   });
 
   this.$("#question-slider2").noUiSlider({
@@ -309,6 +295,8 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold2",Number(val));
+    $(".question-answers").css("visibility","visible");
+  }).on('set', function(){
     $(".question-answers").css("visibility","visible");
   });
 
@@ -321,5 +309,8 @@ Template.bigquestion.rendered = function () {
   }).on('slide', function (ev, val) {
     Session.set("gold3",Number(val));
     $(".question-answers").css("visibility","visible");
+  }).on('set', function(){
+    $(".question-answers").css("visibility","visible");
   });
+
 };
