@@ -17,6 +17,35 @@ Template.welcome.helpers({
     if(val<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible"); }
     if(val>95){ $(".slider-hound").css("visibility","hidden"); } else { $(".slider-hound").css("visibility","visible"); }
     return {a: Math.round(val), x: val-3};
+  },
+  doubleslider() {
+    var val1 = 20;
+    var val2 = 80;
+    val1 = Number(Session.get("slider1"));
+    val2 = Number(Session.get("slider2"));
+    if(val1<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible"); }
+    if(val2>95){ $(".slider-hound").css("visibility","hidden"); } else { $(".slider-hound").css("visibility","visible"); }
+    return {a: Math.round(val1), b: Math.round(val2), x: val1-2, y: val2-2};
+  },
+  qone(){
+    var show  = false;
+    var slide = Number(Session.get("slider1"));
+    if(slide == 44) show = true;
+    return {display: show};
+  },
+  qtwo(){
+    var show  = false;
+    var slide = Number(Session.get("slider1"));
+    if(slide == 89) show = true;
+    return {display: show};
+  },
+  qthree(){
+    var show1 = false;
+    var show2 = false;
+    if(Number(Session.get("slider1")) == 25) show1 = true;
+    if(Number(Session.get("slider2")) == 75) show2 = true;
+
+    return {display: show1*show2};
   }
 });
 
@@ -56,16 +85,32 @@ Template.welcome.events({
   },
   "click .wb-next-4" (event, instance) {
     $(".wd-4").fadeOut(function(){
+      $(".welcome-h1").text("Now a short test!");
       $(".wd-5").fadeIn(function(){
-        $(".wb-next-5").delay(200).fadeIn();
+        // $(".wb-next-5").delay(200).fadeIn();
       });
     });
   },
   "click .wb-next-5" (event, instance) {
     $(".wd-5").fadeOut(function(){
+      $(".welcome-h1").text("That's it!");
       $(".wd-end").fadeIn(function(){
         $(".wb-next-end").delay(200).fadeIn();
       });
+    });
+  },
+  "click .wb-next-5-2" (event, instance) {
+    $(".test-1").fadeOut(function(){
+      Session.set("slider1",100);
+      Session.set("slider2",100);
+      $(".test-2").fadeIn();
+    });
+  },
+  "click .wb-next-5-3" (event, instance) {
+    $(".test-2").fadeOut(function(){
+      Session.set("slider1",20);
+      Session.set("slider2",80);
+      $(".test-3").fadeIn();
     });
   },
   "click .wb-next-end" (event, instance) {
@@ -83,11 +128,35 @@ Template.welcome.events({
 });
 
 Template.welcome.rendered = function () {
-  $("#test-slider").noUiSlider({
+
+  $("#test-slider1").noUiSlider({
     start: 100,
+    step: 1,
     connect: "lower",
     range: { 'min': 0, 'max': 100 }
   }).on('slide', function (ev, val) {
     Session.set("slider1",Number(val));
   });
+
+  $("#test-slider2").noUiSlider({
+    start: 100,
+    step: 1,
+    connect: "lower",
+    range: { 'min': 0, 'max': 100 }
+  }).on('slide', function (ev, val) {
+    Session.set("slider1",Number(val));
+  });
+
+  $("#test-slider3").noUiSlider({
+    start: [20,80],
+    animate: true,
+    step: 1,
+    tooltips: true,
+    connect:  true,
+    range: {'min': 0, 'max': 100}
+  }).on('slide', function (ev, val) {
+    Session.set("slider1",Number(val[0]));
+    Session.set("slider2",Number(val[1]));
+  });
+
 };

@@ -46,7 +46,19 @@ paper-button {
 }
 
 
-#test-slider {
+#test-slider1 {
+  margin-top: 20px;
+  width: 400px;
+  height: 10px;
+}
+
+#test-slider2 {
+  margin-top: 20px;
+  width: 400px;
+  height: 10px;
+}
+
+#test-slider3 {
   margin-top: 20px;
   width: 400px;
   height: 10px;
@@ -61,4 +73,23 @@ paper-button {
   flex-direction: column;
   justify-content: center;
   cursor: default;
+}
+
+.tutorial-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #27ae60;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.tutorial-success paper-button {
+  color: #424242;
+  display: block;
+}
+
+#test-slider3 .noUi-connect {
+  background: grey;
 }

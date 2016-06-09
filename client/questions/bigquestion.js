@@ -252,16 +252,16 @@ Template.bigquestion.events({
 });
 
 
-Template.bigquestion.rendered = function () {
-  this.$("#question-slider").noUiSlider({
-    start: [20,80],
-    animate: true,
-    step: 1,
-    tooltips: true,
-    connect:  true,
-    range: {'min': 0, 'max': 100}
-  }).on('slide', function (ev, val) {
-    Session.set("slider1",Number(val[0]));
-    Session.set("slider2",Number(val[1]));
-  });
-};
+// Template.bigquestion.rendered = function () {
+//   this.$("#question-slider").noUiSlider({
+//     start: [20,80],
+//     animate: true,
+//     step: 1,
+//     tooltips: true,
+//     connect:  true,
+//     range: {'min': 0, 'max': 100}
+//   }).on('slide', function (ev, val) {
+//     Session.set("slider1",Number(val[0]));
+//     Session.set("slider2",Number(val[1]));
+//   });
+// };
