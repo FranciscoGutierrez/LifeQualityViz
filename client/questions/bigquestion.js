@@ -19,9 +19,6 @@ Template.bigquestion.helpers({
 
     return { w: w, s: s, t: t, a: a };
   },
-  username() {
-    return Session.get("username");
-  },
   legend() {
     return Session.get("qnumber");
   },
@@ -34,17 +31,40 @@ Template.bigquestion.helpers({
     return {option: option,number: number};
   },
   slider() {
-    var val1 = 20;
-    var val2 = 80;
-    val1 = Number(Session.get("slider1"));
-    val2 = Number(Session.get("slider2"));
-    if(val1<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible"); }
-    if(val2>95){ $(".slider-hound").css("visibility","hidden"); } else { $(".slider-hound").css("visibility","visible"); }
-    return {a: Math.round(val1), b: Math.round(val2), x: val1-2, y: val2-2};
+    var val = 100;
+    var q = Number(Session.get("qnumber"));
+    if(q > 1 && q < 3 ) val = Number(Session.get("gold1"));
+    if(q > 3 && q < 5 ) val = Number(Session.get("gold2"));
+    if(q > 5 && q < 7 ) val = Number(Session.get("gold3"));
+    return {a: Math.round(val), x: val-2};
   }
 });
 
 Template.bigquestion.events({
+  "click .big-golden"(event, instance) {
+    var current = Number(Session.get("qnumber"));
+    // Reset the sidebar...
+    Session.set("strength-t",100);
+    Session.set("strength-p",100);
+    Session.set("strength-s",100);
+    Session.set("strength-h",100);
+    // Clear the sidebar
+    $(".content-left").empty();
+    Blaze.render(Template.navfilter,$(".content-left")[0]);
+    $(".question-answers").css("visibility","hidden");
+    $(".question-buttons").css("visibility","hidden");
+
+    $(".golden").fadeOut(function(){
+      setTimeout(function() {
+        Session.set("qnumber",current+1);
+        $(".question-"+(current+1)).fadeIn();
+        $(".start-question-container").fadeIn( function() {
+          $(".start-question").fadeIn();
+        });
+      }, 700);
+    });
+
+  },
   "click .big-next"  (event, instance) {
     var current = Number(Session.get("qnumber"));
     Session.set("aimp",$("input[name=importance]:checked").val());
@@ -60,34 +80,52 @@ Template.bigquestion.events({
     Session.set("sentencea",$(".sentence-a-"+current+" option:selected").text());
     Session.set("sentenceb",$(".sentence-b-"+current+" option:selected").text());
     Session.set("sentencec",$(".sentence-c-"+current+" option:selected").text());
-
     // Reset the sidebar...
     Session.set("strength-t",100);
     Session.set("strength-p",100);
     Session.set("strength-s",100);
     Session.set("strength-h",100);
-
     // Clear the sidebar
     $(".content-left").empty();
     Blaze.render(Template.navfilter,$(".content-left")[0]);
     // Hide answers from questionnare
-    $(".question-answers").css("visibility","hidden");
-    $(".question-buttons").css("visibility","hidden");
     // Go to next question..
     $(".question-"+current).fadeOut(function(){
-      Session.set("qnumber",current+1);
-      $(".question-"+(current+1)).fadeIn();
-
-      $(".start-question-container").fadeIn( function() {
-        $(".start-question").fadeIn();
-      });
+      if(current == 2) {
+        $(".question-answers").css("visibility","hidden");
+        $(".question-buttons").css("visibility","hidden");
+        $(".question-2-1").fadeIn();
+        $(".start-question-container").fadeIn( function() {
+          $(".start-question").fadeIn();
+        });
+      } else if(current == 4) {
+        $(".question-answers").css("visibility","hidden");
+        $(".question-buttons").css("visibility","hidden");
+        $(".question-4-1").fadeIn();
+        $(".start-question-container").fadeIn( function() {
+          $(".start-question").fadeIn();
+        });
+      } else if(current == 6) {
+        $(".question-answers").css("visibility","hidden");
+        $(".question-buttons").css("visibility","hidden");
+        $(".question-6-1").fadeIn();
+        $(".start-question-container").fadeIn( function() {
+          $(".start-question").fadeIn();
+        });
+      } else {
+        $(".question-answers").css("visibility","hidden");
+        $(".question-buttons").css("visibility","hidden");
+        Session.set("qnumber",current+1);
+        $(".question-"+(current+1)).fadeIn();
+        $(".start-question-container").fadeIn( function() {
+          $(".start-question").fadeIn();
+        });
+      }
     });
 
-
-
+    // Record to database
     var current = Number(Session.get("qnumber"));
     var option  = Session.get("option");
-    var name    = Session.get("username");
     var city    = Session.get("acity");
     var factor  = Session.get("afactor");
     var imp     = Session.get("aimp");
@@ -132,7 +170,6 @@ Template.bigquestion.events({
       timestart:  timestart,
       timeend:    timeend,
       ssid:       user_id,
-      user:       name,
       question:   current,
       viz:        option,
       difficulty: diff,
@@ -210,7 +247,6 @@ Template.bigquestion.events({
       timestart:  timestart,
       timeend:    timeend,
       ssid:       user_id,
-      user:       name,
       question:   current,
       viz:        option,
       difficulty: diff,
@@ -253,31 +289,31 @@ Template.bigquestion.events({
 Template.bigquestion.rendered = function () {
   this.$("#question-slider1").noUiSlider({
     start: 100,
-    animate: true,
     step: 1,
+    connect: "lower",
     tooltips: true,
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
-    Session.set("slider1",Number(val));
+    Session.set("gold1",Number(val));
   });
 
   this.$("#question-slider2").noUiSlider({
     start: 100,
-    animate: true,
     step: 1,
+    connect: "lower",
     tooltips: true,
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
-    Session.set("slider1",Number(val));
+    Session.set("gold2",Number(val));
   });
 
   this.$("#question-slider3").noUiSlider({
     start: 100,
-    animate: true,
     step: 1,
+    connect: "lower",
     tooltips: true,
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
-    Session.set("slider1",Number(val));
+    Session.set("gold3",Number(val));
   });
 };

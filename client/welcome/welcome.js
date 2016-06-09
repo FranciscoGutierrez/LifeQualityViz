@@ -23,7 +23,7 @@ Template.welcome.helpers({
     var val2 = 80;
     val1 = Number(Session.get("slider1"));
     val2 = Number(Session.get("slider2"));
-    if(val1<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible"); }
+    if(val1<5) { $(".slider-zero").css("visibility","hidden");  } else { $(".slider-zero").css("visibility","visible");  }
     if(val2>95){ $(".slider-hound").css("visibility","hidden"); } else { $(".slider-hound").css("visibility","visible"); }
     return {a: Math.round(val1), b: Math.round(val2), x: val1-2, y: val2-2};
   },
