@@ -174,10 +174,10 @@ Template.bigquestion.events({
     var select2 = Session.get("select2");
     var text    = Session.get("textarea");
     var user_id = Meteor.default_connection._lastSessionId;
-    var diff = Session.get("feedback-difficulty");
-    var pref = $("input[name=preference]:checked").val();
-    var resp = Session.get("answer");
-    var checkbox = Session.get("checkbox");
+    var diff    = Session.get("feedback-difficulty");
+    var pref    = $("input[name=preference]:checked").val();
+    var resp    = Session.get("answer");
+    var checkbox  = Session.get("checkbox");
     var timestart = Session.get("qstart");
     var timeend   = Session.get("qend");
 
@@ -201,40 +201,38 @@ Template.bigquestion.events({
     if(!$(".traffic" ).attr("checked")) t = false
     if(!$(".polluted").attr("checked")) a = false
 
-    $(".feedback-preference").fadeOut(function(){
-      $("input:radio").removeAttr("checked");
-      $("input:checkbox").removeAttr("checked");
-      $('textarea').val("");
+    $("input:radio").removeAttr("checked");
+    $("input:checkbox").removeAttr("checked");
+    $('textarea').val("");
 
-      Answers.insert({
-        checkbox:   checkbox,
-        timestart:  timestart,
-        timeend:    timeend,
-        ssid:       user_id,
-        user:       name,
-        question:   current,
-        viz:        option,
-        difficulty: diff,
-        preference: pref,
-        acity:      city,
-        afactor:    factor,
-        aimp:       imp,
-        aoption1:   select1,
-        aoption2:   select2,
-        atext:      text,
-        weather:    w,
-        safety:     s,
-        traffic:    t,
-        polluted:   a,
-        slider1: slider1,
-        slider2: slider2,
-        senta: sa,
-        sentb: sb,
-        sentc: sc
-      });
-      $(".question-container").fadeOut(function(){
-        $(".big-thanks").fadeIn();
-      });
+    console.log({
+      checkbox:   checkbox,
+      timestart:  timestart,
+      timeend:    timeend,
+      ssid:       user_id,
+      user:       name,
+      question:   current,
+      viz:        option,
+      difficulty: diff,
+      preference: pref,
+      acity:      city,
+      afactor:    factor,
+      aimp:       imp,
+      aoption1:   select1,
+      aoption2:   select2,
+      atext:      text,
+      weather:    w,
+      safety:     s,
+      traffic:    t,
+      polluted:   a,
+      slider1: slider1,
+      slider2: slider2,
+      senta: sa,
+      sentb: sb,
+      sentc: sc
+    });
+    $(".question-container").fadeOut(function(){
+      $(".big-thanks").fadeIn();
     });
   },
   "click .radio-button" (event, instance) {

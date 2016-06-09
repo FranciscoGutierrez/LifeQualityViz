@@ -28,24 +28,29 @@ Template.welcome.helpers({
     return {a: Math.round(val1), b: Math.round(val2), x: val1-2, y: val2-2};
   },
   qone(){
-    var show  = false;
-    var slide = Number(Session.get("slider1"));
-    if(slide == 44) show = true;
-    return {display: show};
+    var show   = false;
+    var tcolor = "#A1A1A1";
+    if(Number(Session.get("slider1")) == 44) show = true;
+    if(show) tcolor =  "#27ae60";
+    return {display: show, color: tcolor};
   },
   qtwo(){
-    var show  = false;
-    var slide = Number(Session.get("slider1"));
-    if(slide == 89) show = true;
-    return {display: show};
+    var show   = false;
+    var tcolor = "#A1A1A1";
+    if(Number(Session.get("slider1")) == 89) show = true;
+    if(show) tcolor =  "#27ae60";
+    return {display: show, color: tcolor};
   },
   qthree(){
     var show1 = false;
     var show2 = false;
+    var c1 = "#A1A1A1";
+    var c2 = "#A1A1A1";
     if(Number(Session.get("slider1")) == 25) show1 = true;
     if(Number(Session.get("slider2")) == 75) show2 = true;
-
-    return {display: show1*show2};
+    if(show1) c1 =  "#27ae60";
+    if(show2) c2 =  "#27ae60";
+    return {display: show1*show2, color1: c1, color2: c2};
   }
 });
 
@@ -58,28 +63,28 @@ Template.welcome.events({
   "click .wb-next-0" (event, instance) {
     $(".wd-0").fadeOut(function(){
       $(".wd-1").fadeIn(function(){
-        $(".wb-next-1").delay(200).fadeIn();
+        $(".wb-next-1").fadeIn();
       });
     });
   },
   "click .wb-next-1" (event, instance) {
     $(".wd-1").fadeOut(function(){
       $(".wd-2").fadeIn(function(){
-        $(".wb-next-2").delay(200).fadeIn();
+        $(".wb-next-2").fadeIn();
       });
     });
   },
   "click .wb-next-2" (event, instance) {
     $(".wd-2").fadeOut(function(){
       $(".wd-3").fadeIn(function(){
-        $(".wb-next-3").delay(200).fadeIn();
+        $(".wb-next-3").fadeIn();
       });
     });
   },
   "click .wb-next-3" (event, instance) {
     $(".wd-3").fadeOut(function(){
       $(".wd-4").fadeIn(function(){
-        $(".wb-next-4").delay(200).fadeIn();
+        $(".wb-next-4").fadeIn();
       });
     });
   },
@@ -87,7 +92,7 @@ Template.welcome.events({
     $(".wd-4").fadeOut(function(){
       $(".welcome-h1").text("Now a short test!");
       $(".wd-5").fadeIn(function(){
-        // $(".wb-next-5").delay(200).fadeIn();
+        // $(".wb-next-5").fadeIn();
       });
     });
   },
@@ -95,7 +100,7 @@ Template.welcome.events({
     $(".wd-5").fadeOut(function(){
       $(".welcome-h1").text("That's it!");
       $(".wd-end").fadeIn(function(){
-        $(".wb-next-end").delay(200).fadeIn();
+        $(".wb-next-end").fadeIn();
       });
     });
   },
