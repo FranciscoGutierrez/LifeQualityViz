@@ -116,7 +116,7 @@ Template.bigquestion.events({
     if(current==2) {
       ans_a = $("input[name=cities]:checked").val();
       ans_b = "";
-      if(ans_a == "newyork")  correct = true;
+      if(ans_a == "houston")  correct = true;
     }
 
     if(current==3) {
@@ -365,6 +365,7 @@ Template.bigquestion.events({
 
 
 Template.bigquestion.rendered = function () {
+  var self = this;
   this.$("#question-slider1").noUiSlider({
     start: 100,
     step: 1,
@@ -373,9 +374,9 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold1",Number(val));
-    $(".question-answers").css("visibility","visible");
+    self.$(".question-answers").css("visibility","visible");
   }).on('set', function(){
-    $(".question-answers").css("visibility","visible");
+    self.$(".question-answers").css("visibility","visible");
   });
 
   this.$("#question-slider2").noUiSlider({
@@ -386,9 +387,9 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold2",Number(val));
-    $(".question-answers").css("visibility","visible");
+    self.$(".question-answers").css("visibility","visible");
   }).on('set', function(){
-    $(".question-answers").css("visibility","visible");
+    self.$(".question-answers").css("visibility","visible");
   });
 
   this.$("#question-slider3").noUiSlider({
@@ -399,9 +400,9 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold3",Number(val));
-    $(".question-answers").css("visibility","visible");
+    self.$(".question-answers").css("visibility","visible");
   }).on('set', function(){
-    $(".question-answers").css("visibility","visible");
+    self.$(".question-answers").css("visibility","visible");
   });
 
   this.$("#question-slider4").noUiSlider({
@@ -412,9 +413,9 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold4",Number(val));
-    $(".question-answers").css("visibility","visible");
+    self.$(".question-answers").css("visibility","visible");
   }).on('set', function(){
-    $(".question-answers").css("visibility","visible");
+    self.$(".question-answers").css("visibility","visible");
   });
 
 };
