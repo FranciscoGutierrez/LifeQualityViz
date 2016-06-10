@@ -36,6 +36,7 @@ Template.bigquestion.helpers({
     if(q > 1 && q < 3 ) val = Number(Session.get("gold1"));
     if(q > 3 && q < 5 ) val = Number(Session.get("gold2"));
     if(q > 5 && q < 7 ) val = Number(Session.get("gold3"));
+    if(q > 7 && q < 9 ) val = Number(Session.get("gold4"));
     return {a: Math.round(val), x: val-2};
   }
 });
@@ -93,6 +94,9 @@ Template.bigquestion.events({
     var actions_ct = Session.get("actions_ct",0);
     var actions_ca = Session.get("actions_ca",0);
     var actions = actions_sw + actions_ss + actions_st + actions_sa + actions_cw + actions_cs + actions_ct + actions_ca;
+    var correct = false;
+    var ans_a = "";
+    var ans_b = "";
 
     if(weather == 0) weather = "0"; if(safety == 0) safety = "0";
     if(traffic == 0) traffic = "0"; if(air    == 0) air    = "0";
@@ -101,6 +105,73 @@ Template.bigquestion.events({
     if(!$(".safety"  ).attr("checked")) safety  = false;
     if(!$(".traffic" ).attr("checked")) traffic = false;
     if(!$(".polluted").attr("checked")) air     = false;
+
+    if(current==1) {
+      ans_a = $(".control-a-1 option:selected").text();
+      ans_b = $(".control-b-1 option:selected").text();
+      if(ans_a == "Traffic" && ans_b == "Safety")  correct = true;
+      if(ans_a == "Safety"  && ans_b == "Traffic") correct = true;
+    }
+
+    if(current==2) {
+      ans_a = $("input[name=cities]:checked").val();
+      ans_b = "";
+      if(ans_a == "newyork")  correct = true;
+    }
+
+    if(current==3) {
+      ans_a = "";
+      ans_b = "";
+      if(weather== "0" && !safety && traffic=="0" && air == 100)  correct = true;
+    }
+
+    if(current==4) {
+      ans_a = $("input[name=cities]:checked").val();
+      ans_b = "";
+      if(ans_a == "seattle")  correct = true;
+    }
+
+    if(current==5) {
+      ans_a = $("input[name=cities]:checked").val();
+      ans_b = "";
+      if(ans_a == "angeles")  correct = true;
+    }
+
+    if(current==6) {
+      ans_a = $("input[name=cities]:checked").val();
+      ans_b = "";
+      if(ans_a == "atlanta")  correct = true;
+    }
+
+    if(current==7) {
+      ans_a = $("input[name=cities]:checked").val();
+      ans_b = "";
+      if(ans_a == "atlanta")  correct = true;
+    }
+
+    if(current==8) {
+      ans_a = $(".control-a-8 option:selected").text();
+      ans_b = "";
+      var a1 = false;
+      var a2 = false;
+      var a3 = false;
+      var ax = 0;
+      $("input[name=cities]:checked").each(function() {
+        ans_b = ans_b + $(this).attr('value') + "-";
+        if($(this).attr('value') == "denver")  a1 = true;
+        if($(this).attr('value') == "atlanta") a2 = true;
+        if($(this).attr('value') == "seattle") a3 = true;
+      });
+
+      ax = a1 * a2 * a3;
+      if(ans_a == "Traffic" && ax == 1)  correct = true;
+    }
+
+    if(current==9) {
+      var ans_a = $("input[name=cities]:checked").val();
+      var ans_b = "";
+      if(ans_a == "seattle")  correct = true;
+    }
 
     $("input:radio").removeAttr("checked");
     $("input:checkbox").removeAttr("checked");
@@ -125,6 +196,9 @@ Template.bigquestion.events({
       trust:   trust,
       actions:  actions,
       question: current,
+      correct: correct,
+      ans_a: ans_a,
+      ans_b: ans_b,
       viz:      Session.get("option"),
       weather:  weather,
       safety:   safety,
@@ -173,6 +247,13 @@ Template.bigquestion.events({
         $(".start-question-container").fadeIn( function() {
           $(".start-question").fadeIn();
         });
+      } else if(current == 8) {
+        $(".question-answers").css("visibility","hidden");
+        $(".question-buttons").css("visibility","hidden");
+        $(".question-8-1").fadeIn();
+        $(".start-question-container").fadeIn( function() {
+          $(".start-question").fadeIn();
+        });
       } else {
         $(".question-answers").css("visibility","hidden");
         $(".question-buttons").css("visibility","hidden");
@@ -218,6 +299,7 @@ Template.bigquestion.events({
     var actions_ct = Session.get("actions_ct",0);
     var actions_ca = Session.get("actions_ca",0);
     var actions = actions_sw + actions_ss + actions_st + actions_sa + actions_cw + actions_cs + actions_ct + actions_ca;
+    var correct = false;
 
     if(weather == 0) weather = "0"; if(safety == 0) safety = "0";
     if(traffic == 0) traffic = "0"; if(air    == 0) air    = "0";
@@ -226,6 +308,12 @@ Template.bigquestion.events({
     if(!$(".safety"  ).attr("checked")) safety  = false;
     if(!$(".traffic" ).attr("checked")) traffic = false;
     if(!$(".polluted").attr("checked")) air     = false;
+
+    if(current==9) {
+      var ans_a = $("input[name=cities]:checked").val();
+      var ans_b = "";
+      if(ans_a == "seattle")  correct = true;
+    }
 
     $("input:radio").removeAttr("checked");
     $("input:checkbox").removeAttr("checked");
@@ -250,6 +338,9 @@ Template.bigquestion.events({
       trust:   trust,
       actions:  actions,
       question: current,
+      correct: correct,
+      ans_a: ans_a,
+      ans_b: ans_b,
       viz:      Session.get("option"),
       weather:  weather,
       safety:   safety,
@@ -308,6 +399,19 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold3",Number(val));
+    $(".question-answers").css("visibility","visible");
+  }).on('set', function(){
+    $(".question-answers").css("visibility","visible");
+  });
+
+  this.$("#question-slider4").noUiSlider({
+    start: 100,
+    step: 1,
+    connect: "lower",
+    tooltips: true,
+    range: {'min': 0, 'max': 100}
+  }).on('slide', function (ev, val) {
+    Session.set("gold4",Number(val));
     $(".question-answers").css("visibility","visible");
   }).on('set', function(){
     $(".question-answers").css("visibility","visible");
