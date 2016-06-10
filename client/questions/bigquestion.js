@@ -358,8 +358,6 @@ Template.bigquestion.events({
       Session.set("feedback-difficulty",a);
       $(".feedback-preference").fadeIn();
     });
-  },
-  "click .fp-next" (event, instance) {
   }
 });
 
@@ -374,9 +372,8 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold1",Number(val));
-    self.$(".question-answers").css("visibility","visible");
   }).on('set', function(){
-    self.$(".question-answers").css("visibility","visible");
+    self.$(".question-buttons").css("visibility","visible");
   });
 
   this.$("#question-slider2").noUiSlider({
@@ -387,9 +384,8 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold2",Number(val));
-    self.$(".question-answers").css("visibility","visible");
   }).on('set', function(){
-    self.$(".question-answers").css("visibility","visible");
+    self.$(".question-buttons").css("visibility","visible");
   });
 
   this.$("#question-slider3").noUiSlider({
@@ -400,9 +396,8 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold3",Number(val));
-    self.$(".question-answers").css("visibility","visible");
   }).on('set', function(){
-    self.$(".question-answers").css("visibility","visible");
+    self.$(".question-buttons").css("visibility","visible");
   });
 
   this.$("#question-slider4").noUiSlider({
@@ -413,9 +408,8 @@ Template.bigquestion.rendered = function () {
     range: {'min': 0, 'max': 100}
   }).on('slide', function (ev, val) {
     Session.set("gold4",Number(val));
-    self.$(".question-answers").css("visibility","visible");
   }).on('set', function(){
-    self.$(".question-answers").css("visibility","visible");
+    self.$(".question-buttons").css("visibility","visible");
   });
 
 };
