@@ -107,7 +107,86 @@ Template.bigquestion.events({
       if(!$(".traffic" ).attr("checked")) traffic = false;
       if(!$(".polluted").attr("checked")) air     = false;
 
-      if(current==9) {
+      if(question==1) {
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "atlanta")  correct = true;
+      }
+
+      if(question==2) {
+        ans_a = $("input[name=factors]:checked").val();
+        ans_b = "";
+        if(ans_a == "air")  correct = true;
+      }
+
+      if(question==3) {
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "denver")  correct = true;
+      }
+
+      if(question==4) {
+        ans_a = $(".control-a-4 option:selected").text();
+        ans_b = $(".control-b-4 option:selected").text();
+        if(ans_a == "Traffic" && ans_b == "Safety")  correct = true;
+        if(ans_a == "Safety"  && ans_b == "Traffic") correct = true;
+      }
+
+      if(question==5) {
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "newyork")  correct = true;
+      }
+
+      if(question==6) {
+        ans_a = "";
+        ans_b = "";
+        if(weather== "0" && !safety && traffic=="0" && air == 100)  correct = true;
+      }
+
+      if(question==7) {
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "atlanta")  correct = true;
+      }
+
+      if(question==8) {
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "angeles")  correct = true
+      }
+
+      if(question==9) {
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "atlanta")  correct = true
+      }
+
+      if(question==10) {
+        var ans_a = $("input[name=cities]:checked").val();
+        var ans_b = "";
+        if(ans_a == "atlanta")  correct = true;
+      }
+
+      if(question==11) {
+        ans_a = $(".control-a-11 option:selected").text();
+        ans_b = "";
+        var a1 = false;
+        var a2 = false;
+        var a3 = false;
+        var ax = 0;
+        $("input[name=cities]:checked").each(function() {
+          ans_b = ans_b + $(this).attr('value') + "-";
+          if($(this).attr('value') == "denver")  a1 = true;
+          if($(this).attr('value') == "atlanta") a2 = true;
+          if($(this).attr('value') == "seattle") a3 = true;
+        });
+
+        ax = a1 * a2 * a3;
+        if(ans_a == "Traffic" && ax == 1)  correct = true;
+      }
+
+      if(question==12) {
         var ans_a = $("input[name=cities]:checked").val();
         var ans_b = "";
         if(ans_a == "seattle")  correct = true;
