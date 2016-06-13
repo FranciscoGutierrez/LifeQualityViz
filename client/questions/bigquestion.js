@@ -147,7 +147,7 @@ Template.bigquestion.events({
       if(question==7) {
         ans_a = $("input[name=cities]:checked").val();
         ans_b = "";
-        if(ans_a == "atlanta")  correct = true;
+        if(ans_a == "seattle")  correct = true;
       }
 
       if(question==8) {
@@ -189,7 +189,7 @@ Template.bigquestion.events({
       if(question==12) {
         var ans_a = $("input[name=cities]:checked").val();
         var ans_b = "";
-        if(ans_a == "seattle")  correct = true;
+        if(ans_a == "newyork")  correct = true;
       }
 
       $("input:radio").removeAttr("checked");
@@ -306,7 +306,7 @@ Template.bigquestion.events({
       if(question==7) {
         ans_a = $("input[name=cities]:checked").val();
         ans_b = "";
-        if(ans_a == "atlanta")  correct = true;
+        if(ans_a == "seattle")  correct = true;
       }
 
       if(question==8) {
@@ -348,7 +348,7 @@ Template.bigquestion.events({
       if(question==12) {
         var ans_a = $("input[name=cities]:checked").val();
         var ans_b = "";
-        if(ans_a == "seattle")  correct = true;
+        if(ans_a == "newyork")  correct = true;
       }
 
       $("input:radio").removeAttr("checked");
