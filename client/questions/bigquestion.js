@@ -117,7 +117,7 @@ Template.bigquestion.events({
       $("input:checkbox").removeAttr("checked");
 
       console.log({
-      //Answers.insert({
+        //Answers.insert({
         userid:    Session.get("ssid"),
         timestart: Session.get("qstart"),
         timeend:   timeend,
@@ -194,33 +194,34 @@ Template.bigquestion.events({
       }
 
       if(question==2) {
-        ans_a = $("input[name=cities]:checked").val();
+        ans_a = $("input[name=factors]:checked").val();
         ans_b = "";
-        if(ans_a == "houston")  correct = true;
+        if(ans_a == "air")  correct = true;
       }
 
       if(question==3) {
-        ans_a = "";
+        ans_a = $("input[name=cities]:checked").val();
         ans_b = "";
-        if(weather== "0" && !safety && traffic=="0" && air == 100)  correct = true;
+        if(ans_a == "denver")  correct = true;
       }
 
       if(question==4) {
-        ans_a = $("input[name=cities]:checked").val();
-        ans_b = "";
-        if(ans_a == "seattle")  correct = true;
+        ans_a = $(".control-a-4 option:selected").text();
+        ans_b = $(".control-b-4 option:selected").text();
+        if(ans_a == "Traffic" && ans_b == "Safety")  correct = true;
+        if(ans_a == "Safety"  && ans_b == "Traffic") correct = true;
       }
 
       if(question==5) {
         ans_a = $("input[name=cities]:checked").val();
         ans_b = "";
-        if(ans_a == "angeles")  correct = true;
+        if(ans_a == "newyork")  correct = true;
       }
 
       if(question==6) {
-        ans_a = $("input[name=cities]:checked").val();
+        ans_a = "";
         ans_b = "";
-        if(ans_a == "atlanta")  correct = true;
+        if(weather== "0" && !safety && traffic=="0" && air == 100)  correct = true;
       }
 
       if(question==7) {
@@ -230,7 +231,25 @@ Template.bigquestion.events({
       }
 
       if(question==8) {
-        ans_a = $(".control-a-8 option:selected").text();
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "angeles")  correct = true
+      }
+
+      if(question==9) {
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "atlanta")  correct = true
+      }
+
+      if(question==10) {
+        var ans_a = $("input[name=cities]:checked").val();
+        var ans_b = "";
+        if(ans_a == "atlanta")  correct = true;
+      }
+
+      if(question==11) {
+        ans_a = $(".control-a-11 option:selected").text();
         ans_b = "";
         var a1 = false;
         var a2 = false;
@@ -247,24 +266,6 @@ Template.bigquestion.events({
         if(ans_a == "Traffic" && ax == 1)  correct = true;
       }
 
-      if(question==9) {
-        var ans_a = $("input[name=cities]:checked").val();
-        var ans_b = "";
-        if(ans_a == "seattle")  correct = true;
-      }
-
-      if(question==10) {
-        var ans_a = $("input[name=cities]:checked").val();
-        var ans_b = "";
-        if(ans_a == "seattle")  correct = true;
-      }
-
-      if(question==11) {
-        var ans_a = $("input[name=cities]:checked").val();
-        var ans_b = "";
-        if(ans_a == "seattle")  correct = true;
-      }
-
       if(question==12) {
         var ans_a = $("input[name=cities]:checked").val();
         var ans_b = "";
@@ -275,7 +276,7 @@ Template.bigquestion.events({
       $("input:checkbox").removeAttr("checked");
 
       console.log({
-      //Answers.insert({
+        //Answers.insert({
         userid:    Session.get("ssid"),
         timestart: Session.get("qstart"),
         timeend:   timeend,
