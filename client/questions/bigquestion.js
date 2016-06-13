@@ -135,7 +135,7 @@ Template.bigquestion.events({
       if(question==5) {
         ans_a = $("input[name=cities]:checked").val();
         ans_b = "";
-        if(ans_a == "newyork")  correct = true;
+        if(ans_a == "houston")  correct = true;
       }
 
       if(question==6) {
