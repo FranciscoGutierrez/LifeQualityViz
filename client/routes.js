@@ -21,7 +21,7 @@ Router.route('/:_id', {
         Session.setDefault("strength-s",100);
         Session.setDefault("strength-h",100);
         Session.setDefault("option",option);
-        Session.setDefault("qnumber",1);
+        Session.setDefault("qnumber",0);
         Session.setDefault("slider1",100);
         Session.setDefault("slider2",100);
         Session.setDefault("gold1",100);
@@ -38,6 +38,11 @@ Router.route('/:_id', {
         Session.setDefault("actions_ca",0);
         Session.setDefault("ssid",Meteor.default_connection._lastSessionId);
 
+        a = [1,2,3];
+        b = [4,5,6,7,8,9,10,11,12]
+        b = shuffle(b);
+        c = Array.prototype.concat.apply([], [a, b]);
+        Session.setDefault("order",c);
 
         var isChrome = !!window.chrome && !!window.chrome.webstore;
         if(isChrome) {
@@ -71,3 +76,14 @@ Router.route('/:_id', {
     });
   }
 });
+
+function shuffle(array) {
+  var tmp, current, top = array.length;
+  if(top) while(--top) {
+    current = Math.floor(Math.random() * (top + 1));
+    tmp = array[current];
+    array[current] = array[top];
+    array[top] = tmp;
+  }
+  return array;
+}

@@ -128,7 +128,7 @@ Template.welcome.events({
     Session.set("username",$(".welcome-input").val());
     $(".welcome-screen").fadeOut(function(){
       $(this).remove();
-      Session.set("qnumber",1);
+      Session.set("qnumber",0);
     });
   },
   "click .skip-tutorial" (event, instance) {
