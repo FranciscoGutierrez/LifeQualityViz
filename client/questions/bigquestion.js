@@ -71,9 +71,9 @@ Template.bigquestion.events({
 
   },
   "click .big-next"  (event, instance) {
-    if(Number(Session.get("qnumber"))>= 12) {
-
-      var current = Number(Session.get("qnumber"));
+    if(Number(Session.get("qnumber")) >= 11) {
+      var current  = Number(Session.get("qnumber"));
+      var question = Session.get("order")[current];
       var timeend = Date.now();
       var weather = Math.round(Session.get("strength-h"));
       var safety  = Math.round(Session.get("strength-s"));
@@ -116,8 +116,8 @@ Template.bigquestion.events({
       $("input:radio").removeAttr("checked");
       $("input:checkbox").removeAttr("checked");
 
-      //console.log({
-      Answers.insert({
+      console.log({
+      //Answers.insert({
         userid:    Session.get("ssid"),
         timestart: Session.get("qstart"),
         timeend:   timeend,
@@ -136,7 +136,7 @@ Template.bigquestion.events({
         golden4: gold4,
         trust:   trust,
         actions:  actions,
-        question: current,
+        question: question,
         correct: correct,
         ans_a: ans_a,
         ans_b: ans_b,
@@ -146,10 +146,7 @@ Template.bigquestion.events({
         traffic:  traffic,
         air:      air
       });
-
-      $(".question-container").fadeOut(function(){
-        $(".big-thanks").fadeIn();
-      });
+      $(".big-thanks").fadeIn();
 
     } else {
 
@@ -191,10 +188,9 @@ Template.bigquestion.events({
       if(!$(".polluted").attr("checked")) air     = false;
 
       if(question==1) {
-        ans_a = $(".control-a-1 option:selected").text();
-        ans_b = $(".control-b-1 option:selected").text();
-        if(ans_a == "Traffic" && ans_b == "Safety")  correct = true;
-        if(ans_a == "Safety"  && ans_b == "Traffic") correct = true;
+        ans_a = $("input[name=cities]:checked").val();
+        ans_b = "";
+        if(ans_a == "atlanta")  correct = true;
       }
 
       if(question==2) {
@@ -257,11 +253,29 @@ Template.bigquestion.events({
         if(ans_a == "seattle")  correct = true;
       }
 
+      if(question==10) {
+        var ans_a = $("input[name=cities]:checked").val();
+        var ans_b = "";
+        if(ans_a == "seattle")  correct = true;
+      }
+
+      if(question==11) {
+        var ans_a = $("input[name=cities]:checked").val();
+        var ans_b = "";
+        if(ans_a == "seattle")  correct = true;
+      }
+
+      if(question==12) {
+        var ans_a = $("input[name=cities]:checked").val();
+        var ans_b = "";
+        if(ans_a == "seattle")  correct = true;
+      }
+
       $("input:radio").removeAttr("checked");
       $("input:checkbox").removeAttr("checked");
 
-      //console.log({
-      Answers.insert({
+      console.log({
+      //Answers.insert({
         userid:    Session.get("ssid"),
         timestart: Session.get("qstart"),
         timeend:   timeend,
