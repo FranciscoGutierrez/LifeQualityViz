@@ -195,8 +195,8 @@ Template.bigquestion.events({
       $("input:radio").removeAttr("checked");
       $("input:checkbox").removeAttr("checked");
 
-      //console.log({
-      Answers.insert({
+      console.log({
+      //Answers.insert({
         userid:    Session.get("ssid"),
         timestart: Session.get("qstart"),
         timeend:   timeend,
@@ -354,8 +354,8 @@ Template.bigquestion.events({
       $("input:radio").removeAttr("checked");
       $("input:checkbox").removeAttr("checked");
 
-      //console.log({
-      Answers.insert({
+      console.log({
+      //Answers.insert({
         userid:    Session.get("ssid"),
         timestart: Session.get("qstart"),
         timeend:   timeend,
