@@ -6,10 +6,10 @@ A dashboard to predict people's happiness in different cities across the U.S. us
 <img src="public/sc1.png"/>
 
 ### Chernoff Faces:
-<img src="public/sc2.png"/>
-
-### Dotplot viz to represent probability:
 <img src="public/sc3.png"/>
 
-Francisco.Gutierrez@cs.kuleuven.be
+### Dotplot viz to represent probability:
+<img src="public/sc2.png"/>
+
+Francisco.Gutierrez@cs.kuleuven.be  
 Augment HCI, KU Leuven
