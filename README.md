@@ -6,7 +6,7 @@ A dashboard to predict people's happiness in different cities across the U.S. us
 <img src="public/sc1.png"/>
 
 ### Chernoff Faces:
-<img src="public/sc3.png"/>
+<img src="public/whole_app1.png"/>
 
 ### Dotplot viz to represent probability:
 <img src="public/sc2.png"/>
